@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Que fenômeno melhor explica o extravasamento de sangue em um ferimento?",
+    "alternativas": [
+      "A vasodilatação",
+      "A lesão vascular",
+      "A aglomeração das plaquetas",
+      "A liberação de serotonina"
+    ],
+    "respostaCorreta": 2
+  }
+]
