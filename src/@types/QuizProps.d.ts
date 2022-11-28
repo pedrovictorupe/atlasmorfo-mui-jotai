@@ -1,10 +1,8 @@
 type QuizProps = Readonly<{
-  content: {
-    id: number;
-    pergunta: string;
-    alternativas: string[];
-    respostaCorreta: number;
-  };
+  title: string;
+  pergunta: string;
+  alternativas: string[];
+  indiceRespostaCorreta: number;
 }>;
 
 export default QuizProps;

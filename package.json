@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.10.15",
     "@mui/material": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -13,7 +14,9 @@
     "react-dom": "latest",
     "react-router-dom": "^6.4.3",
     "react-scripts": "latest",
-    "typescript": "latest"
+    "slugify": "^1.6.5",
+    "typescript": "latest",
+    "zustand": "^4.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

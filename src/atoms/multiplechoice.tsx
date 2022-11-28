@@ -1,15 +1,15 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
+import slugify from "slugify";
+import produce from "immer";
+import { parseMap, stringifyMap } from "../utils";
 
-/* Atom para salvar as respostas que o usuário submeter nos pre-testes.*/
-export const respostasAtom = atomWithStorage<number[]>(
-  "respostas",
-  [] as number[]
-);
+/* Atom para salvar as respostas que o usuário submeter nos pré-testes.*/
+export const respostasAtom = atomWithStorage("respostasPorLicao", {});
 
 /* Tipagem para os argumentos da função Write de editarRespostasAtom */
 type EditarRespostasAction = {
-  id: number;
+  lessonTitle: string;
   resposta: number;
 };
 
@@ -18,11 +18,11 @@ A ideia é que a resposta só seja checada depois do usuário assistir à liçã
 Como a intenção é que o progresso do usuário também fique salvo em forma de cookie (já que o site é estático e não há backend), então o localStorage serve aqui simultaneamente como global state e database */
 export const editarRespostasAtom = atom(
   (get) => get(respostasAtom),
-  (get, set, { id, resposta }: EditarRespostasAction) => {
-    // Variável temporária
-    let respostas = [...get(respostasAtom)];
-    respostas[id] = resposta;
-
-    return set(respostasAtom, respostas);
+  (get, set, { lessonTitle, resposta }: EditarRespostasAction) => {
+    let respostas = {
+      ...get(respostasAtom),
+      ...{ [slugify(lessonTitle)]: resposta },
+    };
+    set(respostasAtom, respostas);
   }
 );

@@ -8,10 +8,10 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useAtom } from "jotai";
-import { editarRespostasAtom } from "../atoms/pretestes";
+import { editarRespostasAtom } from "../atoms/multiplechoice";
 import QuizProps from "../@types/QuizProps";
 
-export default function Quiz(props: QuizProps) {
+export default function MultipleChoiceQuiz(props: QuizProps) {
   const [, confirmarResposta] = useAtom(editarRespostasAtom);
   const [alternativaSelecionada, setAlternativaSelecionada] =
     React.useState("");
@@ -30,10 +30,10 @@ export default function Quiz(props: QuizProps) {
     event.preventDefault();
 
     confirmarResposta({
-      id: props.content.id,
+      lessonTitle: props.title,
       // As respostas são salvas em forma de índice ("1" para a primeira alternativa etc.), por isso é necessário usar Array.indexOf.
       // OBS: Bugs nesta seção podem decorrer caso o conteúdo passado no props.content deste componente sejam escritos à mão ao invés de ser extraído do "content/pretestes.json" (visto que, para obter o índice da alternativa, comparamos com o conteúdo de pretestes.json)
-      resposta: props.content.alternativas.indexOf(alternativaSelecionada),
+      resposta: props.alternativas.indexOf(alternativaSelecionada),
     });
   };
 
@@ -46,7 +46,7 @@ export default function Quiz(props: QuizProps) {
             variant="h6"
             sx={{ color: "text.primary", marginBottom: 2 }}
           >
-            {props.content.pergunta}
+            {props.pergunta}
           </Typography>
         </FormLabel>
         <RadioGroup
@@ -55,7 +55,7 @@ export default function Quiz(props: QuizProps) {
           value={alternativaSelecionada}
           onChange={handleSelection}
         >
-          {props.content.alternativas.map((alternativa) => (
+          {props.alternativas.map((alternativa) => (
             <FormControlLabel
               value={alternativa}
               control={<Radio />}
