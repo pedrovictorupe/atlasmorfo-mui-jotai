@@ -12,7 +12,7 @@ import { editarRespostasAtom } from "../atoms/multiplechoice";
 import QuizProps from "../@types/QuizProps";
 
 export default function MultipleChoiceQuiz(props: QuizProps) {
-  const [, confirmarResposta] = useAtom(editarRespostasAtom);
+  const [, salvarResposta] = useAtom(editarRespostasAtom);
   const [alternativaSelecionada, setAlternativaSelecionada] =
     React.useState("");
   // Texto que fica acima do botão "Confirmar"
@@ -29,12 +29,15 @@ export default function MultipleChoiceQuiz(props: QuizProps) {
     // Previne que o navegador despache a funcionalidade padrão de submissão de <form> (imagino que seria um POST ou algo do tipo)
     event.preventDefault();
 
-    confirmarResposta({
+    // Salva a resposta no localStorage para checar depois
+    salvarResposta({
       lessonTitle: props.title,
       // As respostas são salvas em forma de índice ("1" para a primeira alternativa etc.), por isso é necessário usar Array.indexOf.
       // OBS: Bugs nesta seção podem decorrer caso o conteúdo passado no props.content deste componente sejam escritos à mão ao invés de ser extraído do "content/pretestes.json" (visto que, para obter o índice da alternativa, comparamos com o conteúdo de pretestes.json)
       resposta: props.alternativas.indexOf(alternativaSelecionada),
     });
+
+    props.onSubmit()
   };
 
   // Para fazer: encapsular o enunciado e as alternativas em componentes próprios
@@ -43,7 +46,7 @@ export default function MultipleChoiceQuiz(props: QuizProps) {
       <FormControl sx={{ marginTop: 3 }} variant="standard">
         <FormLabel>
           <Typography
-            variant="h6"
+            variant="button"
             sx={{ color: "text.primary", marginBottom: 2 }}
           >
             {props.pergunta}

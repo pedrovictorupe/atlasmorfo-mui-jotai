@@ -3,6 +3,7 @@ type QuizProps = Readonly<{
   pergunta: string;
   alternativas: string[];
   indiceRespostaCorreta: number;
+  onSubmit: () => void;
 }>;
 
 export default QuizProps;

@@ -5,17 +5,14 @@ import { useState } from "react";
 import { editarProgressoLicaoAtom } from "../atoms/progresso";
 import PreTeste from "../components/PreTeste";
 import preTesteContents from "../content/pretestes.json";
-import { BottomNavigation, Box as Grid, Container } from "@mui/material";
+import { BottomNavigation, Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
-import BottomNavBar, {
-  DEFAULT_NAVBAR_HEIGHT,
-} from "../components/BottomNavBar";
-import type ProgressoEnum from "../@types/ProgressoEnum";
-import { DefaultPages, StatesPossiveis } from "../constants";
+import BottomNavBar from "../components/BottomNavBar";
+import { DefaultPages } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
 
-const LESSON_NAME = "introducao";
-export default function Introducao() {
+const LESSON_NAME = "exemplo";
+export default function Exemplo() {
   const [progressoLicao, editarProgresso] = useAtom(editarProgressoLicaoAtom);
   const [paginaAtual, setPaginaAtual] = useState<DefaultPage>("PRE");
 

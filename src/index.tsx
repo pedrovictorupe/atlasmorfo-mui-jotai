@@ -5,6 +5,9 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import { Provider } from "jotai";
 import Scaffold from "./components/Scaffold";
+import contents from "./content/pretestes.json";
+import keys from "lodash/keys";
+import SumarioDrawer from "./components/SumarioDrawer";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement!);
@@ -14,9 +17,10 @@ root.render(
     <Provider>
       <CssBaseline />
       <Scaffold
-        appBarTitle="Atlas Morfo"
-        drawerItems={[{ lesson: "Introdução", pages: ["Pré-teste"] }]}
-        drawerTitle={"Sumário"}
+        drawer={
+          <SumarioDrawer drawerTitle={"SUMÁRIO"} drawerItems={keys(contents)} />
+        }
+        appBarTitle={"ATLAS MORFO"}
       >
         <RouterProvider router={router} />
       </Scaffold>

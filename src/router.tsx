@@ -1,10 +1,7 @@
 import React from "react";
 import { ReactElement } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import MultipleChoiceQuiz from "./components/MultipleChoiceQuiz";
-import PreTeste from "./templates/PreTeste";
-import preTesteContents from "./content/pretestes.json";
-import Scaffold from "./components/Scaffold";
+import Exemplo from "./lessons/Exemplo";
 import Introducao from "./lessons/Introducao";
 
 // Checagem automática da formatação das rotas pelo TS
@@ -17,6 +14,10 @@ const routes: Route[] = [
   {
     path: "/introducao",
     element: <Introducao />,
+  },
+  {
+    path: "/exemplo",
+    element: <Exemplo />,
   },
 ];
 

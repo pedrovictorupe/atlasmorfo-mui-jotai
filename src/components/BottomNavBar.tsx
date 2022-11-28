@@ -1,22 +1,28 @@
 import { Lightbulb, SmartDisplay, TipsAndUpdates } from "@mui/icons-material";
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import React, { useState } from "react";
-import DefaultPage from "../@types/DefaultPage";
+import ProgressoEnum from "../@types/ProgressoEnum";
+import { drawerWidth } from "../constants";
 
 type BottomNavBarProps = {
-  paginaAtual: number;
+  currentTab: number;
   setPaginaAtual: (n: number) => void;
 };
 
 export const DEFAULT_NAVBAR_HEIGHT = 56;
 
 export default function BottomNavBar({
-  paginaAtual,
+  currentTab: paginaAtual,
   setPaginaAtual,
 }: BottomNavBarProps) {
   return (
     <BottomNavigation
-      sx={{ width: "100%" }}
+      sx={{
+        position: "fixed",
+        width: { xs: "100vw", sm: "auto" },
+        bottom: 0,
+        left: { sm: `50%` },
+      }}
       showLabels
       value={paginaAtual}
       onChange={(event, paginaSeguinte) => {

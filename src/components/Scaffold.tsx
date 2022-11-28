@@ -4,29 +4,25 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Container } from "@mui/system";
 import React from "react";
-import content from "../content/pretestes.json";
-import { Grid } from "@mui/material";
-
-const drawerWidth = 240;
+import { BottomNavigation, Grid } from "@mui/material";
+import { drawerWidth } from "../constants";
+import { useAtom } from "jotai";
+import currentLessonAtom from "../atoms/currentLesson";
 
 // Botar em @types
-type DrawerItem = {
-  lesson: string;
-  pages: string[];
-};
+// type DrawerItem = {
+//   lesson: string;
+//   pages: string[];
+// };
 type ScaffoldProps = {
   appBarTitle: string;
-  drawerItems: DrawerItem[];
-  drawerTitle: string;
+  drawer: JSX.Element;
+  // drawerItems: string[];
+  // drawerTitle: string;
   // Necessário?
   windows?: () => Window;
   children: JSX.Element;
@@ -35,48 +31,16 @@ type ScaffoldProps = {
 // Pra fazer: implementar usando MUI Treasury
 export default function Scaffold({
   appBarTitle,
-  drawerTitle,
-  drawerItems,
   windows,
+  drawer,
   children,
 }: ScaffoldProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [currentLesson] = useAtom(currentLessonAtom);
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-
-  const drawer = (
-    <>
-      {/* <Toolbar /> */}
-      <Box
-        sx={{
-          // backgroundColor: "primary.dark",
-          p: 3,
-          pb: 0,
-        }}
-      >
-        <Typography variant="h3" color="primary.main">
-          {drawerTitle}
-        </Typography>
-      </Box>
-      <List>
-        {drawerItems.map((item) => (
-          <ListItem key={`${item.lesson}-${item.pages}`} disablePadding>
-            <ListItemButton>
-              <ListItemText
-                sx={{ ml: 1 }}
-                disableTypography
-                primary={
-                  <Typography variant="overline">{item.lesson}</Typography>
-                }
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </>
-  );
 
   const container =
     windows !== undefined ? () => windows().document.body : undefined;
@@ -86,6 +50,8 @@ export default function Scaffold({
       <CssBaseline />
       <AppBar
         variant="outlined"
+        // MUI reclama caso variant-outline seja usada com uma elevation diferente de 0
+        elevation={0}
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -97,6 +63,7 @@ export default function Scaffold({
         // color="transparent"
       >
         <Toolbar>
+          {/* space-between faz com que o botão da aba do sumário e a logo "Atlas Morfo" fiquem um em cada ponta do AppBar */}
           <Grid container justifyContent="space-between">
             <IconButton
               color="primary"
@@ -107,14 +74,18 @@ export default function Scaffold({
             >
               <MenuIcon />
             </IconButton>
+            {/* Este div é necessário, pois, em telas maiores o IconButton acima não é renderizado e isso deixa o Grid com apenas 1 componente-filho. Como ele precisa de dois (para poder colocar um em cada ponta), este div entra no lugar do botão da aba do sumário quando ele não está presente (ou seja, serve como um "Separator")*/}
+            <div />
+            {/* <Container sx={{ backgroundColor: "#1976d2", border }}>{appBarTitle}</Container> */}
             <Typography
-              variant="h6"
-              noWrap
-              component="div"
+              variant="h4"
+              // noWrap
+              // component="div"
               color="primary"
-              sx={{ display: "flex", alignItems: "center" }}
+              // Sem isto o texto fica muito próximo da borda de cima da AppBar
+              sx={{ display: "flex", alignItems: "center", fontWeight: "bold" }}
             >
-              {appBarTitle.toUpperCase()}
+              {appBarTitle}
             </Typography>
           </Grid>
         </Toolbar>
@@ -161,12 +132,13 @@ export default function Scaffold({
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
-          pl: 0,
+          p: 0,
+          pt: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar />
+        {/* Toolbar vazia só para dar folga para que a Toolbar verdadeira não cubra o conteúdo */}
+        <div style={{ height: "56px" }} />
         {/*
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -176,6 +148,7 @@ export default function Scaffold({
         </Typography>
         */}
         {children}
+        <BottomNavigation />
       </Box>
     </Box>
   );
