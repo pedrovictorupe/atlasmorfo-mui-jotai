@@ -4,7 +4,7 @@ import { useState } from "react";
 // import { DefaultPages } from "../@types/DefaultPages";
 import { editarProgressoLicaoAtom } from "../atoms/progresso";
 import PreTeste from "../components/PreTeste";
-import preTesteContents from "../content/pretestes.json";
+import preTesteContents from "../content.json";
 import { BottomNavigation, Box as Grid, Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import BottomNavBar, {

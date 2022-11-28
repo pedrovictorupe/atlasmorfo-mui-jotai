@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import slugify from "slugify";
-import content from "../content/pretestes.json";
+import content from "../content.json";
 import forOwn from "lodash/forOwn";
 import ProgressoEnum, { ProgressoEnumDefault } from "../@types/ProgressoEnum";
 import { assignToAllProperties } from "../utils";

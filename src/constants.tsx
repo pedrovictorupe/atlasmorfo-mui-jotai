@@ -1,6 +1,6 @@
 import DefaultPage from "./@types/DefaultPage";
 import ProgressoEnum from "./@types/ProgressoEnum";
-import content from "./content/pretestes.json";
+import content from "./content.json";
 import keys from "lodash/keys";
 
 export const StatesPossiveis: ProgressoEnum[] = [

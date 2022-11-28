@@ -11,7 +11,7 @@ import React from "react";
 import { BottomNavigation, Grid } from "@mui/material";
 import { drawerWidth } from "../constants";
 import { useAtom } from "jotai";
-import currentLessonAtom from "../atoms/currentLesson";
+import currentLessonAtom from "../atoms/currentLessonAtom";
 
 // Botar em @types
 // type DrawerItem = {

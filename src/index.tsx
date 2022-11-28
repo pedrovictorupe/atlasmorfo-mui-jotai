@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import { Provider } from "jotai";
 import Scaffold from "./components/Scaffold";
-import contents from "./content/pretestes.json";
+import contents from "./content.json";
 import keys from "lodash/keys";
 import SumarioDrawer from "./components/SumarioDrawer";
 
