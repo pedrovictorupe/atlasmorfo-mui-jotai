@@ -11,7 +11,7 @@
     "@types/react-dom": "latest",
     "jotai": "^1.10.0",
     "react": "latest",
-    "react-dom": "latest",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "latest",
     "slugify": "^1.6.5",

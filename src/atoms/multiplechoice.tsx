@@ -1,8 +1,6 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import slugify from "slugify";
-import produce from "immer";
-import { parseMap, stringifyMap } from "../utils";
 
 /* Atom para salvar as respostas que o usuário submeter nos pré-testes.*/
 export const respostasAtom = atomWithStorage("respostasPorLicao", {});
