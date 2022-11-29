@@ -64,11 +64,11 @@ export default function Introducao() {
     (update: EditarRespostasAction) => void
   ] = useAtom(editarRespostaPreTesteAtom);
 
-  let _element: JSX.Element | null = null;
+  let render: JSX.Element | null = null;
 
   switch (paginaAtual) {
     case "INTRO":
-      _element = (
+      render = (
         <>
           <Container sx={{ overflowY: "auto" }}>
             <PageTitle>
@@ -134,7 +134,7 @@ export default function Introducao() {
       );
       break;
     case "PRE":
-      _element = (
+      render = (
         <PreTeste
           quiz={
             <MultipleChoiceQuiz
@@ -152,7 +152,7 @@ export default function Introducao() {
       );
       break;
     case "VIDEO":
-      _element = (
+      render = (
         <div style={{ padding: "5vw" }}>
           <PageTitle>As crônicas de Joãozinho</PageTitle>
           <Paragraph>
@@ -262,6 +262,21 @@ export default function Introducao() {
           {/* </Grid> */}
         </div>
       );
+      break;
+    case "POS":
+      render = (
+        <div style={{ textAlign: "center" }}>
+          <iframe
+            src="https://mywordle.strivemath.com/?word=bwsutrw&lang=any"
+            style={{
+              width: "70%",
+              height: "700px",
+              borderWidth: 0,
+            }}
+          />
+        </div>
+      );
+      break;
   }
 
   return (
@@ -273,9 +288,9 @@ export default function Introducao() {
           p: 0,
         }}
       >
-        {_element}
+        {render}
       </Container>
-      <BottomNavigation />
+      {/* <BottomNavigation /> */}
       <BottomNavBar
         // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
         currentTab={DEFAULT_PAGES.indexOf(paginaAtual)}

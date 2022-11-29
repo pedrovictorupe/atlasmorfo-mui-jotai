@@ -15,10 +15,7 @@ root.render(
   <React.StrictMode>
     <Provider>
       <CssBaseline />
-      <Scaffold>
-        {/* {router} */}
-        {/* <RouterProvider router={router} /> */}
-      </Scaffold>
+      <Scaffold></Scaffold>
     </Provider>
   </React.StrictMode>
 );

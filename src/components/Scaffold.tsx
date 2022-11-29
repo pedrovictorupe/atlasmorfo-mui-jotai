@@ -89,7 +89,6 @@ export default (props: any) => {
         sx={{
           flexGrow: 1,
           p: 0,
-          pt: 3,
           width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}
       >
