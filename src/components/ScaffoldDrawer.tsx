@@ -54,7 +54,13 @@ export default ({
       ))}
       <Divider />
       <ListItem>
-        <Button variant="outlined" onClick={() => localStorage.clear()}>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            localStorage.clear();
+            window.location.reload();
+          }}
+        >
           Reiniciar progresso
         </Button>
       </ListItem>

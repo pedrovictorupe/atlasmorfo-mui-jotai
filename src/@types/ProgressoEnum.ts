@@ -3,7 +3,9 @@ type ProgressoEnum =
   | "INTRO_LIDA"
   | "PRETESTE_RESPONDIDO"
   | "GABARITO_PRETESTE_VISUALIZADO"
-  | "POS_TESTE_RESPONDIDO";
+  | "MUDANDO_RESPOSTA"
+  | "POS_TESTE_RESPONDIDO"
+  | undefined;
 
 export default ProgressoEnum;
 

@@ -37,7 +37,7 @@ import {
 import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
 import NextTabButton from "../components/NextTabButton";
 
-const LESSON_NAME = "introducao";
+const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
 export default function Introducao() {
   const [progresso, editarProgresso]: [
     ProgressoEnum,
@@ -82,7 +82,7 @@ export default function Introducao() {
               que segue..."
             </Paragraph>
             <Paragraph>
-              No entanto, se você parar por um segundo e se aprofundar, você
+              No entanto, se você parar por um segundo para se aprofundar, você
               logo descobrirá toda a complexidade que esse fenômeno tem para
               oferecer.
             </Paragraph>
@@ -111,17 +111,17 @@ export default function Introducao() {
             </Paragraph>
             <Paragraph>
               Por fim, no final de cada lição, haverá outro teste, porém quase
-              sempre com uma proposta mais lúdica. Quem sabe o que vem por aí?
-              Será uma partida de TERMO com algum jargão mencionado no vídeo?
-              Será um jogo da memória de imagens e definições? Você terá a
-              chance de descobrir com o progredir das lições
+              sempre com uma proposta mais lúdica. As possibilidades vão desde
+              uma partida de TERMO com algum jargão mencionado no vídeo até um
+              jogo da memória de imagens e definições sobre o tópico. Isso você
+              poderá descobrir com o progredir das lições
             </Paragraph>
             <Paragraph>No mais, é isto! Bons estudos e divirta-se!</Paragraph>
           </Container>
           <NextTabButton
             onClick={() => {
               editarProgresso({
-                lessonTitle: "introducao",
+                lessonTitle: "joao-e-as-etapas-da-hemostasia",
                 state: "INTRO_LIDA",
               });
               setPaginaAtual("PRE");
@@ -138,7 +138,7 @@ export default function Introducao() {
               {...preTesteContents[LESSON_NAME]}
               onSubmit={() => {
                 editarProgresso({
-                  lessonTitle: "introducao",
+                  lessonTitle: "joao-e-as-etapas-da-hemostasia",
                   state: "PRETESTE_RESPONDIDO",
                 });
                 setPaginaAtual("VIDEO");
@@ -189,14 +189,14 @@ export default function Introducao() {
               <div style={{ textAlign: "center" }}>
                 Na seção anterior, você assinalou a seguinte alternativa:
                 <br />
-                <SelectedAnswerChip lessonTitle="introducao" />
+                <SelectedAnswerChip lessonTitle="joao-e-as-etapas-da-hemostasia" />
                 <br />
                 Com os conhecimentos que você acabou de obter, deseja alterar
                 sua resposta?
               </div>
               <Alert variant="outlined" color="info" sx={{ margin: 2 }}>
                 <strong>Enunciado:</strong>{" "}
-                {preTesteContents.introducao.pergunta}
+                {preTesteContents["joao-e-as-etapas-da-hemostasia"].pergunta}
               </Alert>
             </DialogContent>
             <DialogActions>
@@ -207,8 +207,9 @@ export default function Introducao() {
                   setAnswerReviewOpen(false);
 
                   if (
-                    getAnswerByLesson("introducao") ===
-                    preTesteContents.introducao.respostaCorreta
+                    getAnswerByLesson("joao-e-as-etapas-da-hemostasia") ===
+                    preTesteContents["joao-e-as-etapas-da-hemostasia"]
+                      .respostaCorreta
                   ) {
                     setCongratulationsOpen(true);
                   } else {
@@ -218,12 +219,27 @@ export default function Introducao() {
               >
                 Manter
               </Button>
-              <Button color="error">Alterar</Button>
+              <Button
+                color="error"
+                onClick={() => {
+                  editarProgresso({
+                    lessonTitle: "joao-e-as-etapas-da-hemostasia",
+                    state: "MUDANDO_RESPOSTA",
+                  });
+
+                  setPaginaAtual("PRE");
+                }}
+              >
+                Alterar
+              </Button>
             </DialogActions>
           </Dialog>
           <AnswerFeedback
             open={isCongratulationOpen}
-            onClose={() => setCongratulationsOpen(false)}
+            onClose={() => {
+              setCongratulationsOpen(false);
+              setPaginaAtual("POS");
+            }}
             title={"Parabéns!"}
             content={
               <>
@@ -233,7 +249,7 @@ export default function Introducao() {
               </>
             }
             backgroundDarkColor={green[700]}
-            lessonTitle="introducao"
+            lessonTitle="joao-e-as-etapas-da-hemostasia"
           />
           <AnswerFeedback
             open={isAnswerIncorrectOpen}
@@ -243,11 +259,11 @@ export default function Introducao() {
               <>
                 A resposta correta era
                 <br />
-                <CorrectAnswerChip lessonTitle="introducao" />
+                <CorrectAnswerChip lessonTitle="joao-e-as-etapas-da-hemostasia" />
               </>
             }
             backgroundDarkColor={yellow[800]}
-            lessonTitle="introducao"
+            lessonTitle="joao-e-as-etapas-da-hemostasia"
           />
           {/* </Grid> */}
         </div>

@@ -10,7 +10,7 @@ type Route = {
 
 export const routes: Route[] = [
   {
-    path: "/introducao",
+    path: "/joao-e-as-etapas-da-hemostasia",
     element: <Introducao />,
   },
 ];

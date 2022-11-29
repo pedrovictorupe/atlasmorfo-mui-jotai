@@ -7,6 +7,7 @@ export const StatesPossiveis: ProgressoEnum[] = [
   "INTRO_LIDA",
   "PRETESTE_RESPONDIDO",
   "GABARITO_PRETESTE_VISUALIZADO",
+  "MUDANDO_RESPOSTA",
   "POS_TESTE_RESPONDIDO",
 ];
 
