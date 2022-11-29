@@ -2,7 +2,21 @@ import React from "react";
 import { useState } from "react";
 import PreTeste from "../components/PreTeste";
 import preTesteContents from "../contents.json";
-import { BottomNavigation, Button, Container, Grid, Modal } from "@mui/material";
+import {
+  Alert,
+  BottomNavigation,
+  Button,
+  Chip,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  Modal,
+  Typography,
+} from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import BottomNavBar from "../components/BottomNavBar";
 import { DEFAULT_PAGES } from "../constants";
@@ -24,6 +38,16 @@ import {
 } from "../atoms/progressoLicaoAtom";
 import { useAtom } from "jotai";
 import PageTitle from "../components/PageTitle";
+import {
+  editarRespostaPreTesteAtom,
+  EditarRespostasAction,
+} from "../atoms/preTesteRespostasAtom";
+import { green, yellow } from "@mui/material/colors";
+import AnswerFeedback from "../components/AnswerFeedback";
+import {
+  CorrectAnswerChip,
+  SelectedAnswerChip,
+} from "../components/AnswerChips";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
@@ -32,7 +56,13 @@ export default function Introducao() {
     (update: EditarProgressoLicaoAction) => void
   ] = useAtom(editarProgressoLicaoAtom);
   const [paginaAtual, setPaginaAtual] = useState<DefaultPage>(DEFAULT_PAGES[0]);
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isAnswerReviewOpen, setAnswerReviewOpen] = useState(false);
+  const [isCongratulationOpen, setCongratulationsOpen] = useState(false);
+  const [isAnswerIncorrectOpen, setAnswerIncorrectOpen] = useState(false);
+  const [getAnswerByLesson, editAnswerByLesson]: [
+    (lessonTitle: string) => string,
+    (update: EditarRespostasAction) => void
+  ] = useAtom(editarRespostaPreTesteAtom);
 
   let _element: JSX.Element | null = null;
 
@@ -126,9 +156,6 @@ export default function Introducao() {
         <div style={{ padding: "5vw" }}>
           <PageTitle>As crônicas de Joãozinho</PageTitle>
           <Paragraph>
-            <i>"O lixo de um homem é o tesouro do outro"</i>
-          </Paragraph>
-          <Paragraph>
             Chegou a hora de você conhecer nosso protagonista!
           </Paragraph>
           <Paragraph>
@@ -157,18 +184,85 @@ export default function Introducao() {
               variant="contained"
               startIcon={<ArrowForward />}
               sx={{ borderRadius: 10 }}
-              onClick={() => {setModalOpen(true)}}
+              onClick={() => {
+                setAnswerReviewOpen(true);
+              }}
             >
               Prosseguir{" "}
             </Button>
-            {/* <Modal open={isModalOpen} onClose={() => setModalOpen(false)}></Modal> */}
+            <Dialog
+              open={isAnswerReviewOpen}
+              onClose={() => setAnswerReviewOpen(false)}
+            >
+              <DialogContent>
+                <div style={{ textAlign: "center" }}>
+                  Na seção anterior, você assinalou a seguinte alternativa:
+                  <br />
+                  <SelectedAnswerChip lessonTitle="introducao" />
+                  <br />
+                  Com os conhecimentos que você acabou de obter, deseja alterar
+                  sua resposta?
+                </div>
+                <Alert variant="outlined" color="info" sx={{ margin: 2 }}>
+                  <strong>Enunciado:</strong>{" "}
+                  {preTesteContents.introducao.pergunta}
+                </Alert>
+              </DialogContent>
+              <DialogActions>
+                <Button
+                  variant="outlined"
+                  color="success"
+                  onClick={() => {
+                    setAnswerReviewOpen(false);
+
+                    if (
+                      getAnswerByLesson("introducao") ===
+                      preTesteContents.introducao.respostaCorreta
+                    ) {
+                      setCongratulationsOpen(true);
+                    } else {
+                      setAnswerIncorrectOpen(true);
+                    }
+                  }}
+                >
+                  Manter
+                </Button>
+                <Button color="error">Alterar</Button>
+              </DialogActions>
+            </Dialog>
+            <AnswerFeedback
+              open={isCongratulationOpen}
+              onClose={() => setCongratulationsOpen(false)}
+              title={"Parabéns!"}
+              content={
+                <>
+                  Resposta correta.
+                  <br />
+                  Joãozinho deve estar orgulhoso {":)"}
+                </>
+              }
+              backgroundDarkColor={green[700]}
+              lessonTitle="introducao"
+            />
+            <AnswerFeedback
+              open={isAnswerIncorrectOpen}
+              onClose={() => setAnswerIncorrectOpen(false)}
+              title={"Quase isso"}
+              content={
+                <>
+                  A resposta correta era
+                  <br />
+                  <CorrectAnswerChip lessonTitle="introducao" />
+                </>
+              }
+              backgroundDarkColor={yellow[800]}
+              lessonTitle="introducao"
+            />
           </div>
           {/* </Grid> */}
         </div>
       );
   }
-
-  console.log(progresso);
 
   return (
     <>
@@ -190,14 +284,8 @@ export default function Introducao() {
           { label: "Intro", icon: <PsychologyAlt />, isLocked: false },
           {
             label: "Pré-teste",
-            icon:
-              progresso == "PRETESTE_NAO_RESPONDIDO" ||
-              progresso == undefined ? (
-                <Lightbulb />
-              ) : (
-                <Lock />
-              ),
-            isLocked: progresso == "PRETESTE_RESPONDIDO" ? true : false,
+            icon: progresso == "PRETESTE_RESPONDIDO" ? <Lock /> : <Lightbulb />,
+            isLocked: progresso == "PRETESTE_RESPONDIDO",
           },
           { label: "Vídeo", icon: <SmartDisplay />, isLocked: false },
           { label: "Pós-teste", icon: <TipsAndUpdates />, isLocked: false },

@@ -9,7 +9,7 @@ export const preTesteRespostasAtom = atomWithStorage(
 );
 
 /* Tipagem para os argumentos da função Write de editarRespostasAtom */
-type EditarRespostasAction = {
+export type EditarRespostasAction = {
   lessonTitle: string;
   resposta: string;
 };
@@ -19,8 +19,9 @@ A ideia é que a resposta só seja checada depois do usuário assistir à liçã
 Como a intenção é que o progresso do usuário também fique salvo em forma de cookie (já que o site é estático e não há backend), então o localStorage serve aqui simultaneamente como global state e database */
 export const editarRespostaPreTesteAtom = atom(
   // Pra fazer: testar se dá para trocar isto por null
-  (get) => get(preTesteRespostasAtom),
-  (get, set, { lessonTitle, resposta }: EditarRespostasAction) => {
+  (get: any) => (lessonTitle: string) =>
+    get(preTesteRespostasAtom)[slugify(lessonTitle)],
+  (get: any, set: any, { lessonTitle, resposta }: EditarRespostasAction) => {
     let respostas = {
       ...get(preTesteRespostasAtom),
       ...{ [slugify(lessonTitle, { lower: true })]: resposta },

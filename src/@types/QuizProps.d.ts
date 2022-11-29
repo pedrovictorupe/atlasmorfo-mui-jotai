@@ -2,7 +2,8 @@ type QuizProps = Readonly<{
   title: string;
   pergunta: string;
   alternativas: string[];
-  indiceRespostaCorreta: number;
+  // indiceRespostaCorreta: number;
+  respostaCorreta: string
   onSubmit: () => void;
 }>;
 
