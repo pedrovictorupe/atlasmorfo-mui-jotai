@@ -6,7 +6,7 @@ import { Alert } from "@mui/material";
 // Para fazer: trocar indicePreTeste por uma busca usando o "id" de cada item em pretestes.json
 export default (props: { quiz: JSX.Element }) => {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ paddingTop: 4 }}>
       <Typography variant="h4" component="h1" color={"#1565c0"} gutterBottom>
         Pré-teste
       </Typography>

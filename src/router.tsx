@@ -22,7 +22,7 @@ export const routes: Route[] = [
 // //     <Routes>
 // //       <Route index element={<Introducao />} />
 // //       <Route path="introducao" element={<Introducao />} />
-// //       <Route path="/exemplo" element={<Exemplo />} />
+// //       <Route path="/exemplo" element=z{<Exemplo />} />
 // //     </Routes>
 // //   </BrowserRouter>
 // // );
