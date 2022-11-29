@@ -28,24 +28,23 @@ export default (props: {
       {
         label: "Pré-teste",
         icon: getPreTesteIcon(props.progresso),
-        isLocked: props.progresso == "PRETESTE_RESPONDIDO",
+        isLocked:
+          props.progresso == "PRETESTE_RESPONDIDO" ||
+          props.progresso == undefined,
       },
       {
         label: "Vídeo",
         icon:
           props.progresso == "INTRO_LIDA" ||
-          props.progresso == "PRETESTE_RESPONDIDO" ? (
+          props.progresso == "PRETESTE_RESPONDIDO" ||
+          props.progresso == "MUDANDO_RESPOSTA" ||
+          props.progresso == undefined ? (
             <SmartDisplay />
           ) : (
             <Check />
           ),
-        // props.progresso == "MUDANDO_RESPOSTA" ||
-        // props.progresso == "POS_TESTE_RESPONDIDO" || props.progresso == "GABARITO_PRETESTE_VISUALIZADO" ? (
-        //   <Check />
-        // ) : (
-        //   <SmartDisplay />
-        // ),
-        isLocked: props.progresso == "INTRO_LIDA",
+        isLocked:
+          props.progresso == "INTRO_LIDA" || props.progresso == undefined,
       },
       {
         label: "Pós-teste",
@@ -57,7 +56,9 @@ export default (props: {
           ),
         isLocked:
           props.progresso == "INTRO_LIDA" ||
-          props.progresso == "PRETESTE_RESPONDIDO",
+          props.progresso == "PRETESTE_RESPONDIDO" ||
+          props.progresso == "MUDANDO_RESPOSTA" ||
+          props.progresso == undefined,
       },
     ]}
   />
