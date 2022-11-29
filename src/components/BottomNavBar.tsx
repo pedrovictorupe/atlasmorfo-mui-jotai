@@ -2,7 +2,7 @@ import { Lightbulb, SmartDisplay, TipsAndUpdates } from "@mui/icons-material";
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import React, { useState } from "react";
 import ProgressoEnum from "../@types/ProgressoEnum";
-import { drawerWidth } from "../constants";
+import { DRAWER_WIDTH } from "../constants";
 
 type BottomNavBarProps = {
   currentTab: number;

@@ -4,11 +4,11 @@ import { useState } from "react";
 // import { DefaultPages } from "../@types/DefaultPages";
 import { editarProgressoLicaoAtom } from "../atoms/progresso";
 import PreTeste from "../components/PreTeste";
-import preTesteContents from "../content.json";
+import preTesteContents from "../contents.json";
 import { BottomNavigation, Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import BottomNavBar from "../components/BottomNavBar";
-import { DefaultPages } from "../constants";
+import { DEFAULT_PAGES } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
 
 const LESSON_NAME = "exemplo";
@@ -52,8 +52,8 @@ export default function Exemplo() {
       <BottomNavigation />
       <BottomNavBar
         // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
-        currentTab={DefaultPages.indexOf(paginaAtual)}
-        setPaginaAtual={(n: number) => setPaginaAtual(DefaultPages[n])}
+        currentTab={DEFAULT_PAGES.indexOf(paginaAtual)}
+        setPaginaAtual={(n: number) => setPaginaAtual(DEFAULT_PAGES[n])}
       />
     </>
   );

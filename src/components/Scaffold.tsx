@@ -9,41 +9,22 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { BottomNavigation, Grid } from "@mui/material";
-import { drawerWidth } from "../constants";
+import { DRAWER_WIDTH, TYPOGRAPHY_TEXT_CENTRALIZE } from "../constants";
 import { useAtom } from "jotai";
 import currentLessonAtom from "../atoms/currentLessonAtom";
+import keys from "lodash/keys";
+import contents from "../contents.json";
+import { routes } from "../router";
+import { forOwn, get, map } from "lodash";
+import ScaffoldDrawer from "./ScaffoldDrawer";
 
-// Botar em @types
-// type DrawerItem = {
-//   lesson: string;
-//   pages: string[];
-// };
-type ScaffoldProps = {
-  appBarTitle: string;
-  drawer: JSX.Element;
-  // drawerItems: string[];
-  // drawerTitle: string;
-  // Necessário?
-  windows?: () => Window;
-  children: JSX.Element;
-};
-
-// Pra fazer: implementar usando MUI Treasury
-export default function Scaffold({
-  appBarTitle,
-  windows,
-  drawer,
-  children,
-}: ScaffoldProps) {
+export default (props: any) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [currentLesson] = useAtom(currentLessonAtom);
+  const [currentLesson, setCurrentLesson] = useAtom(currentLessonAtom);
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-
-  const container =
-    windows !== undefined ? () => windows().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -53,17 +34,10 @@ export default function Scaffold({
         // MUI reclama caso variant-outline seja usada com uma elevation diferente de 0
         elevation={0}
         position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          borderLeftWidth: 0,
-          backgroundColor: "#ffffffcc",
-          backdropFilter: "blur(8px)",
-        }}
+        sx={APP_BAR_STYLES}
         // color="transparent"
       >
         <Toolbar>
-          {/* space-between faz com que o botão da aba do sumário e a logo "Atlas Morfo" fiquem um em cada ponta do AppBar */}
           <Grid container justifyContent="space-between">
             <IconButton
               color="primary"
@@ -74,58 +48,36 @@ export default function Scaffold({
             >
               <MenuIcon />
             </IconButton>
-            {/* Este div é necessário, pois, em telas maiores o IconButton acima não é renderizado e isso deixa o Grid com apenas 1 componente-filho. Como ele precisa de dois (para poder colocar um em cada ponta), este div entra no lugar do botão da aba do sumário quando ele não está presente (ou seja, serve como um "Separator")*/}
             <div />
-            {/* <Container sx={{ backgroundColor: "#1976d2", border }}>{appBarTitle}</Container> */}
             <Typography
               variant="h4"
-              // noWrap
-              // component="div"
               color="primary"
-              // Sem isto o texto fica muito próximo da borda de cima da AppBar
-              sx={{ display: "flex", alignItems: "center", fontWeight: "bold" }}
+              sx={TYPOGRAPHY_TEXT_CENTRALIZE}
             >
-              {appBarTitle}
+              ATLAS MORFO
             </Typography>
           </Grid>
         </Toolbar>
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: DRAWER_WIDTH }, flexShrink: { sm: 0 } }}
         aria-label="lições"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-          container={container}
+          container={document.body}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
+          sx={DRAWER_STYLES_MOBILE}
         >
-          {drawer}
+          {sumarioDrawer(setCurrentLesson)}
         </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          {drawer}
+        <Drawer variant="permanent" sx={DRAWER_STYLES_DESKTOP} open>
+          {sumarioDrawer(setCurrentLesson)}
         </Drawer>
       </Box>
       <Box
@@ -134,22 +86,70 @@ export default function Scaffold({
           flexGrow: 1,
           p: 0,
           pt: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}
       >
         {/* Toolbar vazia só para dar folga para que a Toolbar verdadeira não cubra o conteúdo */}
         <div style={{ height: "56px" }} />
-        {/*
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-        </Typography>
-        */}
-        {children}
+        {getReactComponent(currentLesson)}
         <BottomNavigation />
       </Box>
     </Box>
   );
+};
+
+const sumarioDrawer = (setCurrentLesson: any) => (
+  <ScaffoldDrawer
+    drawerTitle={"SUMÁRIO"}
+    drawerItems={(() => {
+      const texts = map(contents, (lesson: { title: string }) => lesson.title);
+      let slugifiedTitles = keys(contents);
+
+      let drawerItems: { text: string; slugified: string }[] = new Array(
+        texts.length
+      ).fill({});
+
+      for (let i = 0; i < texts.length; i++) {
+        drawerItems[i] = {
+          text: texts[i],
+          slugified: slugifiedTitles[i],
+        };
+      }
+
+      return drawerItems;
+    })()}
+    onItemClicked={(itemSlugified: string) => setCurrentLesson(itemSlugified)}
+  />
+);
+
+function getReactComponent(currentLesson: string): React.ReactNode {
+  return (() => {
+    for (let i = 0; i < routes.length; i++) {
+      if (routes[i].path.slice(1) == currentLesson) return routes[i].element;
+    }
+  })();
 }
+
+const APP_BAR_STYLES = {
+  width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
+  ml: { sm: `${DRAWER_WIDTH}px` },
+  borderLeftWidth: 0,
+  backgroundColor: "#ffffffcc",
+  backdropFilter: "blur(8px)",
+};
+
+const DRAWER_STYLES_MOBILE = {
+  display: { xs: "block", sm: "none" },
+  "& .MuiDrawer-paper": {
+    boxSizing: "border-box",
+    width: DRAWER_WIDTH,
+  },
+};
+
+const DRAWER_STYLES_DESKTOP = {
+  display: { xs: "none", sm: "block" },
+  "& .MuiDrawer-paper": {
+    boxSizing: "border-box",
+    width: DRAWER_WIDTH,
+  },
+};

@@ -1,6 +1,5 @@
 import React from "react";
 import { ReactElement } from "react";
-import { createBrowserRouter } from "react-router-dom";
 import Exemplo from "./lessons/Exemplo";
 import Introducao from "./lessons/Introducao";
 
@@ -10,7 +9,7 @@ type Route = {
   element: ReactElement;
 };
 
-const routes: Route[] = [
+export const routes: Route[] = [
   {
     path: "/introducao",
     element: <Introducao />,
@@ -21,4 +20,14 @@ const routes: Route[] = [
   },
 ];
 
-export default createBrowserRouter(routes);
+// export default createBrowserRouter(routes);
+
+// // export default (
+// //   <BrowserRouter>
+// //     <Routes>
+// //       <Route index element={<Introducao />} />
+// //       <Route path="introducao" element={<Introducao />} />
+// //       <Route path="/exemplo" element={<Exemplo />} />
+// //     </Routes>
+// //   </BrowserRouter>
+// // );

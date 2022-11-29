@@ -13,12 +13,7 @@
   "exemplo": {
     "title": "Exemplo",
     "pergunta": "Qual é a melhor faculdade de medicina do mundo?",
-    "alternativas": [
-      "A vasodilatação",
-      "A lesão vascular",
-      "A aglomeração das plaquetas",
-      "A liberação de serotonina"
-    ],
-    "indiceRespostaCorreta": 1
+    "alternativas": ["Oxford", "Seattle Grace", "Mayo Clinic", "FCM"],
+    "indiceRespostaCorreta": 4
   }
 }
