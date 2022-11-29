@@ -10,8 +10,8 @@ export const preTesteRespostasAtom = atomWithStorage(
 
 /* Tipagem para os argumentos da função Write de editarRespostasAtom */
 type EditarRespostasAction = {
-  slugifiedLessonTitle: string;
-  resposta: number;
+  lessonTitle: string;
+  resposta: string;
 };
 
 /* Atom para salvar a resposta do usuário no localStorage.
@@ -20,11 +20,7 @@ Como a intenção é que o progresso do usuário também fique salvo em forma de
 export const editarRespostaPreTesteAtom = atom(
   // Pra fazer: testar se dá para trocar isto por null
   (get) => get(preTesteRespostasAtom),
-  (
-    get,
-    set,
-    { slugifiedLessonTitle: lessonTitle, resposta }: EditarRespostasAction
-  ) => {
+  (get, set, { lessonTitle, resposta }: EditarRespostasAction) => {
     let respostas = {
       ...get(preTesteRespostasAtom),
       ...{ [slugify(lessonTitle, { lower: true })]: resposta },

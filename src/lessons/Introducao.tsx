@@ -2,21 +2,21 @@ import React from "react";
 import { useState } from "react";
 import PreTeste from "../components/PreTeste";
 import preTesteContents from "../contents.json";
-import { BottomNavigation, Container, Grid, Typography } from "@mui/material";
+import { BottomNavigation, Button, Container, Grid, Modal } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import BottomNavBar from "../components/BottomNavBar";
-import { DEFAULT_PAGES, iframeStylesForScale } from "../constants";
+import { DEFAULT_PAGES } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
 import Image from "mui-image";
 import Paragraph from "../components/Paragraph";
-import ProgressoEnum, { ProgressoEnumDefault } from "../@types/ProgressoEnum";
+import ProgressoEnum from "../@types/ProgressoEnum";
 import {
+  ArrowForward,
   Lightbulb,
   Lock,
   PsychologyAlt,
   SmartDisplay,
   TipsAndUpdates,
-  Title,
 } from "@mui/icons-material";
 import {
   EditarProgressoLicaoAction,
@@ -24,7 +24,6 @@ import {
 } from "../atoms/progressoLicaoAtom";
 import { useAtom } from "jotai";
 import PageTitle from "../components/PageTitle";
-import AutoResizableIFrame from "../components/AutoResizableIFrame";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
@@ -33,6 +32,7 @@ export default function Introducao() {
     (update: EditarProgressoLicaoAction) => void
   ] = useAtom(editarProgressoLicaoAtom);
   const [paginaAtual, setPaginaAtual] = useState<DefaultPage>(DEFAULT_PAGES[0]);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   let _element: JSX.Element | null = null;
 
@@ -123,22 +123,48 @@ export default function Introducao() {
       break;
     case "VIDEO":
       _element = (
-        <>
+        <div style={{ padding: "5vw" }}>
           <PageTitle>As crônicas de Joãozinho</PageTitle>
-          <AutoResizableIFrame>
-            {/* Proporção: width="560" height="315" (7:9)*/}
-
+          <Paragraph>
+            <i>"O lixo de um homem é o tesouro do outro"</i>
+          </Paragraph>
+          <Paragraph>
+            Chegou a hora de você conhecer nosso protagonista!
+          </Paragraph>
+          <Paragraph>
+            Joãozinho é um menino travesso que será o cobaia perfeito para a
+            nossa aventura. Ele tem uma certa propensão a não olhar para onde
+            anda, então é bem provável que ele ostente um machucão ou outro que
+            a gente possa acompanhar para o nosso projeto.
+          </Paragraph>
+          <Paragraph>
+            Dê uma espiadinha aqui no vídeo que preparamos para você e aproveite
+            para tentar encontrar a resposta para o quiz anterior.
+          </Paragraph>
+          <Paragraph />
+          {/* Proporção: width="560" height="315" (7:9)*/}
+          <div style={{ textAlign: "center", marginBottom: "3vh" }}>
             <iframe
               src="https://www.youtube.com/embed/IGmYTjpWSa4"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              // @ts-ignore
-              style={iframeStylesForScale}
             ></iframe>
-          </AutoResizableIFrame>
-        </>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <Button
+              variant="contained"
+              startIcon={<ArrowForward />}
+              sx={{ borderRadius: 10 }}
+              onClick={() => {setModalOpen(true)}}
+            >
+              Prosseguir{" "}
+            </Button>
+            {/* <Modal open={isModalOpen} onClose={() => setModalOpen(false)}></Modal> */}
+          </div>
+          {/* </Grid> */}
+        </div>
       );
   }
 

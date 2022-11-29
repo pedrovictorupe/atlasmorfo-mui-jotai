@@ -33,10 +33,10 @@ export default function MultipleChoiceQuiz(props: QuizProps) {
     // Salva a resposta no localStorage para checar depois
     salvarResposta({
       // slugify permite que o título corresponda à key da lição no JSON de conteúdo, o que pode vir a ser útil no futuro.
-      slugifiedLessonTitle: slugify(props.title),
+      lessonTitle: props.title,
       // As respostas são salvas em forma de índice ("1" para a primeira alternativa etc.), por isso é necessário usar Array.indexOf.
       // OBS: Bugs nesta seção podem decorrer caso o conteúdo passado no props.content deste componente sejam escritos à mão ao invés de ser extraído do "content/pretestes.json" (visto que, para obter o índice da alternativa, comparamos com o conteúdo de pretestes.json)
-      resposta: props.alternativas.indexOf(alternativaSelecionada),
+      resposta: alternativaSelecionada,
     });
 
     props.onSubmit();
