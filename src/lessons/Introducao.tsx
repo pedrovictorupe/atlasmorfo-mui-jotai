@@ -118,6 +118,15 @@ export default function Introducao() {
             </Paragraph>
             <Paragraph>No mais, é isto! Bons estudos e divirta-se!</Paragraph>
           </Container>
+          <NextTabButton
+            onClick={() => {
+              editarProgresso({
+                lessonTitle: "introducao",
+                state: "INTRO_LIDA",
+              });
+              setPaginaAtual("PRE");
+            }}
+          />
         </>
       );
       break;
