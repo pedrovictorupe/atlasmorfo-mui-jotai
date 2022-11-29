@@ -256,7 +256,7 @@ export default function Introducao() {
           <iframe
             src="https://mywordle.strivemath.com/?word=bwsutrw&lang=any"
             style={{
-              width: "70%",
+              width: "87%",
               height: "700px",
               borderWidth: 0,
             }}
@@ -282,7 +282,6 @@ export default function Introducao() {
         setCurrentTab={(n: number) => setPaginaAtual(DEFAULT_PAGES[n])}
         progresso={progresso}
       />
-      {/* <BottomNavigation /> */}
     </>
   );
 }
