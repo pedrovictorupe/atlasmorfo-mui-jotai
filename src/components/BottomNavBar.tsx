@@ -40,9 +40,13 @@ export default function BottomNavBar({
       {(() => {
         let tabs: JSX.Element[] = [];
 
-        items.forEach((item) => {
+        items.forEach((item, index) => {
           tabs.push(
-            <BottomNavigationAction label={item.label} icon={item.icon} />
+            <BottomNavigationAction
+              label={item.label}
+              icon={item.icon}
+              key={index}
+            />
           );
         });
 

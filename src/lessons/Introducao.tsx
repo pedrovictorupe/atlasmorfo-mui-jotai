@@ -17,11 +17,18 @@ import {
   SmartDisplay,
   TipsAndUpdates,
 } from "@mui/icons-material";
+import {
+  EditarProgressoLicaoAction,
+  editarProgressoLicaoAtom,
+} from "../atoms/progressoLicaoAtom";
+import { useAtom } from "jotai";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
-  const [progresso, setProgresso] =
-    useState<ProgressoEnum>(ProgressoEnumDefault);
+  const [progresso, editarProgresso]: [
+    ProgressoEnum,
+    (update: EditarProgressoLicaoAction) => void
+  ] = useAtom(editarProgressoLicaoAtom);
   const [paginaAtual, setPaginaAtual] = useState<DefaultPage>(DEFAULT_PAGES[0]);
   // const [isPreTesteLocked] = useAtom(isPreTesteLockedAtom);
   // const [, lockPreTeste] = useAtom(lockPreTesteAtom);
@@ -113,7 +120,10 @@ export default function Introducao() {
             <MultipleChoiceQuiz
               {...preTesteContents[LESSON_NAME]}
               onSubmit={() => {
-                setProgresso("PRETESTE_RESPONDIDO");
+                editarProgresso({
+                  lessonTitle: "introducao",
+                  state: "PRETESTE_RESPONDIDO",
+                });
                 setPaginaAtual("VIDEO");
               }}
             />
@@ -134,6 +144,8 @@ export default function Introducao() {
         </Container>
       );
   }
+
+  console.log(progresso);
 
   return (
     <>
@@ -156,7 +168,12 @@ export default function Introducao() {
           {
             label: "Pré-teste",
             icon:
-              progresso == "PRETESTE_NAO_RESPONDIDO" ? <Lightbulb /> : <Lock />,
+              progresso == "PRETESTE_NAO_RESPONDIDO" ||
+              progresso == undefined ? (
+                <Lightbulb />
+              ) : (
+                <Lock />
+              ),
             isLocked: progresso == "PRETESTE_RESPONDIDO" ? true : false,
           },
           { label: "Vídeo", icon: <SmartDisplay />, isLocked: false },
