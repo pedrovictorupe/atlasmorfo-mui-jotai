@@ -125,13 +125,13 @@ const sumarioDrawer = (setCurrentLesson: any) => (
   />
 );
 
-function getReactComponent(currentLesson: string): React.ReactNode {
+const getReactComponent = (currentLesson: string): React.ReactNode => {
   return (() => {
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].path.slice(1) == currentLesson) return routes[i].element;
     }
   })();
-}
+};
 
 const APP_BAR_STYLES = {
   width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
