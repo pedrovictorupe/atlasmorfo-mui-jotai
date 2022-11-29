@@ -6,11 +6,12 @@ import {
 } from "@mui/icons-material";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import React from "react";
+import { DEFAULT_PAGES } from "../constants";
 
 type BottomNavBarProps = {
   currentTab: number;
   setPaginaAtual: (n: number) => void;
-  labelsToIcons: Object;
+  items: { label: string; icon: JSX.Element; isLocked: boolean }[];
 };
 
 export const DEFAULT_NAVBAR_HEIGHT = 56;
@@ -18,7 +19,7 @@ export const DEFAULT_NAVBAR_HEIGHT = 56;
 export default function BottomNavBar({
   currentTab: paginaAtual,
   setPaginaAtual,
-  labelsToIcons,
+  items,
 }: BottomNavBarProps) {
   return (
     <BottomNavigation
@@ -30,19 +31,20 @@ export default function BottomNavBar({
       }}
       showLabels
       value={paginaAtual}
-      onChange={(event, paginaSeguinte) => {
+      onChange={(_event, paginaSeguinte) => {
+        if (items[paginaSeguinte].isLocked == true) return;
+
         setPaginaAtual(paginaSeguinte);
       }}
     >
       {(() => {
         let tabs: JSX.Element[] = [];
 
-        for (const label in labelsToIcons) {
+        items.forEach((item) => {
           tabs.push(
-            // @ts-ignore
-            <BottomNavigationAction label={label} icon={labelsToIcons[label]} />
+            <BottomNavigationAction label={item.label} icon={item.icon} />
           );
-        }
+        });
 
         return tabs;
       })()}

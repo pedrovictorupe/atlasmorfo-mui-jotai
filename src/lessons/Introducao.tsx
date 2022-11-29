@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-// import { DefaultPages } from "../@types/DefaultPages";
 import PreTeste from "../components/PreTeste";
 import preTesteContents from "../contents.json";
 import { BottomNavigation, Container, Typography } from "@mui/material";
@@ -13,6 +12,7 @@ import Paragraph from "../components/Paragraph";
 import ProgressoEnum, { ProgressoEnumDefault } from "../@types/ProgressoEnum";
 import {
   Lightbulb,
+  Lock,
   PsychologyAlt,
   SmartDisplay,
   TipsAndUpdates,
@@ -112,7 +112,10 @@ export default function Introducao() {
           quiz={
             <MultipleChoiceQuiz
               {...preTesteContents[LESSON_NAME]}
-              onSubmit={() => setProgresso("PRETESTE_RESPONDIDO")}
+              onSubmit={() => {
+                setProgresso("PRETESTE_RESPONDIDO");
+                setPaginaAtual("VIDEO");
+              }}
             />
           }
         />
@@ -148,12 +151,17 @@ export default function Introducao() {
         // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
         currentTab={DEFAULT_PAGES.indexOf(paginaAtual)}
         setPaginaAtual={(n: number) => setPaginaAtual(DEFAULT_PAGES[n])}
-        labelsToIcons={{
-          Intro: <PsychologyAlt />,
-          "Pré-teste": <Lightbulb />,
-          Vídeo: <SmartDisplay />,
-          "Pós-teste": <TipsAndUpdates />,
-        }}
+        items={[
+          { label: "Intro", icon: <PsychologyAlt />, isLocked: false },
+          {
+            label: "Pré-teste",
+            icon:
+              progresso == "PRETESTE_NAO_RESPONDIDO" ? <Lightbulb /> : <Lock />,
+            isLocked: progresso == "PRETESTE_RESPONDIDO" ? true : false,
+          },
+          { label: "Vídeo", icon: <SmartDisplay />, isLocked: false },
+          { label: "Pós-teste", icon: <TipsAndUpdates />, isLocked: false },
+        ]}
       />
     </>
   );

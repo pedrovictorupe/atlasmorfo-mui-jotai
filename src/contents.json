@@ -9,11 +9,5 @@
       "A liberação de serotonina"
     ],
     "indiceRespostaCorreta": 1
-  },
-  "exemplo": {
-    "title": "Exemplo",
-    "pergunta": "Qual é a melhor faculdade de medicina do mundo?",
-    "alternativas": ["Oxford", "Seattle Grace", "Mayo Clinic", "FCM"],
-    "indiceRespostaCorreta": 4
   }
 }
