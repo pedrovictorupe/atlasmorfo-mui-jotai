@@ -4,34 +4,20 @@ import PreTeste from "../components/PreTeste";
 import preTesteContents from "../contents.json";
 import {
   Alert,
-  BottomNavigation,
   Button,
-  Chip,
   Container,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
-  DialogTitle,
   Grid,
-  Modal,
-  Typography,
 } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
-import BottomNavBar from "../components/BottomNavBar";
 import { DEFAULT_PAGES } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
 import Image from "mui-image";
 import Paragraph from "../components/Paragraph";
 import ProgressoEnum from "../@types/ProgressoEnum";
-import {
-  ArrowForward,
-  Lightbulb,
-  Lock,
-  PsychologyAlt,
-  SmartDisplay,
-  TipsAndUpdates,
-} from "@mui/icons-material";
+import { ArrowForward } from "@mui/icons-material";
 import {
   EditarProgressoLicaoAction,
   editarProgressoLicaoAtom,
@@ -48,6 +34,7 @@ import {
   CorrectAnswerChip,
   SelectedAnswerChip,
 } from "../components/AnswerChips";
+import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
@@ -290,22 +277,12 @@ export default function Introducao() {
       >
         {render}
       </Container>
-      {/* <BottomNavigation /> */}
-      <BottomNavBar
-        // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
+      <DefaultBottomNavBar
         currentTab={DEFAULT_PAGES.indexOf(paginaAtual)}
-        setPaginaAtual={(n: number) => setPaginaAtual(DEFAULT_PAGES[n])}
-        items={[
-          { label: "Intro", icon: <PsychologyAlt />, isLocked: false },
-          {
-            label: "Pré-teste",
-            icon: progresso == "PRETESTE_RESPONDIDO" ? <Lock /> : <Lightbulb />,
-            isLocked: progresso == "PRETESTE_RESPONDIDO",
-          },
-          { label: "Vídeo", icon: <SmartDisplay />, isLocked: false },
-          { label: "Pós-teste", icon: <TipsAndUpdates />, isLocked: false },
-        ]}
+        setCurrentTab={(n: number) => setPaginaAtual(DEFAULT_PAGES[n])}
+        progresso={progresso}
       />
+      {/* <BottomNavigation /> */}
     </>
   );
 }

@@ -18,7 +18,7 @@ export const DEFAULT_NAVBAR_HEIGHT = 56;
 
 export default function BottomNavBar({
   currentTab: paginaAtual,
-  setPaginaAtual,
+  setPaginaAtual: setCurrentTab,
   items,
 }: BottomNavBarProps) {
   return (
@@ -34,7 +34,7 @@ export default function BottomNavBar({
       onChange={(_event, paginaSeguinte) => {
         if (items[paginaSeguinte].isLocked == true) return;
 
-        setPaginaAtual(paginaSeguinte);
+        setCurrentTab(paginaSeguinte);
       }}
     >
       {(() => {
@@ -52,10 +52,6 @@ export default function BottomNavBar({
 
         return tabs;
       })()}
-      {/* <BottomNavigationAction label="Intro" icon={<PsychologyAlt />} />
-      <BottomNavigationAction label="Pré-teste" icon={<Lightbulb />} />
-      <BottomNavigationAction label="Vídeo" icon={<SmartDisplay />} />
-      <BottomNavigationAction label="Pós-teste" icon={<TipsAndUpdates />} /> */}
     </BottomNavigation>
   );
 }
