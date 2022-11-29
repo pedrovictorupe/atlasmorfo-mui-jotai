@@ -1,3 +1,4 @@
+import { Settings } from "@mui/icons-material";
 import {
   Toolbar,
   List,
@@ -5,10 +6,11 @@ import {
   ListItemText,
   Typography,
   ListItemButton,
+  Divider,
+  IconButton,
+  Button,
 } from "@mui/material";
 import React from "react";
-import { BrowserRouter, Link } from "react-router-dom";
-import EventCallbackArg from "../@types/EventCallbackArg";
 import SearchBar from "./SearchBar";
 
 export type ScaffoldDrawerProps = {
@@ -31,7 +33,6 @@ export default ({
           </Typography>
         </ListItemText>
       </ListItem>
-      {/* <BrowserRouter> */}
       {drawerItems.map((item) => (
         <ListItem key={`${item.slugified}`} disablePadding>
           <ListItemButton
@@ -51,7 +52,12 @@ export default ({
           </ListItemButton>
         </ListItem>
       ))}
-      {/* </BrowserRouter> */}
+      <Divider />
+      <ListItem>
+        <Button variant="outlined" onClick={() => localStorage.clear()}>
+          Reiniciar progresso
+        </Button>
+      </ListItem>
     </List>
   </>
 );
