@@ -58,7 +58,7 @@ export default function Introducao() {
     case "INTRO":
       render = (
         <>
-          <Container sx={{ overflowY: "auto" }}>
+          <Container sx={{ overflowY: "auto", padding: 3 }}>
             <PageTitle>
               Nação <br /> Methiolate
             </PageTitle>
@@ -117,16 +117,16 @@ export default function Introducao() {
               poderá descobrir com o progredir das lições
             </Paragraph>
             <Paragraph>No mais, é isto! Bons estudos e divirta-se!</Paragraph>
+            <NextTabButton
+              onClick={() => {
+                editarProgresso({
+                  lessonTitle: "joao-e-as-etapas-da-hemostasia",
+                  state: "INTRO_LIDA",
+                });
+                setPaginaAtual("PRE");
+              }}
+            />
           </Container>
-          <NextTabButton
-            onClick={() => {
-              editarProgresso({
-                lessonTitle: "joao-e-as-etapas-da-hemostasia",
-                state: "INTRO_LIDA",
-              });
-              setPaginaAtual("PRE");
-            }}
-          />
         </>
       );
       break;
