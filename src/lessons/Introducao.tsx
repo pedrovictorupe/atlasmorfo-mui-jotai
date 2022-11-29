@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import PreTeste from "../components/PreTeste";
 import preTesteContents from "../contents.json";
-import { BottomNavigation, Container, Typography } from "@mui/material";
+import { BottomNavigation, Container, Grid, Typography } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import BottomNavBar from "../components/BottomNavBar";
 import { DEFAULT_PAGES } from "../constants";
@@ -24,6 +24,7 @@ import {
 } from "../atoms/progressoLicaoAtom";
 import { useAtom } from "jotai";
 import PageTitle from "../components/PageTitle";
+import AutoResizableIFrame from "../components/AutoResizableIFrame";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
@@ -40,17 +41,21 @@ export default function Introducao() {
       _element = (
         <>
           <Container sx={{ overflowY: "auto" }}>
-            <PageTitle>Nação Methiolate</PageTitle>
-            <Image
-              src="joelho-ralado-COPYRIGHT.jpg"
-              height="25vh"
-              width="90vw"
-              // @ts-ignore
-              sx={{ p: 2 }}
-            ></Image>
-            <Paragraph fontStyle={"italic"}>
-              Todo mundo já ralou o joelho alguma vez na vida, né?
-            </Paragraph>
+            <PageTitle>
+              Nação <br /> Methiolate
+            </PageTitle>
+            <Grid container direction="column" alignItems="center">
+              <Image
+                src="joelho-ralado-COPYRIGHT.jpg"
+                width="90%"
+                height="auto"
+                // @ts-ignore
+                sx={{ p: 2 }}
+              ></Image>
+              <Paragraph fontStyle={"italic"}>
+                Todo mundo já ralou o joelho alguma vez na vida, né?
+              </Paragraph>
+            </Grid>
             <Paragraph>
               Seja caindo da biscicleta, seja cortando-se enquanto cozinha... o
               fato é: machucar-se é um acontecimento comum na vida de todo
@@ -77,8 +82,7 @@ export default function Introducao() {
               mesmo um pequeno videogame.
             </Paragraph>
             <Paragraph>
-              PORÉM (e aqui vem o <i>pulo do gato</i>... 🤭) não será o{" "}
-              <i>app</i> que irá checar a resposta...{" "}
+              Porém, não será o <i>app</i> que irá checar a resposta...{" "}
               <strong>será você mesmo</strong>. Em outras palavras, com o
               conhecimento que adquirir assistindo ao vídeo da lição, a
               plataforma lhe dará a oportunidade de revisar sua resposta antes
@@ -119,15 +123,29 @@ export default function Introducao() {
       break;
     case "VIDEO":
       _element = (
-        <Container sx={{ alignContent: "center", scrollbarWidth: 0 }}>
-          <iframe
-            src="https://www.youtube.com/embed/IGmYTjpWSa4"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </Container>
+        <>
+          <PageTitle>As crônicas de Joãozinho</PageTitle>
+          <AutoResizableIFrame>
+            {/* Proporção: width="560" height="315" (7:9)*/}
+
+            <iframe
+              src="https://www.youtube.com/embed/IGmYTjpWSa4"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{
+                position: "absolute",
+                top: "0px",
+                left: "0px",
+                width: "100%",
+                height: "100%",
+                maxWidth: "600px",
+                maxHeight: "315px",
+              }}
+            ></iframe>
+          </AutoResizableIFrame>
+        </>
       );
   }
 
