@@ -10,7 +10,7 @@ export const StatesPossiveis: ProgressoEnum[] = [
   "POS_TESTE_RESPONDIDO",
 ];
 
-export const DEFAULT_PAGES: DefaultPage[] = ["PRE", "AULA", "POS"];
+export const DEFAULT_PAGES: DefaultPage[] = ["INTRO", "PRE", "VIDEO", "POS"];
 
 export const LESSON_NAMES = keys(content);
 
@@ -19,5 +19,4 @@ export const DRAWER_WIDTH = 240;
 export const TYPOGRAPHY_TEXT_CENTRALIZE = {
   display: "flex",
   alignItems: "center",
-  fontWeight: "bold",
 };

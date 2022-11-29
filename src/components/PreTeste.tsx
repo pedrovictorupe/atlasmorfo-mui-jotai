@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Alert } from "@mui/material";
 
 // Para fazer: trocar indicePreTeste por uma busca usando o "id" de cada item em pretestes.json
-export default function PreTeste(props: { quiz: JSX.Element }) {
+export default (props: { quiz: JSX.Element }) => {
   return (
     <Container maxWidth="sm">
       <Typography variant="h4" component="h1" color={"#1565c0"} gutterBottom>
@@ -20,4 +20,4 @@ export default function PreTeste(props: { quiz: JSX.Element }) {
       {props.quiz}
     </Container>
   );
-}
+};

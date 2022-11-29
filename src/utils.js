@@ -9,3 +9,9 @@ export const assignToAllProperties = (obj, value) => {
 
   return result;
 };
+
+export const getTextStrokeStyleFor = (fontColor, strokeColor) => ({
+  color: fontColor,
+  textShadow: `-1px -1px 0 ${strokeColor}, 1px -1px 0 ${strokeColor}, -1px 1px 0 ${strokeColor}, 1px 1px 0 ${strokeColor}`,
+  letterSpacing: "0.2em",
+});

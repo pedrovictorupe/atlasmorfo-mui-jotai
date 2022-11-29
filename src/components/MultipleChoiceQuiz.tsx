@@ -8,8 +8,9 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useAtom } from "jotai";
-import { editarRespostasAtom } from "../atoms/multiplechoice";
+import { editarRespostasAtom } from "../atoms/respostasAtom";
 import QuizProps from "../@types/QuizProps";
+import slugify from "slugify";
 
 export default function MultipleChoiceQuiz(props: QuizProps) {
   const [, salvarResposta] = useAtom(editarRespostasAtom);
@@ -26,21 +27,21 @@ export default function MultipleChoiceQuiz(props: QuizProps) {
 
   // Salva a resposta confirmada no localStorage
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Previne que o navegador despache a funcionalidade padrão de submissão de <form> (imagino que seria um POST ou algo do tipo)
+    // Inibe que o evento continue se propagando, já que ele já está sendo tratado aqui.
     event.preventDefault();
 
     // Salva a resposta no localStorage para checar depois
     salvarResposta({
-      lessonTitle: props.title,
+      // slugify permite que o título corresponda à key da lição no JSON de conteúdo, o que pode vir a ser útil no futuro.
+      slugifiedLessonTitle: slugify(props.title),
       // As respostas são salvas em forma de índice ("1" para a primeira alternativa etc.), por isso é necessário usar Array.indexOf.
       // OBS: Bugs nesta seção podem decorrer caso o conteúdo passado no props.content deste componente sejam escritos à mão ao invés de ser extraído do "content/pretestes.json" (visto que, para obter o índice da alternativa, comparamos com o conteúdo de pretestes.json)
       resposta: props.alternativas.indexOf(alternativaSelecionada),
     });
 
-    props.onSubmit()
+    props.onSubmit();
   };
 
-  // Para fazer: encapsular o enunciado e as alternativas em componentes próprios
   return (
     <form onSubmit={handleSubmit}>
       <FormControl sx={{ marginTop: 3 }} variant="standard">

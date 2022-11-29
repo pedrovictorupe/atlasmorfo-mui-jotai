@@ -1,12 +1,16 @@
-import { Lightbulb, SmartDisplay, TipsAndUpdates } from "@mui/icons-material";
-import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
-import React, { useState } from "react";
-import ProgressoEnum from "../@types/ProgressoEnum";
-import { DRAWER_WIDTH } from "../constants";
+import {
+  Lightbulb,
+  PsychologyAlt,
+  SmartDisplay,
+  TipsAndUpdates,
+} from "@mui/icons-material";
+import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import React from "react";
 
 type BottomNavBarProps = {
   currentTab: number;
   setPaginaAtual: (n: number) => void;
+  labelsToIcons: Object;
 };
 
 export const DEFAULT_NAVBAR_HEIGHT = 56;
@@ -14,6 +18,7 @@ export const DEFAULT_NAVBAR_HEIGHT = 56;
 export default function BottomNavBar({
   currentTab: paginaAtual,
   setPaginaAtual,
+  labelsToIcons,
 }: BottomNavBarProps) {
   return (
     <BottomNavigation
@@ -29,9 +34,22 @@ export default function BottomNavBar({
         setPaginaAtual(paginaSeguinte);
       }}
     >
+      {(() => {
+        let tabs: JSX.Element[] = [];
+
+        for (const label in labelsToIcons) {
+          tabs.push(
+            // @ts-ignore
+            <BottomNavigationAction label={label} icon={labelsToIcons[label]} />
+          );
+        }
+
+        return tabs;
+      })()}
+      {/* <BottomNavigationAction label="Intro" icon={<PsychologyAlt />} />
       <BottomNavigationAction label="Pré-teste" icon={<Lightbulb />} />
-      <BottomNavigationAction label="Aula" icon={<SmartDisplay />} />
-      <BottomNavigationAction label="Pós-teste" icon={<TipsAndUpdates />} />
+      <BottomNavigationAction label="Vídeo" icon={<SmartDisplay />} />
+      <BottomNavigationAction label="Pós-teste" icon={<TipsAndUpdates />} /> */}
     </BottomNavigation>
   );
 }

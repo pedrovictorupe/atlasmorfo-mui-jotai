@@ -15,8 +15,9 @@ import currentLessonAtom from "../atoms/currentLessonAtom";
 import keys from "lodash/keys";
 import contents from "../contents.json";
 import { routes } from "../router";
-import { forOwn, get, map } from "lodash";
+import { map } from "lodash";
 import ScaffoldDrawer from "./ScaffoldDrawer";
+import { getTextStrokeStyleFor } from "../utils";
 
 export default (props: any) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -50,9 +51,12 @@ export default (props: any) => {
             </IconButton>
             <div />
             <Typography
-              variant="h4"
+              variant="subtitle1"
               color="primary"
-              sx={TYPOGRAPHY_TEXT_CENTRALIZE}
+              sx={{
+                ...TYPOGRAPHY_TEXT_CENTRALIZE,
+                ...getTextStrokeStyleFor("#fff", "#1565c0"),
+              }}
             >
               ATLAS MORFO
             </Typography>

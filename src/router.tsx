@@ -1,6 +1,5 @@
 import React from "react";
 import { ReactElement } from "react";
-import Exemplo from "./lessons/Exemplo";
 import Introducao from "./lessons/Introducao";
 
 // Checagem automática da formatação das rotas pelo TS
@@ -13,10 +12,6 @@ export const routes: Route[] = [
   {
     path: "/introducao",
     element: <Introducao />,
-  },
-  {
-    path: "/exemplo",
-    element: <Exemplo />,
   },
 ];
 
