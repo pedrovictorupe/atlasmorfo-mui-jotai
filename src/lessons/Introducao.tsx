@@ -16,12 +16,14 @@ import {
   PsychologyAlt,
   SmartDisplay,
   TipsAndUpdates,
+  Title,
 } from "@mui/icons-material";
 import {
   EditarProgressoLicaoAction,
   editarProgressoLicaoAtom,
 } from "../atoms/progressoLicaoAtom";
 import { useAtom } from "jotai";
+import PageTitle from "../components/PageTitle";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
@@ -30,15 +32,6 @@ export default function Introducao() {
     (update: EditarProgressoLicaoAction) => void
   ] = useAtom(editarProgressoLicaoAtom);
   const [paginaAtual, setPaginaAtual] = useState<DefaultPage>(DEFAULT_PAGES[0]);
-  // const [isPreTesteLocked] = useAtom(isPreTesteLockedAtom);
-  // const [, lockPreTeste] = useAtom(lockPreTesteAtom);
-
-  // // @ts-ignore
-  // const isThisLocked = () =>
-  //   // @ts-ignore
-  //   isPreTesteLocked(slugify(props.lessonTitle)) == "LOCKED" ? true : false;
-
-  // const lockThis = () => lockPreTeste(slugify(props.lessonTitle));
 
   let _element: JSX.Element | null = null;
 
@@ -47,14 +40,7 @@ export default function Introducao() {
       _element = (
         <>
           <Container sx={{ overflowY: "auto" }}>
-            <Typography
-              variant="h3"
-              padding={2}
-              letterSpacing={4}
-              fontWeight={1}
-            >
-              Nação Merthiolate
-            </Typography>
+            <PageTitle>Nação Methiolate</PageTitle>
             <Image
               src="joelho-ralado-COPYRIGHT.jpg"
               height="25vh"
