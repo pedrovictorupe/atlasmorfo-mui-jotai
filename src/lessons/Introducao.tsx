@@ -35,6 +35,7 @@ import {
   SelectedAnswerChip,
 } from "../components/AnswerChips";
 import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
+import NextTabButton from "../components/NextTabButton";
 
 const LESSON_NAME = "introducao";
 export default function Introducao() {
@@ -166,86 +167,79 @@ export default function Introducao() {
               allowFullScreen
             ></iframe>
           </div>
-          <div style={{ textAlign: "right" }}>
-            <Button
-              variant="contained"
-              startIcon={<ArrowForward />}
-              sx={{ borderRadius: 10 }}
-              onClick={() => {
-                setAnswerReviewOpen(true);
-              }}
-            >
-              Prosseguir{" "}
-            </Button>
-            <Dialog
-              open={isAnswerReviewOpen}
-              onClose={() => setAnswerReviewOpen(false)}
-            >
-              <DialogContent>
-                <div style={{ textAlign: "center" }}>
-                  Na seção anterior, você assinalou a seguinte alternativa:
-                  <br />
-                  <SelectedAnswerChip lessonTitle="introducao" />
-                  <br />
-                  Com os conhecimentos que você acabou de obter, deseja alterar
-                  sua resposta?
-                </div>
-                <Alert variant="outlined" color="info" sx={{ margin: 2 }}>
-                  <strong>Enunciado:</strong>{" "}
-                  {preTesteContents.introducao.pergunta}
-                </Alert>
-              </DialogContent>
-              <DialogActions>
-                <Button
-                  variant="outlined"
-                  color="success"
-                  onClick={() => {
-                    setAnswerReviewOpen(false);
+          <NextTabButton
+            onClick={() => {
+              setAnswerReviewOpen(true);
+            }}
+          />
+          <Dialog
+            open={isAnswerReviewOpen}
+            onClose={() => setAnswerReviewOpen(false)}
+          >
+            <DialogContent>
+              <div style={{ textAlign: "center" }}>
+                Na seção anterior, você assinalou a seguinte alternativa:
+                <br />
+                <SelectedAnswerChip lessonTitle="introducao" />
+                <br />
+                Com os conhecimentos que você acabou de obter, deseja alterar
+                sua resposta?
+              </div>
+              <Alert variant="outlined" color="info" sx={{ margin: 2 }}>
+                <strong>Enunciado:</strong>{" "}
+                {preTesteContents.introducao.pergunta}
+              </Alert>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                variant="outlined"
+                color="success"
+                onClick={() => {
+                  setAnswerReviewOpen(false);
 
-                    if (
-                      getAnswerByLesson("introducao") ===
-                      preTesteContents.introducao.respostaCorreta
-                    ) {
-                      setCongratulationsOpen(true);
-                    } else {
-                      setAnswerIncorrectOpen(true);
-                    }
-                  }}
-                >
-                  Manter
-                </Button>
-                <Button color="error">Alterar</Button>
-              </DialogActions>
-            </Dialog>
-            <AnswerFeedback
-              open={isCongratulationOpen}
-              onClose={() => setCongratulationsOpen(false)}
-              title={"Parabéns!"}
-              content={
-                <>
-                  Resposta correta.
-                  <br />
-                  Joãozinho deve estar orgulhoso {":)"}
-                </>
-              }
-              backgroundDarkColor={green[700]}
-              lessonTitle="introducao"
-            />
-            <AnswerFeedback
-              open={isAnswerIncorrectOpen}
-              onClose={() => setAnswerIncorrectOpen(false)}
-              title={"Quase isso"}
-              content={
-                <>
-                  A resposta correta era
-                  <br />
-                  <CorrectAnswerChip lessonTitle="introducao" />
-                </>
-              }
-              backgroundDarkColor={yellow[800]}
-              lessonTitle="introducao"
-            />
-          </div>
+                  if (
+                    getAnswerByLesson("introducao") ===
+                    preTesteContents.introducao.respostaCorreta
+                  ) {
+                    setCongratulationsOpen(true);
+                  } else {
+                    setAnswerIncorrectOpen(true);
+                  }
+                }}
+              >
+                Manter
+              </Button>
+              <Button color="error">Alterar</Button>
+            </DialogActions>
+          </Dialog>
+          <AnswerFeedback
+            open={isCongratulationOpen}
+            onClose={() => setCongratulationsOpen(false)}
+            title={"Parabéns!"}
+            content={
+              <>
+                Resposta correta.
+                <br />
+                Joãozinho deve estar orgulhoso {":)"}
+              </>
+            }
+            backgroundDarkColor={green[700]}
+            lessonTitle="introducao"
+          />
+          <AnswerFeedback
+            open={isAnswerIncorrectOpen}
+            onClose={() => setAnswerIncorrectOpen(false)}
+            title={"Quase isso"}
+            content={
+              <>
+                A resposta correta era
+                <br />
+                <CorrectAnswerChip lessonTitle="introducao" />
+              </>
+            }
+            backgroundDarkColor={yellow[800]}
+            lessonTitle="introducao"
+          />
           {/* </Grid> */}
         </div>
       );

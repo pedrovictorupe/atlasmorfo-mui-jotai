@@ -4,10 +4,10 @@ import {
   SmartDisplay,
   TipsAndUpdates,
   Lock,
+  Check,
 } from "@mui/icons-material";
 import React from "react";
 import ProgressoEnum from "../@types/ProgressoEnum";
-import { DEFAULT_PAGES } from "../constants";
 import BottomNavBar from "./BottomNavBar";
 
 export default (props: {
@@ -20,7 +20,16 @@ export default (props: {
     currentTab={props.currentTab}
     setPaginaAtual={props.setCurrentTab}
     items={[
-      { label: "Intro", icon: <PsychologyAlt />, isLocked: false },
+      {
+        label: "Intro",
+        icon:
+          props.progresso == undefined ? (
+            <PsychologyAlt />
+          ) : (
+            <Check />
+          ),
+        isLocked: false,
+      },
       {
         label: "Pré-teste",
         icon:
