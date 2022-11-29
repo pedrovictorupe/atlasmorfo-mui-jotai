@@ -5,7 +5,7 @@ import preTesteContents from "../contents.json";
 import { BottomNavigation, Container, Grid, Typography } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import BottomNavBar from "../components/BottomNavBar";
-import { DEFAULT_PAGES } from "../constants";
+import { DEFAULT_PAGES, iframeStylesForScale } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
 import Image from "mui-image";
 import Paragraph from "../components/Paragraph";
@@ -134,15 +134,8 @@ export default function Introducao() {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              style={{
-                position: "absolute",
-                top: "0px",
-                left: "0px",
-                width: "100%",
-                height: "100%",
-                maxWidth: "600px",
-                maxHeight: "315px",
-              }}
+              // @ts-ignore
+              style={iframeStylesForScale}
             ></iframe>
           </AutoResizableIFrame>
         </>

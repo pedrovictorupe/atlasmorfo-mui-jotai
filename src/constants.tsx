@@ -20,3 +20,13 @@ export const TYPOGRAPHY_TEXT_CENTRALIZE = {
   display: "flex",
   alignItems: "center",
 };
+
+export const iframeStylesForScale = {
+  position: "absolute",
+  top: "0px",
+  left: "0px",
+  width: "100%",
+  height: "100%",
+  maxWidth: "600px",
+  maxHeight: "315px",
+};
