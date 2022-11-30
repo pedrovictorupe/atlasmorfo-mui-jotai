@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactElement } from "react";
-import Introducao from "./lessons/Introducao";
+import Introducao from "./lessons/JoaoEAsEtapasDaHemostasia";
 
 // Checagem automática da formatação das rotas pelo TS
 type Route = {
