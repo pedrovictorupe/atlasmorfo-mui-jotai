@@ -12,10 +12,9 @@ import { BottomNavigation, Grid } from "@mui/material";
 import { DRAWER_WIDTH, TYPOGRAPHY_TEXT_CENTRALIZE } from "../constants";
 import { useAtom } from "jotai";
 import currentLessonAtom from "../atoms/currentLessonAtom";
-import keys from "lodash/keys";
 import contents from "../contents.json";
 import lessonTitleToComponent from "../lessonTitleToComponent";
-import { map } from "lodash";
+import map from "lodash/map";
 import ScaffoldDrawer from "./ScaffoldDrawer";
 import { getTextStrokeStyleFor } from "../utils";
 
@@ -110,7 +109,7 @@ const sumarioDrawer = (setCurrentLesson: any) => (
         (lesson: { title: string }) => lesson.title
       );
 
-      let slugifiedTitles = keys(contents);
+      let slugifiedTitles = Object.keys(contents);
 
       let drawerItems: { text: string; slugified: string }[] = new Array(
         normalTitles.length

@@ -1,7 +1,6 @@
 import DefaultPage from "./@types/DefaultPage";
 import LessonStateEnum from "./@types/LessonStateEnum";
 import content from "./contents.json";
-import keys from "lodash/keys";
 
 export const StatesPossiveis: LessonStateEnum[] = [
   "INTRO_LIDA",
@@ -13,7 +12,7 @@ export const StatesPossiveis: LessonStateEnum[] = [
 
 export const DEFAULT_PAGES: DefaultPage[] = ["INTRO", "PRE", "VIDEO", "POS"];
 
-export const LESSON_NAMES = keys(content);
+export const LESSON_NAMES = Object.keys(content);
 
 export const DRAWER_WIDTH = 240;
 
