@@ -34,23 +34,5 @@ export default (props: {
       content={props.content}
       backgroundDarkColor={props.backgroundDarkColor}
     />
-    // <Dialog
-    //   open={props.open}
-    // onClose={() => {
-    //   editarProgresso({
-    //     lessonTitle: props.lessonTitle,
-    //     state: "GABARITO_PRETESTE_VISUALIZADO",
-    //   });
-    //   props.onClose();
-    // }}
-    //   PaperProps={{ style: { backgroundColor: props.backgroundDarkColor } }}
-    // >
-    //   <DialogTitle variant="h4" color="#fff">
-    //     {props.title}
-    //   </DialogTitle>
-    //   <DialogContent>
-    //     <DialogContentText color="#fff">{props.content}</DialogContentText>
-    //   </DialogContent>
-    // </Dialog>
   );
 };
