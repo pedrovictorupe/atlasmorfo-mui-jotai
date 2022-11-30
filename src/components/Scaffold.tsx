@@ -14,7 +14,7 @@ import { useAtom } from "jotai";
 import currentLessonAtom from "../atoms/currentLessonAtom";
 import keys from "lodash/keys";
 import contents from "../contents.json";
-import { routes } from "../router";
+import lessonTitleToComponent from "../lessonTitleToComponent";
 import { map } from "lodash";
 import ScaffoldDrawer from "./ScaffoldDrawer";
 import { getTextStrokeStyleFor } from "../utils";
@@ -105,16 +105,20 @@ const sumarioDrawer = (setCurrentLesson: any) => (
   <ScaffoldDrawer
     drawerTitle={"SUMÁRIO"}
     drawerItems={(() => {
-      const texts = map(contents, (lesson: { title: string }) => lesson.title);
+      const normalTitles = map(
+        contents,
+        (lesson: { title: string }) => lesson.title
+      );
+
       let slugifiedTitles = keys(contents);
 
       let drawerItems: { text: string; slugified: string }[] = new Array(
-        texts.length
+        normalTitles.length
       ).fill({});
 
-      for (let i = 0; i < texts.length; i++) {
+      for (let i = 0; i < normalTitles.length; i++) {
         drawerItems[i] = {
-          text: texts[i],
+          text: normalTitles[i],
           slugified: slugifiedTitles[i],
         };
       }
@@ -126,8 +130,9 @@ const sumarioDrawer = (setCurrentLesson: any) => (
 );
 
 const getReactComponent = (currentLesson: string): React.ReactNode => {
-  for (let i = 0; i < routes.length; i++) {
-    if (routes[i].path.slice(1) == currentLesson) return routes[i].element;
+  for (let i = 0; i < lessonTitleToComponent.length; i++) {
+    if (lessonTitleToComponent[i].slugifiedLessonName == currentLesson)
+      return lessonTitleToComponent[i].element;
   }
 };
 
