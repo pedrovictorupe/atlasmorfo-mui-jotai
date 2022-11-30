@@ -16,7 +16,7 @@ import contents from "../contents.json";
 import lessonTitleToComponent from "../lessonTitleToComponent";
 import map from "lodash/map";
 import ScaffoldDrawer from "./ScaffoldDrawer";
-import { getTextStrokeStyleFor } from "../utils";
+import { getTextStrokeStyle } from "../utils";
 
 export default (props: any) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -54,7 +54,7 @@ export default (props: any) => {
               color="primary"
               sx={{
                 ...TYPOGRAPHY_TEXT_CENTRALIZE,
-                ...getTextStrokeStyleFor("#fff", "#1565c0"),
+                ...getTextStrokeStyle("#fff", "#1565c0"),
               }}
             >
               ATLAS MORFO
