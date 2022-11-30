@@ -60,7 +60,7 @@ export default function Introducao() {
         <>
           <Container sx={{ overflowY: "auto", padding: 3 }}>
             <PageTitle>
-              Nação <br /> Methiolate
+              Geração <br /> Methiolate
             </PageTitle>
             <Grid container direction="column" alignItems="center">
               <Image
@@ -68,14 +68,14 @@ export default function Introducao() {
                 width="90%"
                 height="auto"
                 // @ts-ignore
-                sx={{ p: 2 }}
+                sx={{ p: 2, maxWidth: "600px" }}
               ></Image>
               <Paragraph fontStyle={"italic"}>
-                Todo mundo já ralou o joelho alguma vez na vida, né?
+                Todo mundo já ralou o joelho alguma vez na vida, não é?
               </Paragraph>
             </Grid>
             <Paragraph>
-              Seja caindo da biscicleta, seja cortando-se enquanto cozinha... o
+              Seja caindo da bicicleta, seja cortando-se enquanto cozinha... o
               fato é: machucar-se é um acontecimento comum na vida de todo
               mundo. Tão comum que é bem possível que você nunca tenha dado
               muita bola quando acontece, não é? "É só pegar um curativo e vida
@@ -275,9 +275,12 @@ export default function Introducao() {
           <iframe
             src="https://mywordle.strivemath.com/?word=bwsutrw&lang=any"
             style={{
+              position: "relative",
+              top: "-106px",
               width: "87%",
               height: "700px",
               borderWidth: 0,
+              maxWidth: "320px",
             }}
           />
         </div>
