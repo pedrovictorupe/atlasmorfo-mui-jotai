@@ -10,7 +10,6 @@ import { Typography } from "@mui/material";
 import { useAtom } from "jotai";
 import { editarRespostaPreTesteAtom } from "../atoms/preTesteRespostasAtom";
 import QuizProps from "../@types/QuizProps";
-import slugify from "slugify";
 
 export default function MultipleChoiceQuiz(props: QuizProps) {
   const [, salvarResposta] = useAtom(editarRespostaPreTesteAtom);
@@ -30,16 +29,12 @@ export default function MultipleChoiceQuiz(props: QuizProps) {
     // Inibe que o evento continue se propagando, já que ele já está sendo tratado aqui.
     event.preventDefault();
 
-    // Salva a resposta no localStorage para checar depois
+    props.onSubmit();
+
     salvarResposta({
-      // slugify permite que o título corresponda à key da lição no JSON de conteúdo, o que pode vir a ser útil no futuro.
       lessonTitle: props.title,
-      // As respostas são salvas em forma de índice ("1" para a primeira alternativa etc.), por isso é necessário usar Array.indexOf.
-      // OBS: Bugs nesta seção podem decorrer caso o conteúdo passado no props.content deste componente sejam escritos à mão ao invés de ser extraído do "content/pretestes.json" (visto que, para obter o índice da alternativa, comparamos com o conteúdo de pretestes.json)
       resposta: alternativaSelecionada,
     });
-
-    props.onSubmit();
   };
 
   return (
