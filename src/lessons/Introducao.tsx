@@ -10,6 +10,8 @@ import {
   DialogActions,
   DialogContent,
   Grid,
+  List,
+  ListItem,
 } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import { DEFAULT_PAGES } from "../constants";
@@ -28,7 +30,7 @@ import {
   editarRespostaPreTesteAtom,
   EditarRespostasAction,
 } from "../atoms/preTesteRespostasAtom";
-import { green, yellow } from "@mui/material/colors";
+import { blue, green, yellow } from "@mui/material/colors";
 import AnswerFeedback from "../components/AnswerFeedback";
 import {
   CorrectAnswerChip,
@@ -36,6 +38,8 @@ import {
 } from "../components/AnswerChips";
 import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
 import NextTabButton from "../components/NextTabButton";
+import DefaultDialog from "../components/DefaultDialog";
+import DefaultButton from "../components/DefaultButton";
 
 const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
 export default function Introducao() {
@@ -47,6 +51,7 @@ export default function Introducao() {
   const [isAnswerReviewOpen, setAnswerReviewOpen] = useState(false);
   const [isCongratulationOpen, setCongratulationsOpen] = useState(false);
   const [isAnswerIncorrectOpen, setAnswerIncorrectOpen] = useState(false);
+  const [isIntructionsDialogOpen, setInstructionsDialogOpen] = useState(true);
   const [getAnswerByLesson, editAnswerByLesson]: [
     (lessonTitle: string) => string,
     (update: EditarRespostasAction) => void
@@ -253,7 +258,10 @@ export default function Introducao() {
           />
           <AnswerFeedback
             open={isAnswerIncorrectOpen}
-            onClose={() => setAnswerIncorrectOpen(false)}
+            onClose={() => {
+              setAnswerIncorrectOpen(false);
+              setPaginaAtual("POS");
+            }}
             title={"Quase isso"}
             content={
               <>
@@ -265,24 +273,60 @@ export default function Introducao() {
             backgroundDarkColor={yellow[800]}
             lessonTitle="joao-e-as-etapas-da-hemostasia"
           />
-          {/* </Grid> */}
         </div>
       );
       break;
     case "POS":
       render = (
-        <div style={{ textAlign: "center" }}>
+        <div
+          style={{ textAlign: "center", position: "relative", top: "-106px" }}
+        >
+          <DefaultDialog
+            open={isIntructionsDialogOpen}
+            onClose={() => setInstructionsDialogOpen(false)}
+            title={"Instruções"}
+            backgroundDarkColor={blue["700"]}
+            content={
+              <List>
+                <ListItem>
+                  Agora a gente vai jogar uma partidinha de TERMO (também
+                  conhecido como WORDLE). As regras são simples:
+                </ListItem>
+                <ListItem>
+                  - Há uma palavra secreta de 7 letras que você deverá acertar
+                  em, no máximo, 6 chutes (usando o teclado disponível na
+                  própria página).
+                </ListItem>
+                <ListItem>
+                  - Após cada chute, o display mostrará algumas letras da
+                  palavra inserida com uma coloração amarela e outras com
+                  coloração verde.
+                </ListItem>
+                <ListItem>
+                  - A coloração amarela indica que aquela letra ESTÁ PRESENTE na
+                  palavra secreta, mas NÃO NAQUELA POSIÇÃO
+                </ListItem>
+                <ListItem>
+                  - Já a coloração verde indica que você ACERTOU a letra
+                  presente naquela posição da palavra secreta.
+                </ListItem>
+                <ListItem>Boa sorte! 😊</ListItem>
+              </List>
+            }
+          />
           <iframe
             src="https://mywordle.strivemath.com/?word=bwsutrw&lang=any"
             style={{
-              position: "relative",
-              top: "-106px",
               width: "87%",
               height: "700px",
               borderWidth: 0,
               maxWidth: "320px",
             }}
           />
+          <br />
+          <DefaultButton onClick={() => setInstructionsDialogOpen(true)}>
+            Rever instruções
+          </DefaultButton>
         </div>
       );
       break;
