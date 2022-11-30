@@ -12,7 +12,6 @@ export default (props: {
   title: string;
   content: JSX.Element;
   backgroundDarkColor: string;
-  lessonTitle: string;
 }) => (
   <Dialog
     open={props.open}
