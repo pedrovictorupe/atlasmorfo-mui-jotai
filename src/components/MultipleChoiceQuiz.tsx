@@ -9,9 +9,13 @@ import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useAtom } from "jotai";
 import { editPreTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
-import QuizProps from "../@types/QuizProps";
 
-export default function MultipleChoiceQuiz(props: QuizProps) {
+export default function MultipleChoiceQuiz(props: {
+  onSubmit: () => void;
+  title: string;
+  pergunta: string;
+  alternativas: string[];
+}) {
   const [, salvarResposta] = useAtom(editPreTesteAnswerAtom);
   const [alternativaSelecionada, setAlternativaSelecionada] =
     React.useState("");
