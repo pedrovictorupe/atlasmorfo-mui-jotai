@@ -33,7 +33,6 @@ export default (props: {
       title={props.title}
       content={props.content}
       backgroundDarkColor={props.backgroundDarkColor}
-      lessonTitle={props.lessonTitle}
     />
     // <Dialog
     //   open={props.open}
