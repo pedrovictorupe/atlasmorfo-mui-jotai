@@ -2,7 +2,7 @@
   "name": "create-react-app-with-typescript",
   "version": "5.0.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://pedrovictorupe.github.io/atlasmorfo-mui-jotai",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
@@ -24,6 +24,8 @@
     "zustand": "^4.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -40,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
