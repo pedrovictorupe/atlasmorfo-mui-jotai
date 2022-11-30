@@ -14,15 +14,3 @@ export const routes: Route[] = [
     element: <Introducao />,
   },
 ];
-
-// export default createBrowserRouter(routes);
-
-// // export default (
-// //   <BrowserRouter>
-// //     <Routes>
-// //       <Route index element={<Introducao />} />
-// //       <Route path="introducao" element={<Introducao />} />
-// //       <Route path="/exemplo" element=z{<Exemplo />} />
-// //     </Routes>
-// //   </BrowserRouter>
-// // );
