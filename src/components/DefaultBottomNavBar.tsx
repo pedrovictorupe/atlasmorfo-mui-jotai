@@ -28,44 +28,27 @@ export default (props: {
       {
         label: "Pré-teste",
         icon: getPreTesteIcon(props.progresso),
-        isLocked:
-          props.progresso == "PRETESTE_RESPONDIDO" ||
-          props.progresso == undefined,
+        isLocked: isPreTesteLocked(props.progresso),
       },
       {
         label: "Vídeo",
-        icon:
-          props.progresso == "INTRO_LIDA" ||
-          props.progresso == "PRETESTE_RESPONDIDO" ||
-          props.progresso == "MUDANDO_RESPOSTA" ||
-          props.progresso == undefined ? (
-            <SmartDisplay />
-          ) : (
-            <Check />
-          ),
-        isLocked:
-          props.progresso == "INTRO_LIDA" || props.progresso == undefined,
+        icon: getVideoIcon(props.progresso),
+        isLocked: isVideoTabLocked(props.progresso),
       },
       {
         label: "Pós-teste",
-        icon:
-          props.progresso == "POS_TESTE_RESPONDIDO" ? (
-            <Check />
-          ) : (
-            <TipsAndUpdates />
-          ),
-        isLocked:
-          props.progresso == "INTRO_LIDA" ||
-          props.progresso == "PRETESTE_RESPONDIDO" ||
-          props.progresso == "MUDANDO_RESPOSTA" ||
-          props.progresso == undefined,
+        icon: getPosTesteIcon(props.progresso),
+        isLocked: isPosTesteLocked(props.progresso),
       },
     ]}
   />
 );
 
+const isPreTesteLocked = (progresso: ProgressoEnum): boolean =>
+  progresso == "PRETESTE_RESPONDIDO" || progresso == undefined;
+
 const getPreTesteIcon = (progresso: ProgressoEnum): JSX.Element => {
-  if (progresso == "PRETESTE_RESPONDIDO") return <Lock />;
+  if (isPreTesteLocked(progresso)) return <Lock />;
   else if (
     progresso == "INTRO_LIDA" ||
     progresso == "MUDANDO_RESPOSTA" ||
@@ -73,4 +56,30 @@ const getPreTesteIcon = (progresso: ProgressoEnum): JSX.Element => {
   )
     return <Lightbulb />;
   else return <Check />;
+};
+
+const isVideoTabLocked = (progresso: string | undefined): boolean =>
+  progresso == undefined;
+
+const getVideoIcon = (progresso: ProgressoEnum): JSX.Element => {
+  if (isVideoTabLocked(progresso)) return <Lock />;
+  else if (
+    progresso == "GABARITO_PRETESTE_VISUALIZADO" ||
+    progresso == "POS_TESTE_RESPONDIDO"
+  )
+    return <Check />;
+  else return <SmartDisplay />;
+};
+
+const isPosTesteLocked = (progresso: ProgressoEnum): boolean =>
+  !(
+    progresso == "POS_TESTE_RESPONDIDO" ||
+    progresso == "GABARITO_PRETESTE_VISUALIZADO"
+  );
+
+const getPosTesteIcon = (progresso: ProgressoEnum): JSX.Element => {
+  if (progresso == "POS_TESTE_RESPONDIDO") return <Check />;
+  else if (progresso == "GABARITO_PRETESTE_VISUALIZADO")
+    return <TipsAndUpdates />;
+  else return <Lock />;
 };
