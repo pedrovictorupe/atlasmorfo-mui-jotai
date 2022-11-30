@@ -1,10 +1,10 @@
 import { useAtom } from "jotai";
 import React from "react";
-import ProgressoEnum from "../@types/ProgressoEnum";
+import LessonStateEnum from "../@types/LessonStateEnum";
 import {
-  EditarProgressoLicaoAction,
-  editarProgressoLicaoAtom,
-} from "../atoms/progressoLicaoAtom";
+  EditLessonStateAction,
+  editLessonStateAtom,
+} from "../atoms/lessonStateAtom";
 import DefaultDialog from "./DefaultDialog";
 
 export default (props: {
@@ -16,9 +16,9 @@ export default (props: {
   lessonTitle: string;
 }) => {
   const [, editarProgresso]: [
-    ProgressoEnum,
-    (update: EditarProgressoLicaoAction) => void
-  ] = useAtom(editarProgressoLicaoAtom);
+    LessonStateEnum,
+    (update: EditLessonStateAction) => void
+  ] = useAtom(editLessonStateAtom);
 
   return (
     <DefaultDialog

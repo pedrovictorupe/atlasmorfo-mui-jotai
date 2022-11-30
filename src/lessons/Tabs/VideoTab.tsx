@@ -10,15 +10,15 @@ import { green, yellow } from "@mui/material/colors";
 import { useAtom } from "jotai";
 import React, { useState } from "react";
 import DefaultPage from "../../@types/DefaultPage";
-import ProgressoEnum from "../../@types/ProgressoEnum";
+import LessonStateEnum from "../../@types/LessonStateEnum";
 import {
-  EditarRespostasAction,
-  editarRespostaPreTesteAtom,
-} from "../../atoms/preTesteRespostasAtom";
+  EditAnswersAction,
+  editPreTesteAnswerAtom,
+} from "../../atoms/preTesteAnswersAtom";
 import {
-  EditarProgressoLicaoAction,
-  editarProgressoLicaoAtom,
-} from "../../atoms/progressoLicaoAtom";
+  EditLessonStateAction,
+  editLessonStateAtom,
+} from "../../atoms/lessonStateAtom";
 import {
   SelectedAnswerChip,
   CorrectAnswerChip,
@@ -37,12 +37,12 @@ export default (props: {
   const [isAnswerIncorrectOpen, setAnswerIncorrectOpen] = useState(false);
   const [getAnswerByLesson]: [
     (lessonTitle: string) => string,
-    (update: EditarRespostasAction) => void
-  ] = useAtom(editarRespostaPreTesteAtom);
+    (update: EditAnswersAction) => void
+  ] = useAtom(editPreTesteAnswerAtom);
   const [progresso, editarProgresso]: [
-    ProgressoEnum,
-    (update: EditarProgressoLicaoAction) => void
-  ] = useAtom(editarProgressoLicaoAtom);
+    LessonStateEnum,
+    (update: EditLessonStateAction) => void
+  ] = useAtom(editLessonStateAtom);
   const [isExplanationDialogOpen, setExplanationDialogOpen] = useState(true);
 
   return (

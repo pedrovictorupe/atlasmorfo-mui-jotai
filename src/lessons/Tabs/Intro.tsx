@@ -3,7 +3,7 @@ import { Container, Grid } from "@mui/material";
 import DefaultPage from "../../@types/DefaultPage";
 import Image from "mui-image";
 import Paragraph from "../../components/Paragraph";
-import { EditarProgressoLicaoAction } from "../../atoms/progressoLicaoAtom";
+import { EditLessonStateAction } from "../../atoms/lessonStateAtom";
 import PageTitle from "../../components/PageTitle";
 import NextTabButton from "../../components/NextTabButton";
 
@@ -11,7 +11,7 @@ export default ({
   editarProgresso,
   setPaginaAtual,
 }: {
-  editarProgresso: (update: EditarProgressoLicaoAction) => void;
+  editarProgresso: (update: EditLessonStateAction) => void;
   setPaginaAtual: React.Dispatch<React.SetStateAction<DefaultPage>>;
 }): JSX.Element | null => (
   <>

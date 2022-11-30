@@ -7,13 +7,13 @@ import {
   Check,
 } from "@mui/icons-material";
 import React from "react";
-import ProgressoEnum from "../@types/ProgressoEnum";
+import LessonStateEnum from "../@types/LessonStateEnum";
 import BottomNavBar from "./BottomNavBar";
 
 export default (props: {
   currentTab: number;
   setCurrentTab: (currentTab: number) => void;
-  progresso: ProgressoEnum;
+  progresso: LessonStateEnum;
 }) => (
   <BottomNavBar
     // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
@@ -44,10 +44,10 @@ export default (props: {
   />
 );
 
-const isPreTesteLocked = (progresso: ProgressoEnum): boolean =>
+const isPreTesteLocked = (progresso: LessonStateEnum): boolean =>
   progresso == "PRETESTE_RESPONDIDO" || progresso == undefined;
 
-const getPreTesteIcon = (progresso: ProgressoEnum): JSX.Element => {
+const getPreTesteIcon = (progresso: LessonStateEnum): JSX.Element => {
   if (isPreTesteLocked(progresso)) return <Lock />;
   else if (
     progresso == "INTRO_LIDA" ||
@@ -61,7 +61,7 @@ const getPreTesteIcon = (progresso: ProgressoEnum): JSX.Element => {
 const isVideoTabLocked = (progresso: string | undefined): boolean =>
   progresso == undefined;
 
-const getVideoIcon = (progresso: ProgressoEnum): JSX.Element => {
+const getVideoIcon = (progresso: LessonStateEnum): JSX.Element => {
   if (isVideoTabLocked(progresso)) return <Lock />;
   else if (
     progresso == "GABARITO_PRETESTE_VISUALIZADO" ||
@@ -71,13 +71,13 @@ const getVideoIcon = (progresso: ProgressoEnum): JSX.Element => {
   else return <SmartDisplay />;
 };
 
-const isPosTesteLocked = (progresso: ProgressoEnum): boolean =>
+const isPosTesteLocked = (progresso: LessonStateEnum): boolean =>
   !(
     progresso == "POS_TESTE_RESPONDIDO" ||
     progresso == "GABARITO_PRETESTE_VISUALIZADO"
   );
 
-const getPosTesteIcon = (progresso: ProgressoEnum): JSX.Element => {
+const getPosTesteIcon = (progresso: LessonStateEnum): JSX.Element => {
   if (progresso == "POS_TESTE_RESPONDIDO") return <Check />;
   else if (progresso == "GABARITO_PRETESTE_VISUALIZADO")
     return <TipsAndUpdates />;

@@ -8,11 +8,11 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useAtom } from "jotai";
-import { editarRespostaPreTesteAtom } from "../atoms/preTesteRespostasAtom";
+import { editPreTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 import QuizProps from "../@types/QuizProps";
 
 export default function MultipleChoiceQuiz(props: QuizProps) {
-  const [, salvarResposta] = useAtom(editarRespostaPreTesteAtom);
+  const [, salvarResposta] = useAtom(editPreTesteAnswerAtom);
   const [alternativaSelecionada, setAlternativaSelecionada] =
     React.useState("");
   // Texto que fica acima do botão "Confirmar"

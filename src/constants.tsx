@@ -1,9 +1,9 @@
 import DefaultPage from "./@types/DefaultPage";
-import ProgressoEnum from "./@types/ProgressoEnum";
+import LessonStateEnum from "./@types/LessonStateEnum";
 import content from "./contents.json";
 import keys from "lodash/keys";
 
-export const StatesPossiveis: ProgressoEnum[] = [
+export const StatesPossiveis: LessonStateEnum[] = [
   "INTRO_LIDA",
   "PRETESTE_RESPONDIDO",
   "GABARITO_PRETESTE_VISUALIZADO",

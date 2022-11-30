@@ -7,11 +7,11 @@ import { Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import { DEFAULT_PAGES } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
-import ProgressoEnum from "../@types/ProgressoEnum";
+import LessonStateEnum from "../@types/LessonStateEnum";
 import {
-  EditarProgressoLicaoAction,
-  editarProgressoLicaoAtom,
-} from "../atoms/progressoLicaoAtom";
+  EditLessonStateAction,
+  editLessonStateAtom,
+} from "../atoms/lessonStateAtom";
 import { useAtom } from "jotai";
 import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
 import Intro from "./Tabs/Intro";
@@ -21,9 +21,9 @@ const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
 
 export default (): JSX.Element => {
   const [progresso, editarProgresso]: [
-    ProgressoEnum,
-    (update: EditarProgressoLicaoAction) => void
-  ] = useAtom(editarProgressoLicaoAtom);
+    LessonStateEnum,
+    (update: EditLessonStateAction) => void
+  ] = useAtom(editLessonStateAtom);
   const [paginaAtual, setPaginaAtual] = useState<DefaultPage>(DEFAULT_PAGES[0]);
   const [isGameRulesDialogOpen, setGameRulesDialogOpen] = useState(true);
 
