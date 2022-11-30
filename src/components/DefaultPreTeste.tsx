@@ -16,7 +16,6 @@ export default (props: { quiz: JSX.Element }) => {
           resposta depois da lição
         </Typography>
       </Alert>
-      {/* <ErrorRadios {...ConteudoPreTestes[0]} /> */}
       {props.quiz}
     </Container>
   );
