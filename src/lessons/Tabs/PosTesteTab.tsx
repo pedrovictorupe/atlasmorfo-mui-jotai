@@ -46,7 +46,8 @@ export default (props: {
         style={{
           height: "610px",
           borderWidth: 0,
-          marginBottom: 0
+          marginBottom: 0,
+          overflowY: "hidden",
         }}
       />
       <br />
