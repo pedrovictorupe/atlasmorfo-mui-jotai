@@ -19,6 +19,8 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
     useState<AnswerReviewState>("UNTRIGGERED");
   const [lessonState] = useAtom(lessonStateAtom);
 
+  console.log(answerReviewState);
+
   return (
     <>
       <PreTestePostConfirmDialog lessonState={lessonState} />
@@ -35,7 +37,7 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
           }}
         />
         <AnswerReviewDialog
-          open={answerReviewState == "CHECKING"}
+          answerReviewState={answerReviewState}
           setAnswerReviewState={setAnswerReviewState}
           setCurrentTab={setCurrentTab}
         />

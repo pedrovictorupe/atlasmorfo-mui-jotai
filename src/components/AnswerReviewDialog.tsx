@@ -6,7 +6,6 @@ import {
   Button,
 } from "@mui/material";
 import React from "react";
-import { useState } from "react";
 import { SelectedAnswerChip } from "./AnswerChips";
 import contents from "../contents.json";
 import slugify from "slugify";
@@ -18,21 +17,24 @@ import { preTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 import currentLessonAtom from "../atoms/currentLessonAtom";
 
 type IProps = {
-  open: boolean;
+  answerReviewState: AnswerReviewState;
   setAnswerReviewState: (newState: AnswerReviewState) => void;
   setCurrentTab: (nextTab: DefaultTab) => void;
 };
 
-export default ({ open, setAnswerReviewState, setCurrentTab }: IProps) => {
-  const [isAnswerReviewOpen, setAnswerReviewOpen] = useState(true);
+export default ({
+  answerReviewState,
+  setAnswerReviewState,
+  setCurrentTab,
+}: IProps) => {
   const [currentPreTesteAnswer] = useAtom(preTesteAnswerAtom);
   const setLessonState = useSetAtom(lessonStateAtom);
   const [currentLessonTitle] = useAtom(currentLessonAtom);
 
   return (
     <Dialog
-      open={open && isAnswerReviewOpen}
-      onClose={() => setAnswerReviewOpen(false)}
+      open={answerReviewState == "CHECKING"}
+      onClose={() => setAnswerReviewState("UNTRIGGERED")}
     >
       <DialogContent>
         <div
@@ -63,8 +65,6 @@ export default ({ open, setAnswerReviewState, setCurrentTab }: IProps) => {
           variant="outlined"
           color="success"
           onClick={() => {
-            setAnswerReviewOpen(false);
-
             if (
               currentPreTesteAnswer ===
               // @ts-ignore
