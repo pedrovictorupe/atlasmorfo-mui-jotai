@@ -8,11 +8,8 @@ import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import { DEFAULT_TABS } from "../constants";
 import DefaultTab from "../@types/DefaultPage";
 import LessonStateEnum from "../@types/LessonStateEnum";
-import {
-  EditLessonStateAction,
-  editLessonStateAtom,
-} from "../atoms/lessonStateAtom";
-import { useAtom } from "jotai";
+import { lessonStateAtom } from "../atoms/lessonStateAtom";
+import { useAtom, useSetAtom } from "jotai";
 import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
 import Intro from "./Tabs/IntroTab";
 import PosTesteTab from "./Tabs/PosTesteTab";
@@ -20,10 +17,7 @@ import PosTesteTab from "./Tabs/PosTesteTab";
 const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
 
 export default (): JSX.Element => {
-  const [lessonState, changeLessonState]: [
-    LessonStateEnum,
-    (update: EditLessonStateAction) => void
-  ] = useAtom(editLessonStateAtom);
+  const setLessonState = useSetAtom(lessonStateAtom);
   const [currentTab, setCurrentTab] = useState<DefaultTab>(DEFAULT_TABS[0]);
   const [isGameRulesDialogOpen, setGameRulesDialogOpen] = useState(true);
 
@@ -31,10 +25,7 @@ export default (): JSX.Element => {
 
   switch (currentTab) {
     case "INTRO":
-      currentTabComponent = Intro({
-        changeLessonState: changeLessonState,
-        setPaginaAtual: setCurrentTab,
-      });
+      currentTabComponent = <Intro setCurrentTab={setCurrentTab} />;
       break;
     case "PRE":
       currentTabComponent = (
@@ -43,10 +34,7 @@ export default (): JSX.Element => {
             <MultipleChoiceQuiz
               {...preTesteContents[LESSON_NAME]}
               onSubmit={() => {
-                changeLessonState({
-                  lessonTitle: "joao-e-as-etapas-da-hemostasia",
-                  state: "PRETESTE_RESPONDIDO",
-                });
+                setLessonState("PRETESTE_RESPONDIDO");
                 setCurrentTab("VIDEO");
               }}
             />
@@ -81,7 +69,6 @@ export default (): JSX.Element => {
       <DefaultBottomNavBar
         currentTab={DEFAULT_TABS.indexOf(currentTab)}
         setCurrentTab={(n: number) => setCurrentTab(DEFAULT_TABS[n])}
-        lessonState={lessonState}
       />
     </>
   );

@@ -10,36 +10,24 @@ import { useState } from "react";
 import { SelectedAnswerChip } from "./AnswerChips";
 import contents from "../contents.json";
 import slugify from "slugify";
-import {
-  EditLessonStateAction,
-  editLessonStateAtom,
-} from "../atoms/lessonStateAtom";
+import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import AnswerReviewState from "../@types/AnswerReviewState";
 import DefaultTab from "../@types/DefaultPage";
 import { useAtom, useSetAtom } from "jotai";
-import LessonStateEnum from "../@types/LessonStateEnum";
-import {
-  EditAnswersAction,
-  editPreTesteAnswerAtom,
-} from "../atoms/preTesteAnswersAtom";
+import { currentLessonPreTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
+import currentLessonAtom from "../atoms/currentLessonAtom";
 
 type IProps = {
   open: boolean;
-  lessonTitle: string;
-  selectedAnswer: string;
   setAnswerReviewState: (newState: AnswerReviewState) => void;
   setCurrentTab: (nextTab: DefaultTab) => void;
 };
 
-export default ({
-  open,
-  lessonTitle,
-  selectedAnswer,
-  setAnswerReviewState,
-  setCurrentTab,
-}: IProps) => {
+export default ({ open, setAnswerReviewState, setCurrentTab }: IProps) => {
   const [isAnswerReviewOpen, setAnswerReviewOpen] = useState(true);
-  const changeLessonState = useSetAtom(editLessonStateAtom);
+  const [currentPreTesteAnswer] = useAtom(currentLessonPreTesteAnswerAtom);
+  const setLessonState = useSetAtom(lessonStateAtom);
+  const [currentLessonTitle] = useAtom(currentLessonAtom);
 
   return (
     <Dialog
@@ -54,7 +42,7 @@ export default ({
         >
           Na seção anterior, você assinalou a seguinte alternativa:
           <br />
-          <SelectedAnswerChip lessonTitle={slugify(lessonTitle)} />
+          <SelectedAnswerChip lessonTitle={slugify(currentLessonTitle)} />
           <br />
           Com os conhecimentos que você acabou de obter, deseja alterar sua
           resposta?
@@ -67,7 +55,7 @@ export default ({
           }}
         >
           <strong>Enunciado:</strong> {/* @ts-ignore */}
-          {contents[slugify(lessonTitle)].pergunta}
+          {contents[slugify(currentLessonTitle)].pergunta}
         </Alert>
       </DialogContent>
       <DialogActions>
@@ -78,8 +66,9 @@ export default ({
             setAnswerReviewOpen(false);
 
             if (
+              currentPreTesteAnswer ===
               // @ts-ignore
-              selectedAnswer === contents[slugify(lessonTitle)].respostaCorreta
+              contents[slugify(currentLessonTitle)].respostaCorreta
             ) {
               setAnswerReviewState("CORRECT");
             } else {
@@ -92,10 +81,7 @@ export default ({
         <Button
           color="error"
           onClick={() => {
-            changeLessonState({
-              lessonTitle: slugify(lessonTitle),
-              state: "MUDANDO_RESPOSTA",
-            });
+            setLessonState("MUDANDO_RESPOSTA");
             setCurrentTab("PRE");
           }}
         >

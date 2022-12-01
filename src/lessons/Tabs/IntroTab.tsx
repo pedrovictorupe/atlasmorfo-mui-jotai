@@ -3,47 +3,47 @@ import { Container, Grid } from "@mui/material";
 import DefaultTab from "../../@types/DefaultPage";
 import Image from "mui-image";
 import Paragraph from "../../components/Paragraph";
-import { EditLessonStateAction } from "../../atoms/lessonStateAtom";
 import PageTitle from "../../components/PageTitle";
 import NextTabButton from "../../components/NextTabButton";
+import { lessonStateAtom } from "../../atoms/lessonStateAtom";
+import { useSetAtom } from "jotai";
 
 export default ({
-  changeLessonState,
-  setPaginaAtual,
+  setCurrentTab: setPaginaAtual,
 }: {
-  changeLessonState: (update: EditLessonStateAction) => void;
-  setPaginaAtual: React.Dispatch<React.SetStateAction<DefaultTab>>;
-}): JSX.Element | null => (
-  <>
-    <Container sx={{ overflowY: "auto", padding: 3 }}>
-      <PageTitle>
-        Geração <br /> Methiolate
-      </PageTitle>
-      <Grid container direction="column" alignItems="center">
-        <Image
-          src="joelho-ralado-COPYRIGHT.jpg"
-          width="90%"
-          height="auto"
-          // @ts-ignore
-          sx={{ p: 2, maxWidth: "600px" }}
-        ></Image>
-        <Paragraph fontStyle={"italic"}>
-          Todo mundo já ralou o joelho alguma vez na vida, não é?
-        </Paragraph>
-      </Grid>
-      <Content />
-      <NextTabButton
-        onClick={() => {
-          changeLessonState({
-            lessonTitle: "joao-e-as-etapas-da-hemostasia",
-            state: "INTRO_LIDA",
-          });
-          setPaginaAtual("PRE");
-        }}
-      />
-    </Container>
-  </>
-);
+  setCurrentTab: (nextTab: DefaultTab) => void;
+}): JSX.Element | null => {
+  const setLessonState = useSetAtom(lessonStateAtom);
+
+  return (
+    <>
+      <Container sx={{ overflowY: "auto", padding: 3 }}>
+        <PageTitle>
+          Geração <br /> Methiolate
+        </PageTitle>
+        <Grid container direction="column" alignItems="center">
+          <Image
+            src="./atlasmorfo-mui-jotai/joelho-ralado-COPYRIGHT.jpg"
+            width="90%"
+            height="auto"
+            // @ts-ignore
+            sx={{ p: 2, maxWidth: "600px" }}
+          ></Image>
+          <Paragraph fontStyle={"italic"}>
+            Todo mundo já ralou o joelho alguma vez na vida, não é?
+          </Paragraph>
+        </Grid>
+        <Content />
+        <NextTabButton
+          onClick={() => {
+            setLessonState("INTRO_LIDA");
+            setPaginaAtual("PRE");
+          }}
+        />
+      </Container>
+    </>
+  );
+};
 
 const Content = ({}) => {
   return (

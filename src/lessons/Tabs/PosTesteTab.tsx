@@ -3,9 +3,8 @@ import { blue, green } from "@mui/material/colors";
 import { useSetAtom } from "jotai";
 import React, { useState } from "react";
 import slugify from "slugify";
-import DefaultTab from "../../@types/DefaultPage";
-import { editLessonStateAtom } from "../../atoms/lessonStateAtom";
-import CorrectAnswerDialog from "../../components/CorrectAnswerDialog";
+import LessonStateEnum from "../../@types/LessonStateEnum";
+import { lessonStateAtom } from "../../atoms/lessonStateAtom";
 import DefaultButton from "../../components/DefaultButton";
 import DefaultDarkDialog from "../../components/DefaultDarkDialog";
 import DefaultDialog from "../../components/DefaultDarkDialog";
@@ -16,7 +15,7 @@ export default (props: {
   setGameRulesDialogOpen: (arg: boolean) => void;
 }): JSX.Element => {
   const [hasAnsweredCorrectly, setHasAnsweredCorrectly] = useState(false);
-  const editLessonState = useSetAtom(editLessonStateAtom);
+  const setLessonState = useSetAtom(lessonStateAtom);
 
   return (
     <div
@@ -36,7 +35,7 @@ export default (props: {
             {contents[
               "joao-e-as-etapas-da-hemostasia"
             ].abaPosTeste.dialogoExplicatorio.paragrafos.map((paragraph) => (
-              <ListItem>{paragraph}</ListItem>
+              <ListItem key={paragraph.slice(0, 5)}>{paragraph}</ListItem>
             ))}
           </List>
         }
@@ -58,10 +57,7 @@ export default (props: {
             slugify(e.target.value, { lower: true, trim: true }) == "fibrina"
           ) {
             setHasAnsweredCorrectly(true);
-            editLessonState({
-              lessonTitle: LESSON_TITLE,
-              state: "POS_TESTE_RESPONDIDO",
-            });
+            setLessonState("POS_TESTE_RESPONDIDO");
           }
         }}
         sx={{ m: 4 }}
@@ -80,5 +76,3 @@ export default (props: {
     </div>
   );
 };
-
-const LESSON_TITLE = "joao-e-as-etapas-da-hemostasia";

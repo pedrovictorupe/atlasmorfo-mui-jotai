@@ -128,7 +128,7 @@ const sumarioDrawer = (setCurrentLesson: any) => (
 
 const getReactComponent = (currentLesson: string): React.ReactNode => {
   for (let i = 0; i < lessonTitleToComponent.length; i++) {
-    if (lessonTitleToComponent[i].slugifiedLessonName == currentLesson)
+    if (lessonTitleToComponent[i].slugifiedLessonTitle == currentLesson)
       return lessonTitleToComponent[i].element;
   }
 };

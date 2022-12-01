@@ -1,10 +1,6 @@
-import { useAtom, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import React from "react";
-import LessonStateEnum from "../@types/LessonStateEnum";
-import {
-  EditLessonStateAction,
-  editLessonStateAtom,
-} from "../atoms/lessonStateAtom";
+import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import DefaultDialog from "./DefaultDarkDialog";
 
 export default (props: {
@@ -13,18 +9,14 @@ export default (props: {
   title: string;
   content: JSX.Element;
   backgroundDarkColor: string;
-  lessonTitle: string;
 }) => {
-  const changeLessonState = useSetAtom(editLessonStateAtom);
+  const changeLessonState = useSetAtom(lessonStateAtom);
 
   return (
     <DefaultDialog
       open={props.open}
       onClose={() => {
-        changeLessonState({
-          lessonTitle: props.lessonTitle,
-          state: "GABARITO_PRETESTE_VISUALIZADO",
-        });
+        changeLessonState("GABARITO_PRETESTE_VISUALIZADO");
         props.onClose();
       }}
       title={props.title}

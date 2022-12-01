@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useAtom } from "jotai";
 import React from "react";
-import { editLessonStateAtom } from "../atoms/lessonStateAtom";
+import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import SearchBar from "./SearchBar";
 
 export type ScaffoldDrawerProps = {
@@ -25,7 +25,7 @@ export default ({
   drawerItems,
   onItemClicked,
 }: ScaffoldDrawerProps) => {
-  const [lessonState] = useAtom(editLessonStateAtom);
+  const [lessonState] = useAtom(lessonStateAtom);
 
   return (
     <>

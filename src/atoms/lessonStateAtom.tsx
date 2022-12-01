@@ -6,24 +6,19 @@ import LessonStateEnum, { LessonStateDefault } from "../@types/LessonStateEnum";
 import { assignToAllProperties } from "../utils";
 import currentLessonAtom from "./currentLessonAtom";
 
-const lessonStateAtom = atomWithStorage(
+const lessonTitleToStateAtom = atomWithStorage(
   "lessonState",
   // Cria um mapa/dicionário associando o nome de cada lição com o lessonState do usuário para aquela lição (ex. se ele já respondeu o pré-teste, se ele já viu o gabarito etc.)
   assignToAllProperties(content, LessonStateDefault)
 );
 
-export type EditLessonStateAction = {
-  lessonTitle: string;
-  state: LessonStateEnum;
-};
-
-export const editLessonStateAtom = atom(
-  (get: any) => get(lessonStateAtom)[get(currentLessonAtom)],
-  (get: any, set: any, { lessonTitle, state }: EditLessonStateAction) => {
+export const lessonStateAtom = atom(
+  (get: any) => get(lessonTitleToStateAtom)[get(currentLessonAtom)],
+  (get: any, set: any, nextState: LessonStateEnum) => {
     let respostas = {
-      ...get(lessonStateAtom),
-      ...{ [slugify(lessonTitle)]: state },
+      ...get(lessonTitleToStateAtom),
+      ...{ [get(currentLessonAtom)]: nextState },
     };
-    set(lessonStateAtom, respostas);
+    set(lessonTitleToStateAtom, respostas);
   }
 );

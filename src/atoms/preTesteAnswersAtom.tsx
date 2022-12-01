@@ -1,6 +1,7 @@
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import slugify from "slugify";
+import currentLessonAtom from "./currentLessonAtom";
 
 /* Atom para salvar as respostas que o usuário submeter nos pré-testes.*/
 export const preTesteAnswersAtom = atomWithStorage(
@@ -18,8 +19,7 @@ export type EditAnswersAction = {
 A ideia é que a resposta só seja checada depois do usuário assistir à lição.
 Como a intenção é que o lessonState do usuário também fique salvo em forma de cookie (já que o site é estático e não há backend), então o localStorage serve aqui simultaneamente como global state e database */
 export const editPreTesteAnswerAtom = atom(
-  (get: any) => (lessonTitle: string) =>
-    get(preTesteAnswersAtom)[slugify(lessonTitle)],
+  null,
   (get: any, set: any, { lessonTitle, resposta }: EditAnswersAction) => {
     let respostas = {
       ...get(preTesteAnswersAtom),
@@ -27,4 +27,9 @@ export const editPreTesteAnswerAtom = atom(
     };
     set(preTesteAnswersAtom, respostas);
   }
+);
+
+export const currentLessonPreTesteAnswerAtom = atom(
+  // @ts-ignore
+  (get) => get(preTesteAnswersAtom)[get(currentLessonAtom)]
 );

@@ -19,11 +19,10 @@ export default ({ open, setCurrentTab, lessonTitle }: IProps) => {
         <>
           A resposta correta era
           <br />
-          <CorrectAnswerChip lessonTitle={lessonTitle} />
+          <CorrectAnswerChip />
         </>
       }
       backgroundDarkColor={yellow[800]}
-      lessonTitle={lessonTitle}
     />
   );
 };

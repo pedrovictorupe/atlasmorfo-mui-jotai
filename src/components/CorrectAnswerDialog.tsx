@@ -22,7 +22,6 @@ export default ({ open, setCurrentTab }: IProps) => {
         </>
       }
       backgroundDarkColor={green[700]}
-      lessonTitle="joao-e-as-etapas-da-hemostasia"
     />
   );
 };
