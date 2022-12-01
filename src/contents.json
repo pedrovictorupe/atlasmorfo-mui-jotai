@@ -25,7 +25,8 @@
           "- A coloração amarela indica que aquela letra ESTÁ PRESENTE na palavra secreta, mas NÃO NAQUELA POSIÇÃO",
           "- Já a coloração verde indica que você ACERTOU a letra presente naquela posição da palavra secreta.",
           "- FIQUE ATENTO: Se você acertar, você ainda precisará inserir a palavra descoberta no campo abaixo do jogo para prosseguir.",
-          "Boa sorte! 😊"
+          "Boa sorte! 😊",
+          "PS: Você pode rever as regras a qualquer momento clicando no botão abaixo do teclado do jogo"
         ]
       }
     }

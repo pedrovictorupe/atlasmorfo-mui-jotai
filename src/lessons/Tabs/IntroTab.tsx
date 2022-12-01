@@ -50,20 +50,19 @@ const Content = ({}) => {
     <>
       <Paragraph>
         Seja caindo da bicicleta, seja cortando-se enquanto cozinha... o fato é:
-        machucar-se é um acontecimento comum na vida de todo mundo. Tão comum
-        que é bem possível que você nunca tenha dado muita bola quando acontece,
-        não é? "É só pegar um curativo e vida que segue..."
+        machucar-se parece algo banal. "É só colar um Band-Aid e vida que
+        segue..."
       </Paragraph>
       <Paragraph>
-        No entanto, se você parar por um segundo para se aprofundar, você logo
-        descobrirá toda a complexidade que esse fenômeno tem para oferecer.
+        No entanto, se há algo que as Ciências Biológicas podem nos ensinar, é
+        que a resposta do organismo ao ferimento está longe de ser algo
+        corriqueiro.
       </Paragraph>
       <Paragraph>
-        Desde a resposta inicial rápida dos vários tipos celulares do organismo
-        até a resolução definitiva do coágulo, a fisiologia das lesões
-        superficiais é um mundo à parte. Por isso, eu te convido a uma pequena
-        jornada por esse universo sob as lentes das diversas ciências
-        biológicas.
+        Desde a resposta inicial dos vários tipos celulares até a resolução
+        definitiva do coágulo, a fisiologia das lesões superficiais é um mundo à
+        parte. Por isso, a gente te convida a aprender um pouco mais sobre esse
+        tópico de uma maneira lúdica e interativa.
       </Paragraph>
       <Paragraph>
         A proposta é simples: cada lição contará com uma introdução inicial
@@ -72,22 +71,21 @@ const Content = ({}) => {
         videogame.
       </Paragraph>
       <Paragraph>
-        Porém, não será o <i>app</i> que irá checar a resposta...{" "}
-        <strong>será você mesmo</strong>. Em outras palavras, com o conhecimento
-        que adquirir assistindo ao vídeo da lição, a plataforma lhe dará a
-        oportunidade de revisar sua resposta antes de ir para a avaliação final.
-        Dessa forma, você terá a chance de ver o quanto você aprendeu e também
-        de consumir a aula de uma maneira mais ativa, caçando pontos-chave que
-        ajudem a responder a questão.
+        Porém, há um detalhe: será <i>você</i>, e não o app, quem corrigirá essa
+        atividade. Funciona da seguinte forma: depois de responder ao pré-teste,
+        você terá acesso a uma videoaula sobre o tema; com o conhecimento que
+        você adquirir nessa etapa, a plataforma lhe dará a oportunidade de
+        revisar sua resposta antes de ir para a avaliação final. Dessa forma,
+        você terá a chance de ver o quanto você aprendeu e também de consumir a
+        aula de uma maneira mais ativa, caçando pontos-chave que ajudem a
+        responder a questão.
       </Paragraph>
       <Paragraph>
         Por fim, no final de cada lição, haverá outro teste, porém quase sempre
-        com uma proposta mais lúdica. As possibilidades vão desde uma partida de
-        TERMO com algum jargão mencionado no vídeo até um jogo da memória de
-        imagens e definições sobre o tópico. Isso você poderá descobrir com o
-        progredir das lições
+        com uma proposta mais lúdica e relacionado a pontos mais específicos do
+        vídeo.
       </Paragraph>
-      <Paragraph>No mais, é isto! Bons estudos e divirta-se!</Paragraph>
+      <Paragraph>É isto! Bons estudos e divirta-se!</Paragraph>
     </>
   );
 };
