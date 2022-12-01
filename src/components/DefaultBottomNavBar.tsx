@@ -63,8 +63,8 @@ const getPreTesteIcon = (lessonState: LessonStateEnum): JSX.Element => {
   else return <Check />;
 };
 
-const isVideoTabLocked = (lessonState: string | undefined): boolean =>
-  lessonState == undefined;
+const isVideoTabLocked = (lessonState: LessonStateEnum | undefined): boolean =>
+  lessonState == undefined || lessonState == "INTRO_LIDA";
 
 const getVideoIcon = (lessonState: LessonStateEnum): JSX.Element => {
   if (isVideoTabLocked(lessonState)) return <Lock />;
