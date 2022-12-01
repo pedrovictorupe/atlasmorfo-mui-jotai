@@ -1,10 +1,3 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogActions,
-  Button,
-  Alert,
-} from "@mui/material";
 import { useAtom } from "jotai";
 import React, { useState } from "react";
 import DefaultTab from "../../@types/DefaultPage";
@@ -17,21 +10,17 @@ import {
   EditLessonStateAction,
   editLessonStateAtom,
 } from "../../atoms/lessonStateAtom";
-import {
-  SelectedAnswerChip,
-  CorrectAnswerChip,
-} from "../../components/AnswerChips";
-import AnswerFeedback from "../../components/AnswerFeedback";
 import NextTabButton from "../../components/NextTabButton";
 import PageTitle from "../../components/PageTitle";
 import Paragraph from "../../components/Paragraph";
-import contents from "../../contents.json";
 import PreTestePostConfirmDialog from "../../components/PreTestePostConfirmDialog";
 import IncorrectAnswerDialog from "../../components/IncorrectAnswerDialog";
 import CorrectAnswerDialog from "../../components/CorrectAnswerDialog";
 import AnswerReviewState from "../../@types/AnswerReviewState";
 import AnswerReviewDialog from "../../components/AnswerReviewDialog";
 import YoutubeVideo from "../../components/YoutubeVideo";
+import contents from "../../contents.json";
+import { map } from "lodash";
 
 export default ({ setCurrentTab }: IProps): JSX.Element | null => {
   const [answerReviewState, setAnswerReviewState] =
@@ -40,7 +29,7 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
     (lessonTitle: string) => string,
     (update: EditAnswersAction) => void
   ] = useAtom(editPreTesteAnswerAtom);
-  const [lessonState, changeLessonState]: [
+  const [lessonState]: [
     LessonStateEnum,
     (update: EditLessonStateAction) => void
   ] = useAtom(editLessonStateAtom);
@@ -50,21 +39,12 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
       <PreTestePostConfirmDialog lessonState={lessonState} />
       <div style={{ padding: "5vw" }}>
         <PageTitle>As crônicas de Joãozinho</PageTitle>
-        <Paragraph>
-          Chegou a hora de você conhecer nosso protagonista!
-        </Paragraph>
-        <Paragraph>
-          Joãozinho é um menino travesso que será o cobaia perfeito para a nossa
-          aventura. Ele tem uma certa propensão a não olhar para onde anda,
-          então é bem provável que ele ostente um machucão ou outro que a gente
-          possa acompanhar para o nosso projeto.
-        </Paragraph>
-        <Paragraph>
-          Dê uma espiadinha aqui no vídeo que preparamos para você e aproveite
-          para tentar encontrar a resposta para o quiz anterior.
-        </Paragraph>
+        {contents["joao-e-as-etapas-da-hemostasia"].abaVideo.paragrafos.map(
+          (paragraph) => (
+            <Paragraph>{paragraph}</Paragraph>
+          )
+        )}
         <Paragraph />
-        {/* Proporção: width="560" height="315" (7:9)*/}
         <YoutubeVideo src="https://www.youtube.com/embed/IGmYTjpWSa4" />
         <NextTabButton
           onClick={() => {
