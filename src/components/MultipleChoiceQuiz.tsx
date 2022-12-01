@@ -8,7 +8,7 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useAtom, useSetAtom } from "jotai";
-import { editPreTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
+import { preTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 
 export default function MultipleChoiceQuiz(props: {
   onSubmit: () => void;
@@ -16,7 +16,7 @@ export default function MultipleChoiceQuiz(props: {
   pergunta: string;
   alternativas: string[];
 }) {
-  const saveAnswer = useSetAtom(editPreTesteAnswerAtom);
+  const saveAnswer = useSetAtom(preTesteAnswerAtom);
   const [selectedOption, setSelectedOption] = React.useState("");
   const [tip, setTip] = React.useState("Escolha somente uma alternativa");
 
@@ -30,10 +30,7 @@ export default function MultipleChoiceQuiz(props: {
 
     props.onSubmit();
 
-    saveAnswer({
-      lessonTitle: props.title,
-      resposta: selectedOption,
-    });
+    saveAnswer(selectedOption);
   };
 
   return (

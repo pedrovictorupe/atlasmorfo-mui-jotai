@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import React, { useState } from "react";
 import DefaultTab from "../../@types/DefaultPage";
-import { currentLessonPreTesteAnswerAtom } from "../../atoms/preTesteAnswersAtom";
+import { preTesteAnswerAtom } from "../../atoms/preTesteAnswersAtom";
 import { lessonStateAtom } from "../../atoms/lessonStateAtom";
 import NextTabButton from "../../components/NextTabButton";
 import PageTitle from "../../components/PageTitle";
@@ -17,7 +17,6 @@ import contents from "../../contents.json";
 export default ({ setCurrentTab }: IProps): JSX.Element | null => {
   const [answerReviewState, setAnswerReviewState] =
     useState<AnswerReviewState>("UNTRIGGERED");
-  const currentPreTesteAnswer = useAtom(currentLessonPreTesteAnswerAtom);
   const [lessonState] = useAtom(lessonStateAtom);
 
   return (

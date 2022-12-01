@@ -4,9 +4,7 @@ import contents from "../contents.json";
 import slugify from "slugify";
 import { useAtom } from "jotai";
 import {
-  currentLessonPreTesteAnswerAtom,
-  EditAnswersAction,
-  editPreTesteAnswerAtom,
+  preTesteAnswerAtom,
 } from "../atoms/preTesteAnswersAtom";
 import currentLessonAtom from "../atoms/currentLessonAtom";
 
@@ -26,7 +24,7 @@ export const CorrectAnswerChip = () => {
 };
 
 export const SelectedAnswerChip = () => {
-  const currentPreTesteAnswer = useAtom(currentLessonPreTesteAnswerAtom);
+  const currentPreTesteAnswer = useAtom(preTesteAnswerAtom);
 
   return (
     <Chip

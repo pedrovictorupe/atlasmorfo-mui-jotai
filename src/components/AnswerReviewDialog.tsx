@@ -14,7 +14,7 @@ import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import AnswerReviewState from "../@types/AnswerReviewState";
 import DefaultTab from "../@types/DefaultPage";
 import { useAtom, useSetAtom } from "jotai";
-import { currentLessonPreTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
+import { preTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 import currentLessonAtom from "../atoms/currentLessonAtom";
 
 type IProps = {
@@ -25,7 +25,7 @@ type IProps = {
 
 export default ({ open, setAnswerReviewState, setCurrentTab }: IProps) => {
   const [isAnswerReviewOpen, setAnswerReviewOpen] = useState(true);
-  const [currentPreTesteAnswer] = useAtom(currentLessonPreTesteAnswerAtom);
+  const [currentPreTesteAnswer] = useAtom(preTesteAnswerAtom);
   const setLessonState = useSetAtom(lessonStateAtom);
   const [currentLessonTitle] = useAtom(currentLessonAtom);
 
