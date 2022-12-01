@@ -25,7 +25,7 @@ export const CorrectAnswerChip = () => {
   );
 };
 
-export const SelectedAnswerChip = (props: { lessonTitle: string }) => {
+export const SelectedAnswerChip = () => {
   const currentPreTesteAnswer = useAtom(currentLessonPreTesteAnswerAtom);
 
   return (

@@ -42,7 +42,7 @@ export default ({ open, setAnswerReviewState, setCurrentTab }: IProps) => {
         >
           Na seção anterior, você assinalou a seguinte alternativa:
           <br />
-          <SelectedAnswerChip lessonTitle={slugify(currentLessonTitle)} />
+          <SelectedAnswerChip />
           <br />
           Com os conhecimentos que você acabou de obter, deseja alterar sua
           resposta?
