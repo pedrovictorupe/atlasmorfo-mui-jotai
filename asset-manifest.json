@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/atlasmorfo-mui-jotai/static/js/main.0d806b5b.js",
+    "main.js": "/atlasmorfo-mui-jotai/static/js/main.c5be1509.js",
     "index.html": "/atlasmorfo-mui-jotai/index.html",
-    "main.0d806b5b.js.map": "/atlasmorfo-mui-jotai/static/js/main.0d806b5b.js.map"
+    "main.c5be1509.js.map": "/atlasmorfo-mui-jotai/static/js/main.c5be1509.js.map"
   },
   "entrypoints": [
-    "static/js/main.0d806b5b.js"
+    "static/js/main.c5be1509.js"
   ]
 }
