@@ -1,3 +1,4 @@
+import { Check } from "@mui/icons-material";
 import {
   Toolbar,
   List,
@@ -7,8 +8,11 @@ import {
   ListItemButton,
   Divider,
   Button,
+  ListItemIcon,
 } from "@mui/material";
+import { useAtom } from "jotai";
 import React from "react";
+import { editLessonStateAtom } from "../atoms/lessonStateAtom";
 import SearchBar from "./SearchBar";
 
 export type ScaffoldDrawerProps = {
@@ -20,44 +24,55 @@ export default ({
   drawerTitle,
   drawerItems,
   onItemClicked,
-}: ScaffoldDrawerProps) => (
-  <>
-    <Toolbar>{<SearchBar />}</Toolbar>
-    <List>
-      <ListItem>
-        <ListItemText>
-          <Typography variant="body1" color="primary.main">
-            {drawerTitle}
-          </Typography>
-        </ListItemText>
-      </ListItem>
-      {drawerItems.map((item) => (
-        <ListItem key={`${item.slugified}`} disablePadding>
-          <ListItemButton
+}: ScaffoldDrawerProps) => {
+  const [lessonState] = useAtom(editLessonStateAtom);
+
+  return (
+    <>
+      <Toolbar>{<SearchBar />}</Toolbar>
+      <List>
+        <ListItem>
+          <ListItemText>
+            <Typography variant="body1" color="primary.main">
+              {drawerTitle}
+            </Typography>
+          </ListItemText>
+        </ListItem>
+        {drawerItems.map((item) => (
+          <ListItem key={`${item.slugified}`} disablePadding>
+            <ListItemButton
+              onClick={() => {
+                onItemClicked(item.slugified);
+              }}
+            >
+              {lessonState == "POS_TESTE_RESPONDIDO" ? (
+                <ListItemIcon>
+                  <Check />
+                </ListItemIcon>
+              ) : undefined}
+              <ListItemText
+                sx={{ ml: 1 }}
+                disableTypography
+                primary={
+                  <Typography variant="overline">{item.text}</Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+        <Divider />
+        <ListItem>
+          <Button
+            variant="outlined"
             onClick={() => {
-              onItemClicked(item.slugified);
+              localStorage.clear();
+              window.location.reload();
             }}
           >
-            <ListItemText
-              sx={{ ml: 1 }}
-              disableTypography
-              primary={<Typography variant="overline">{item.text}</Typography>}
-            />
-          </ListItemButton>
+            Reiniciar progresso
+          </Button>
         </ListItem>
-      ))}
-      <Divider />
-      <ListItem>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            localStorage.clear();
-            window.location.reload();
-          }}
-        >
-          Reiniciar progresso
-        </Button>
-      </ListItem>
-    </List>
-  </>
-);
+      </List>
+    </>
+  );
+};
