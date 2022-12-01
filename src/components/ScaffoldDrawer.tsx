@@ -74,7 +74,9 @@ export default ({
         </ListItem>
         <ListItem>
           <ListItemText sx={{ textAlign: "center" }}>
-            <Typography variant="overline">Versão 1.0.0 (01/12/22)</Typography>
+            <Typography variant="overline">
+              Versão 1.0.1-c1 (01/12/22)
+            </Typography>
           </ListItemText>
         </ListItem>
       </List>

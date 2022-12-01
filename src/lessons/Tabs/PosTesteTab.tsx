@@ -1,13 +1,11 @@
-import { List, ListItem, TextField } from "@mui/material";
+import { Button, List, ListItem, TextField } from "@mui/material";
 import { blue, green } from "@mui/material/colors";
 import { useSetAtom } from "jotai";
 import React, { useState } from "react";
 import slugify from "slugify";
-import LessonStateEnum from "../../@types/LessonStateEnum";
 import { lessonStateAtom } from "../../atoms/lessonStateAtom";
 import DefaultButton from "../../components/DefaultButton";
 import DefaultDarkDialog from "../../components/DefaultDarkDialog";
-import DefaultDialog from "../../components/DefaultDarkDialog";
 import contents from "../../contents.json";
 
 export default (props: {
@@ -25,7 +23,7 @@ export default (props: {
         top: "-106px",
       }}
     >
-      <DefaultDialog
+      <DefaultDarkDialog
         open={props.isGameRulesDialogOpen}
         onClose={() => props.setGameRulesDialogOpen(false)}
         title={"Agora é hora de TERMO!"}
@@ -38,6 +36,14 @@ export default (props: {
               <ListItem key={paragraph.slice(0, 5)}>{paragraph}</ListItem>
             ))}
           </List>
+        }
+        actions={
+          <Button
+            onClick={() => props.setGameRulesDialogOpen(false)}
+            sx={{ color: "#fff" }}
+          >
+            Ok
+          </Button>
         }
       />
       <iframe

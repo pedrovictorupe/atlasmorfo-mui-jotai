@@ -3,6 +3,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogContentText,
+  DialogActions,
 } from "@mui/material";
 import React from "react";
 
@@ -11,6 +12,7 @@ export default (props: {
   onClose: () => void;
   title: string;
   content: JSX.Element | string;
+  actions?: JSX.Element;
   backgroundDarkColor: string;
 }) => (
   <Dialog
@@ -24,5 +26,6 @@ export default (props: {
     <DialogContent>
       <DialogContentText color="#fff">{props.content}</DialogContentText>
     </DialogContent>
+    {props.actions ? <DialogActions>{props.actions}</DialogActions> : undefined}
   </Dialog>
 );
