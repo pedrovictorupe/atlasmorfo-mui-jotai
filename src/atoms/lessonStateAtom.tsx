@@ -7,8 +7,8 @@ import { assignToAllProperties } from "../utils";
 import currentLessonAtom from "./currentLessonAtom";
 
 const lessonStateAtom = atomWithStorage(
-  "progresso",
-  // Cria um mapa/dicionário associando o nome de cada lição com o progresso do usuário para aquela lição (ex. se ele já respondeu o pré-teste, se ele já viu o gabarito etc.)
+  "lessonState",
+  // Cria um mapa/dicionário associando o nome de cada lição com o lessonState do usuário para aquela lição (ex. se ele já respondeu o pré-teste, se ele já viu o gabarito etc.)
   assignToAllProperties(content, LessonStateDefault)
 );
 

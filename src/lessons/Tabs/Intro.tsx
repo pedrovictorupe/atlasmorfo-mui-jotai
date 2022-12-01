@@ -8,10 +8,10 @@ import PageTitle from "../../components/PageTitle";
 import NextTabButton from "../../components/NextTabButton";
 
 export default ({
-  editarProgresso,
+  changeLessonState,
   setPaginaAtual,
 }: {
-  editarProgresso: (update: EditLessonStateAction) => void;
+  changeLessonState: (update: EditLessonStateAction) => void;
   setPaginaAtual: React.Dispatch<React.SetStateAction<DefaultPage>>;
 }): JSX.Element | null => (
   <>
@@ -73,7 +73,7 @@ export default ({
       <Paragraph>No mais, é isto! Bons estudos e divirta-se!</Paragraph>
       <NextTabButton
         onClick={() => {
-          editarProgresso({
+          changeLessonState({
             lessonTitle: "joao-e-as-etapas-da-hemostasia",
             state: "INTRO_LIDA",
           });

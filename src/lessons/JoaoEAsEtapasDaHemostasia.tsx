@@ -5,7 +5,7 @@ import DefaultPreTeste from "../components/DefaultPreTeste";
 import preTesteContents from "../contents.json";
 import { Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
-import { DEFAULT_PAGES } from "../constants";
+import { DEFAULT_TABS } from "../constants";
 import DefaultPage from "../@types/DefaultPage";
 import LessonStateEnum from "../@types/LessonStateEnum";
 import {
@@ -20,31 +20,34 @@ import PosTesteTab from "./Tabs/PosTesteTab";
 const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
 
 export default (): JSX.Element => {
-  const [progresso, editarProgresso]: [
+  const [lessonState, changeLessonState]: [
     LessonStateEnum,
     (update: EditLessonStateAction) => void
   ] = useAtom(editLessonStateAtom);
-  const [paginaAtual, setPaginaAtual] = useState<DefaultPage>(DEFAULT_PAGES[0]);
+  const [currentTab, setCurrentTab] = useState<DefaultPage>(DEFAULT_TABS[0]);
   const [isGameRulesDialogOpen, setGameRulesDialogOpen] = useState(true);
 
-  let currentTab: JSX.Element | null = null;
+  let currentTabComponent: JSX.Element | null = null;
 
-  switch (paginaAtual) {
+  switch (currentTab) {
     case "INTRO":
-      currentTab = Intro({ editarProgresso, setPaginaAtual });
+      currentTabComponent = Intro({
+        changeLessonState: changeLessonState,
+        setPaginaAtual: setCurrentTab,
+      });
       break;
     case "PRE":
-      currentTab = (
+      currentTabComponent = (
         <DefaultPreTeste
           quiz={
             <MultipleChoiceQuiz
               {...preTesteContents[LESSON_NAME]}
               onSubmit={() => {
-                editarProgresso({
+                changeLessonState({
                   lessonTitle: "joao-e-as-etapas-da-hemostasia",
                   state: "PRETESTE_RESPONDIDO",
                 });
-                setPaginaAtual("VIDEO");
+                setCurrentTab("VIDEO");
               }}
             />
           }
@@ -52,10 +55,10 @@ export default (): JSX.Element => {
       );
       break;
     case "VIDEO":
-      currentTab = <VideoTab setPaginaAtual={setPaginaAtual} />;
+      currentTabComponent = <VideoTab setCurrentTab={setCurrentTab} />;
       break;
     case "POS":
-      currentTab = (
+      currentTabComponent = (
         <PosTesteTab
           isGameRulesDialogOpen={isGameRulesDialogOpen}
           setGameRulesDialogOpen={setGameRulesDialogOpen}
@@ -73,12 +76,12 @@ export default (): JSX.Element => {
           p: 0,
         }}
       >
-        {currentTab}
+        {currentTabComponent}
       </Container>
       <DefaultBottomNavBar
-        currentTab={DEFAULT_PAGES.indexOf(paginaAtual)}
-        setCurrentTab={(n: number) => setPaginaAtual(DEFAULT_PAGES[n])}
-        progresso={progresso}
+        currentTab={DEFAULT_TABS.indexOf(currentTab)}
+        setCurrentTab={(n: number) => setCurrentTab(DEFAULT_TABS[n])}
+        lessonState={lessonState}
       />
     </>
   );

@@ -31,11 +31,9 @@ export default (props: any) => {
       <CssBaseline />
       <AppBar
         variant="outlined"
-        // MUI reclama caso variant-outline seja usada com uma elevation diferente de 0
         elevation={0}
         position="fixed"
         sx={APP_BAR_STYLES}
-        // color="transparent"
       >
         <Toolbar>
           <Grid container justifyContent="space-between">

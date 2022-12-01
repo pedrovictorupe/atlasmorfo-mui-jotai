@@ -1,6 +1,6 @@
 import DefaultPage from "./@types/DefaultPage";
 
-export const DEFAULT_PAGES: DefaultPage[] = ["INTRO", "PRE", "VIDEO", "POS"];
+export const DEFAULT_TABS: DefaultPage[] = ["INTRO", "PRE", "VIDEO", "POS"];
 
 export const DRAWER_WIDTH = 240;
 

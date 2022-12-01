@@ -16,9 +16,8 @@ export type EditAnswersAction = {
 
 /* Atom para salvar a resposta do usuário no localStorage.
 A ideia é que a resposta só seja checada depois do usuário assistir à lição.
-Como a intenção é que o progresso do usuário também fique salvo em forma de cookie (já que o site é estático e não há backend), então o localStorage serve aqui simultaneamente como global state e database */
+Como a intenção é que o lessonState do usuário também fique salvo em forma de cookie (já que o site é estático e não há backend), então o localStorage serve aqui simultaneamente como global state e database */
 export const editPreTesteAnswerAtom = atom(
-  // Pra fazer: testar se dá para trocar isto por null
   (get: any) => (lessonTitle: string) =>
     get(preTesteAnswersAtom)[slugify(lessonTitle)],
   (get: any, set: any, { lessonTitle, resposta }: EditAnswersAction) => {

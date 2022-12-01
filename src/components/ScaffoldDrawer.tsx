@@ -43,11 +43,7 @@ export default ({
             <ListItemText
               sx={{ ml: 1 }}
               disableTypography
-              primary={
-                // <Link to={`${item}`}>
-                <Typography variant="overline">{item.text}</Typography>
-                // </Link>
-              }
+              primary={<Typography variant="overline">{item.text}</Typography>}
             />
           </ListItemButton>
         </ListItem>

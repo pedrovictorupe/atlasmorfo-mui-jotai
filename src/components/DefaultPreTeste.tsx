@@ -3,7 +3,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Alert } from "@mui/material";
 
-// Para fazer: trocar indicePreTeste por uma busca usando o "id" de cada item em pretestes.json
 export default (props: { quiz: JSX.Element }) => {
   return (
     <Container maxWidth="sm" sx={{ paddingTop: 4 }}>

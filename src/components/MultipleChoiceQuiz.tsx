@@ -7,7 +7,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { editPreTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 
 export default function MultipleChoiceQuiz(props: {
@@ -16,28 +16,23 @@ export default function MultipleChoiceQuiz(props: {
   pergunta: string;
   alternativas: string[];
 }) {
-  const [, salvarResposta] = useAtom(editPreTesteAnswerAtom);
-  const [alternativaSelecionada, setAlternativaSelecionada] =
-    React.useState("");
-  // Texto que fica acima do botão "Confirmar"
-  const [dica, setDica] = React.useState("Escolha somente uma alternativa");
+  const saveAnswer = useSetAtom(editPreTesteAnswerAtom);
+  const [selectedOption, setSelectedOption] = React.useState("");
+  const [tip, setTip] = React.useState("Escolha somente uma alternativa");
 
-  // Muda o texto acima do botão Confirmar e salva a alternativa selecionada no state local do componente
   const handleSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAlternativaSelecionada((event.target as HTMLInputElement).value);
-    setDica("Clique aqui para avançar");
+    setSelectedOption((event.target as HTMLInputElement).value);
+    setTip("Clique aqui para avançar");
   };
 
-  // Salva a resposta confirmada no localStorage
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // Inibe que o evento continue se propagando, já que ele já está sendo tratado aqui.
     event.preventDefault();
 
     props.onSubmit();
 
-    salvarResposta({
+    saveAnswer({
       lessonTitle: props.title,
-      resposta: alternativaSelecionada,
+      resposta: selectedOption,
     });
   };
 
@@ -55,7 +50,7 @@ export default function MultipleChoiceQuiz(props: {
         <RadioGroup
           aria-labelledby="demo-error-radios"
           name="quiz"
-          value={alternativaSelecionada}
+          value={selectedOption}
           onChange={handleSelection}
         >
           {props.alternativas.map((alternativa) => (
@@ -67,7 +62,7 @@ export default function MultipleChoiceQuiz(props: {
             />
           ))}
         </RadioGroup>
-        <FormHelperText>{dica}</FormHelperText>
+        <FormHelperText>{tip}</FormHelperText>
         <Button
           sx={{
             mt: 1,

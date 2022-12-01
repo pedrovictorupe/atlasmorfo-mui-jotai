@@ -8,15 +8,6 @@ import {
   editPreTesteAnswerAtom,
 } from "../atoms/preTesteAnswersAtom";
 
-// const BaseChip = (props: { label: string }) => (
-//   <Chip
-//     variant="outlined"
-//     color="warning"
-//     label={props.label}
-//     sx={{ margin: 2 }}
-//   />
-// );
-
 export const CorrectAnswerChip = (props: { lessonTitle: string }) => (
   <Chip
     variant="outlined"

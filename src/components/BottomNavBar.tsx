@@ -6,7 +6,7 @@ import {
 } from "@mui/icons-material";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import React from "react";
-import { DEFAULT_PAGES } from "../constants";
+import { DEFAULT_TABS } from "../constants";
 
 type BottomNavBarProps = {
   currentTab: number;

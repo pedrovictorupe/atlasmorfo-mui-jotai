@@ -1,4 +1,4 @@
-// Todos os valores possíveis de progresso que o usuário pode estar em cada página de lição
+// Todos os valores possíveis de lessonState que o usuário pode estar em cada página de lição
 type LessonStateEnum =
   | "INTRO_LIDA"
   | "PRETESTE_RESPONDIDO"

@@ -13,7 +13,7 @@ import BottomNavBar from "./BottomNavBar";
 export default (props: {
   currentTab: number;
   setCurrentTab: (currentTab: number) => void;
-  progresso: LessonStateEnum;
+  lessonState: LessonStateEnum;
 }) => (
   <BottomNavBar
     // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
@@ -22,64 +22,64 @@ export default (props: {
     items={[
       {
         label: "Intro",
-        icon: props.progresso == undefined ? <PsychologyAlt /> : <Check />,
+        icon: props.lessonState == undefined ? <PsychologyAlt /> : <Check />,
         isLocked: false,
       },
       {
         label: "Pré-teste",
-        icon: getPreTesteIcon(props.progresso),
-        isLocked: isPreTesteLocked(props.progresso),
+        icon: getPreTesteIcon(props.lessonState),
+        isLocked: isPreTesteLocked(props.lessonState),
       },
       {
         label: "Vídeo",
-        icon: getVideoIcon(props.progresso),
-        isLocked: isVideoTabLocked(props.progresso),
+        icon: getVideoIcon(props.lessonState),
+        isLocked: isVideoTabLocked(props.lessonState),
       },
       {
         label: "Pós-teste",
-        icon: getPosTesteIcon(props.progresso),
-        isLocked: isPosTesteLocked(props.progresso),
+        icon: getPosTesteIcon(props.lessonState),
+        isLocked: isPosTesteLocked(props.lessonState),
       },
     ]}
   />
 );
 
-const isPreTesteLocked = (progresso: LessonStateEnum): boolean =>
-  progresso == "PRETESTE_RESPONDIDO" || progresso == undefined;
+const isPreTesteLocked = (lessonState: LessonStateEnum): boolean =>
+  lessonState == "PRETESTE_RESPONDIDO" || lessonState == undefined;
 
-const getPreTesteIcon = (progresso: LessonStateEnum): JSX.Element => {
-  if (isPreTesteLocked(progresso)) return <Lock />;
+const getPreTesteIcon = (lessonState: LessonStateEnum): JSX.Element => {
+  if (isPreTesteLocked(lessonState)) return <Lock />;
   else if (
-    progresso == "INTRO_LIDA" ||
-    progresso == "MUDANDO_RESPOSTA" ||
-    progresso == undefined
+    lessonState == "INTRO_LIDA" ||
+    lessonState == "MUDANDO_RESPOSTA" ||
+    lessonState == undefined
   )
     return <Lightbulb />;
   else return <Check />;
 };
 
-const isVideoTabLocked = (progresso: string | undefined): boolean =>
-  progresso == undefined;
+const isVideoTabLocked = (lessonState: string | undefined): boolean =>
+  lessonState == undefined;
 
-const getVideoIcon = (progresso: LessonStateEnum): JSX.Element => {
-  if (isVideoTabLocked(progresso)) return <Lock />;
+const getVideoIcon = (lessonState: LessonStateEnum): JSX.Element => {
+  if (isVideoTabLocked(lessonState)) return <Lock />;
   else if (
-    progresso == "GABARITO_PRETESTE_VISUALIZADO" ||
-    progresso == "POS_TESTE_RESPONDIDO"
+    lessonState == "GABARITO_PRETESTE_VISUALIZADO" ||
+    lessonState == "POS_TESTE_RESPONDIDO"
   )
     return <Check />;
   else return <SmartDisplay />;
 };
 
-const isPosTesteLocked = (progresso: LessonStateEnum): boolean =>
+const isPosTesteLocked = (lessonState: LessonStateEnum): boolean =>
   !(
-    progresso == "POS_TESTE_RESPONDIDO" ||
-    progresso == "GABARITO_PRETESTE_VISUALIZADO"
+    lessonState == "POS_TESTE_RESPONDIDO" ||
+    lessonState == "GABARITO_PRETESTE_VISUALIZADO"
   );
 
-const getPosTesteIcon = (progresso: LessonStateEnum): JSX.Element => {
-  if (progresso == "POS_TESTE_RESPONDIDO") return <Check />;
-  else if (progresso == "GABARITO_PRETESTE_VISUALIZADO")
+const getPosTesteIcon = (lessonState: LessonStateEnum): JSX.Element => {
+  if (lessonState == "POS_TESTE_RESPONDIDO") return <Check />;
+  else if (lessonState == "GABARITO_PRETESTE_VISUALIZADO")
     return <TipsAndUpdates />;
   else return <Lock />;
 };
