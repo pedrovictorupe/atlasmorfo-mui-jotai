@@ -20,7 +20,6 @@ import AnswerReviewState from "../../@types/AnswerReviewState";
 import AnswerReviewDialog from "../../components/AnswerReviewDialog";
 import YoutubeVideo from "../../components/YoutubeVideo";
 import contents from "../../contents.json";
-import { map } from "lodash";
 
 export default ({ setCurrentTab }: IProps): JSX.Element | null => {
   const [answerReviewState, setAnswerReviewState] =
