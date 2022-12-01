@@ -31,6 +31,23 @@ export default ({
           Todo mundo já ralou o joelho alguma vez na vida, não é?
         </Paragraph>
       </Grid>
+      <Content />
+      <NextTabButton
+        onClick={() => {
+          changeLessonState({
+            lessonTitle: "joao-e-as-etapas-da-hemostasia",
+            state: "INTRO_LIDA",
+          });
+          setPaginaAtual("PRE");
+        }}
+      />
+    </Container>
+  </>
+);
+
+const Content = ({}) => {
+  return (
+    <>
       <Paragraph>
         Seja caindo da bicicleta, seja cortando-se enquanto cozinha... o fato é:
         machucar-se é um acontecimento comum na vida de todo mundo. Tão comum
@@ -71,15 +88,6 @@ export default ({
         progredir das lições
       </Paragraph>
       <Paragraph>No mais, é isto! Bons estudos e divirta-se!</Paragraph>
-      <NextTabButton
-        onClick={() => {
-          changeLessonState({
-            lessonTitle: "joao-e-as-etapas-da-hemostasia",
-            state: "INTRO_LIDA",
-          });
-          setPaginaAtual("PRE");
-        }}
-      />
-    </Container>
-  </>
-);
+    </>
+  );
+};
