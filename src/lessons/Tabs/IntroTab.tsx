@@ -54,9 +54,8 @@ const Content = ({}) => {
         segue..."
       </Paragraph>
       <Paragraph>
-        No entanto, se há algo que as Ciências Biológicas podem nos ensinar, é
-        que a resposta do organismo ao ferimento está longe de ser algo
-        corriqueiro.
+        No entanto, se há algo que a biologia pode nos ensinar, é que a resposta
+        do organismo ao ferimento está longe de ser algo corriqueiro.
       </Paragraph>
       <Paragraph>
         Desde a resposta inicial dos vários tipos celulares até a resolução
