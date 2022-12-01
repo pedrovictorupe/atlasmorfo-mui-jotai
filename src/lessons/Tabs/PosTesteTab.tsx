@@ -19,7 +19,7 @@ export default (props: {
     <DefaultDialog
       open={props.isGameRulesDialogOpen}
       onClose={() => props.setGameRulesDialogOpen(false)}
-      title={"Instruções"}
+      title={"Agora é hora de TERMO!"}
       backgroundDarkColor={blue["700"]}
       content={
         <List>

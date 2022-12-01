@@ -21,7 +21,7 @@ export default ({ lessonState }: DialogProps) => {
       <DialogContent>
         <DialogContentText>
           Sua resposta não será checada imediatamente. Você terá a chance de
-          mudá-la após assistir ao vídeo da próxima sessão.
+          mudá-la após assistir ao vídeo desta seção.
         </DialogContentText>
       </DialogContent>
       <DialogActions>

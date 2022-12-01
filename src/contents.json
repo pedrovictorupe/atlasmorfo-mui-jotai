@@ -19,11 +19,11 @@
     "abaPosTeste": {
       "dialogoExplicatorio": {
         "paragrafos": [
-          "Agora a gente vai jogar uma partidinha de TERMO (também conhecidocomo WORDLE). As regras são simples:",
-          "- Há uma palavra secreta de 7 letras que você deverá acertar em, nomáximo, 6 chutes (usando o teclado disponível na própria página).",
-          "- Após cada chute, o display mostrará algumas letras da palavrainserida com uma coloração amarela e outras com coloração verde.",
-          "- A coloração amarela indica que aquela letra ESTÁ PRESENTE napalavra secreta, mas NÃO NAQUELA POSIÇÃO",
-          "- Já a coloração verde indica que você ACERTOU a letra presentenaquela posição da palavra secreta.",
+          "Se você não conhece esse jogo, as regras são simples:",
+          "- Há uma palavra secreta de 7 letras que você deverá acertar em, no máximo, 6 chutes (usando o teclado disponível na própria página).",
+          "- Após cada chute, o display mostrará algumas letras da palavra inserida com uma coloração amarela e outras com coloração verde.",
+          "- A coloração amarela indica que aquela letra ESTÁ PRESENTE na palavra secreta, mas NÃO NAQUELA POSIÇÃO",
+          "- Já a coloração verde indica que você ACERTOU a letra presente naquela posição da palavra secreta.",
           "Boa sorte! 😊"
         ]
       }
