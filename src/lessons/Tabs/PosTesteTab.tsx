@@ -3,6 +3,7 @@ import { blue } from "@mui/material/colors";
 import React from "react";
 import DefaultButton from "../../components/DefaultButton";
 import DefaultDialog from "../../components/DefaultDialog";
+import contents from "../../contents.json";
 
 export default (props: {
   isGameRulesDialogOpen: boolean;
@@ -22,27 +23,11 @@ export default (props: {
       backgroundDarkColor={blue["700"]}
       content={
         <List>
-          <ListItem>
-            Agora a gente vai jogar uma partidinha de TERMO (também conhecido
-            como WORDLE). As regras são simples:
-          </ListItem>
-          <ListItem>
-            - Há uma palavra secreta de 7 letras que você deverá acertar em, no
-            máximo, 6 chutes (usando o teclado disponível na própria página).
-          </ListItem>
-          <ListItem>
-            - Após cada chute, o display mostrará algumas letras da palavra
-            inserida com uma coloração amarela e outras com coloração verde.
-          </ListItem>
-          <ListItem>
-            - A coloração amarela indica que aquela letra ESTÁ PRESENTE na
-            palavra secreta, mas NÃO NAQUELA POSIÇÃO
-          </ListItem>
-          <ListItem>
-            - Já a coloração verde indica que você ACERTOU a letra presente
-            naquela posição da palavra secreta.
-          </ListItem>
-          <ListItem>Boa sorte! 😊</ListItem>
+          {contents[
+            "joao-e-as-etapas-da-hemostasia"
+          ].abaPosTeste.dialogoExplicatorio.paragrafos.map((paragraph) => (
+            <ListItem>{paragraph}</ListItem>
+          ))}
         </List>
       }
     />
