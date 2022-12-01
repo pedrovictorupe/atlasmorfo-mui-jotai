@@ -42,11 +42,11 @@ export default (props: {
       />
       <iframe
         src="https://mywordle.strivemath.com/?word=bwsutrw&lang=any"
+        scrolling="no"
         style={{
-          width: "87%",
-          height: "700px",
+          height: "610px",
           borderWidth: 0,
-          maxWidth: "320px",
+          marginBottom: 0
         }}
       />
       <br />
@@ -60,7 +60,7 @@ export default (props: {
             setLessonState("POS_TESTE_RESPONDIDO");
           }
         }}
-        sx={{ m: 4 }}
+        sx={{ m: 4, mt: 1 }}
       />
       <br />
       <DefaultButton onClick={() => props.setGameRulesDialogOpen(true)}>
