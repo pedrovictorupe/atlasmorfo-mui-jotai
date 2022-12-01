@@ -54,7 +54,7 @@ const Content = ({}) => {
         segue..."
       </Paragraph>
       <Paragraph>
-        No entanto, se há algo que a biologia pode nos ensinar, é que a resposta
+        No entanto, se há algo que a biologia pode nos ensinar é que a resposta
         do organismo ao ferimento está longe de ser algo corriqueiro.
       </Paragraph>
       <Paragraph>
