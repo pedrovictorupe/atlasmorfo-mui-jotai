@@ -23,7 +23,7 @@ export default ({
         </PageTitle>
         <Grid container direction="column" alignItems="center">
           <Image
-            src="./atlasmorfo-mui-jotai/joelho-ralado-COPYRIGHT.jpg"
+            src="joelho-ralado-COPYRIGHT.jpg"
             width="90%"
             height="auto"
             // @ts-ignore
