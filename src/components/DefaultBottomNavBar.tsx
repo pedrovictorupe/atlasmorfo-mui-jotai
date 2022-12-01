@@ -12,17 +12,14 @@ import LessonStateEnum from "../@types/LessonStateEnum";
 import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import BottomNavBar from "./BottomNavBar";
 
-export default (props: {
-  currentTab: number;
-  setCurrentTab: (currentTab: number) => void;
-}) => {
+export default ({ currentTab, setCurrentTab }: IProps) => {
   const [lessonState] = useAtom(lessonStateAtom);
 
   return (
     <BottomNavBar
       // DefaultPages mapeia "PRE", "AULA", "POS" para 0, 1 e 2 (pois BottomNavBar usa índices para gerenciar as abas)
-      currentTab={props.currentTab}
-      setPaginaAtual={props.setCurrentTab}
+      currentTab={currentTab}
+      setPaginaAtual={setCurrentTab}
       items={[
         {
           label: "Intro",
@@ -87,4 +84,9 @@ const getPosTesteIcon = (lessonState: LessonStateEnum): JSX.Element => {
   else if (lessonState == "GABARITO_PRETESTE_VISUALIZADO")
     return <TipsAndUpdates />;
   else return <Lock />;
+};
+
+type IProps = {
+  currentTab: number;
+  setCurrentTab: (currentTab: number) => void;
 };

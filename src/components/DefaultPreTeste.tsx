@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Alert } from "@mui/material";
 
-export default (props: { quiz: JSX.Element }) => {
+export default ({ quiz }: { quiz: JSX.Element }) => {
   return (
     <Container maxWidth="sm" sx={{ paddingTop: 4 }}>
       <Typography variant="h4" component="h1" color={"#1565c0"} gutterBottom>
@@ -15,7 +15,7 @@ export default (props: { quiz: JSX.Element }) => {
           resposta depois da lição
         </Typography>
       </Alert>
-      {props.quiz}
+      {quiz}
     </Container>
   );
 };

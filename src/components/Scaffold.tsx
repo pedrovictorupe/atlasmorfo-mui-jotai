@@ -18,7 +18,7 @@ import map from "lodash/map";
 import ScaffoldDrawer from "./ScaffoldDrawer";
 import { getTextStrokeStyle } from "../utils";
 
-export default (props: any) => {
+export default () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [currentLesson, setCurrentLesson] = useAtom(currentLessonAtom);
 

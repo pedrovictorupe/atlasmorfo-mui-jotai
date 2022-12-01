@@ -10,12 +10,12 @@ import { Typography } from "@mui/material";
 import { useAtom, useSetAtom } from "jotai";
 import { preTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 
-export default function MultipleChoiceQuiz(props: {
-  onSubmit: () => void;
-  title: string;
-  pergunta: string;
-  alternativas: string[];
-}) {
+export default function MultipleChoiceQuiz({
+  onSubmit,
+  title,
+  pergunta,
+  alternativas,
+}: IProps) {
   const saveAnswer = useSetAtom(preTesteAnswerAtom);
   const [selectedOption, setSelectedOption] = React.useState("");
   const [tip, setTip] = React.useState("Escolha somente uma alternativa");
@@ -27,9 +27,7 @@ export default function MultipleChoiceQuiz(props: {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    props.onSubmit();
-
+    onSubmit();
     saveAnswer(selectedOption);
   };
 
@@ -41,7 +39,7 @@ export default function MultipleChoiceQuiz(props: {
             variant="button"
             sx={{ color: "text.primary", marginBottom: 2 }}
           >
-            {props.pergunta}
+            {pergunta}
           </Typography>
         </FormLabel>
         <RadioGroup
@@ -50,7 +48,7 @@ export default function MultipleChoiceQuiz(props: {
           value={selectedOption}
           onChange={handleSelection}
         >
-          {props.alternativas.map((alternativa) => (
+          {alternativas.map((alternativa) => (
             <FormControlLabel
               value={alternativa}
               control={<Radio />}
@@ -74,3 +72,10 @@ export default function MultipleChoiceQuiz(props: {
     </form>
   );
 }
+
+type IProps = {
+  onSubmit: () => void;
+  title: string;
+  pergunta: string;
+  alternativas: string[];
+};
