@@ -24,6 +24,7 @@
           "- Após cada chute, o display mostrará algumas letras da palavra inserida com uma coloração amarela e outras com coloração verde.",
           "- A coloração amarela indica que aquela letra ESTÁ PRESENTE na palavra secreta, mas NÃO NAQUELA POSIÇÃO",
           "- Já a coloração verde indica que você ACERTOU a letra presente naquela posição da palavra secreta.",
+          "- FIQUE ATENTO: Se você acertar, você ainda precisará inserir a palavra descoberta no campo abaixo do jogo para prosseguir.",
           "Boa sorte! 😊"
         ]
       }

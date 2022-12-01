@@ -10,7 +10,7 @@ export default (props: {
   open: boolean;
   onClose: () => void;
   title: string;
-  content: JSX.Element;
+  content: JSX.Element | string;
   backgroundDarkColor: string;
 }) => (
   <Dialog

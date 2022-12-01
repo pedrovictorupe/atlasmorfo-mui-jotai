@@ -6,11 +6,12 @@ export default (props: {
   onClick: () => void;
   children: string;
   startIcon?: React.ReactNode;
+  sx?: Object;
 }) => (
   <Button
     variant="contained"
     startIcon={props.startIcon}
-    sx={{ borderRadius: 10 }}
+    sx={{ ...props.sx, borderRadius: 10 }}
     onClick={props.onClick}
   >
     {props.children}
