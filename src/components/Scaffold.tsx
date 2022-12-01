@@ -9,7 +9,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { BottomNavigation, Grid } from "@mui/material";
-import { DRAWER_WIDTH, TYPOGRAPHY_TEXT_CENTRALIZE } from "../constants";
+import { TYPOGRAPHY_TEXT_CENTRALIZE } from "../constants";
 import { useAtom } from "jotai";
 import currentLessonAtom from "../atoms/currentLessonAtom";
 import contents from "../contents.json";
@@ -132,6 +132,8 @@ const getReactComponent = (currentLesson: string): React.ReactNode => {
       return lessonTitleToComponent[i].element;
   }
 };
+
+const DRAWER_WIDTH = 240;
 
 const APP_BAR_STYLES = {
   width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
