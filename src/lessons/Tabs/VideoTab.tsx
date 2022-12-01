@@ -24,11 +24,9 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
       <PreTestePostConfirmDialog lessonState={lessonState} />
       <div style={{ padding: "5vw" }}>
         <PageTitle>As crônicas de Joãozinho</PageTitle>
-        {contents["joao-e-as-etapas-da-hemostasia"].abaVideo.paragrafos.map(
-          (paragraph) => (
-            <Paragraph key={paragraph.slice(0, 5)}>{paragraph}</Paragraph>
-          )
-        )}
+        {paragraphs.map((paragraph) => (
+          <Paragraph key={paragraph.slice(0, 5)}>{paragraph}</Paragraph>
+        ))}
         <Paragraph />
         <YoutubeVideo src="https://www.youtube.com/embed/IGmYTjpWSa4" />
         <NextTabButton
@@ -54,6 +52,12 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
     </>
   );
 };
+
+const paragraphs = [
+  "Chegou a hora de você conhecer nosso protagonista!",
+  "Joãozinho é um menino travesso que será o cobaia perfeito para a nossa aventura. Ele tem uma certa propensão a não olhar para onde anda, então é bem provável que ele ostente um machucão ou outro que a gente possa acompanhar para o nosso projeto.",
+  "Dê uma espiadinha aqui no vídeo que preparamos para você e aproveite para tentar encontrar a resposta para o quiz anterior.",
+];
 
 type IProps = {
   setCurrentTab: (nextTab: DefaultTab) => void;
