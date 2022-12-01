@@ -93,7 +93,7 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
 };
 
 type IProps = {
-  setCurrentTab: React.Dispatch<React.SetStateAction<DefaultTab>>;
+  setCurrentTab: (nextTab: DefaultTab) => void;
 };
 
 const LESSON_TITLE = "joao-e-as-etapas-da-hemostasia";
