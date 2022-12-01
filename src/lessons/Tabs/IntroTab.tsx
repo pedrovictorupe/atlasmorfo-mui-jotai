@@ -24,12 +24,12 @@ export default ({
         <Grid container direction="column" alignItems="center">
           <Image
             src="joelho-ralado-COPYRIGHT.jpg"
-            width="90%"
+            width="100%"
             height="auto"
             // @ts-ignore
-            sx={{ p: 2, maxWidth: "600px" }}
+            sx={{ p: 2, maxWidth: "300px" }}
           ></Image>
-          <Paragraph fontStyle={"italic"}>
+          <Paragraph fontStyle={"italic"} variant="body2">
             Todo mundo já ralou o joelho alguma vez na vida, não é?
           </Paragraph>
         </Grid>
