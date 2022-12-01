@@ -1,19 +1,19 @@
 import { Button, List, ListItem, TextField } from "@mui/material";
 import { blue, green } from "@mui/material/colors";
-import { useSetAtom } from "jotai";
-import React, { useState } from "react";
+import { useAtom, useSetAtom } from "jotai";
+import React, { useEffect, useState } from "react";
 import slugify from "slugify";
+import gameRulesAtom from "../../atoms/gameRulesAtom";
 import { lessonStateAtom } from "../../atoms/lessonStateAtom";
 import DefaultButton from "../../components/DefaultButton";
 import DefaultDarkDialog from "../../components/DefaultDarkDialog";
-import contents from "../../contents.json";
 
-export default (props: {
-  isGameRulesDialogOpen: boolean;
-  setGameRulesDialogOpen: (arg: boolean) => void;
-}): JSX.Element => {
+export default (): JSX.Element => {
   const [hasAnsweredCorrectly, setHasAnsweredCorrectly] = useState(false);
   const setLessonState = useSetAtom(lessonStateAtom);
+  const [isGameRulesOpen, setGameRulesOpen] = useAtom(gameRulesAtom);
+
+  useEffect(() => setGameRulesOpen(true), []);
 
   return (
     <div
@@ -24,22 +24,20 @@ export default (props: {
       }}
     >
       <DefaultDarkDialog
-        open={props.isGameRulesDialogOpen}
-        onClose={() => props.setGameRulesDialogOpen(false)}
+        open={isGameRulesOpen}
+        onClose={() => setGameRulesOpen(false)}
         title={"Agora é hora de TERMO!"}
         backgroundDarkColor={blue["700"]}
         content={
           <List>
-            {contents[
-              "joao-e-as-etapas-da-hemostasia"
-            ].abaPosTeste.dialogoExplicatorio.paragrafos.map((paragraph) => (
+            {paragraphs.map((paragraph) => (
               <ListItem key={paragraph.slice(0, 5)}>{paragraph}</ListItem>
             ))}
           </List>
         }
         actions={
           <Button
-            onClick={() => props.setGameRulesDialogOpen(false)}
+            onClick={() => setGameRulesOpen(false)}
             sx={{ color: "#fff" }}
           >
             Ok
@@ -70,7 +68,7 @@ export default (props: {
         sx={{ m: 4, mt: 1 }}
       />
       <br />
-      <DefaultButton onClick={() => props.setGameRulesDialogOpen(true)}>
+      <DefaultButton onClick={() => setGameRulesOpen(true)}>
         Rever instruções
       </DefaultButton>
       <DefaultDarkDialog
@@ -83,3 +81,13 @@ export default (props: {
     </div>
   );
 };
+
+const paragraphs = [
+  "Se você não conhece esse jogo, as regras são simples:",
+  "- Há uma palavra secreta de 7 letras que você deverá acertar em, no máximo, 6 chutes (usando o teclado disponível na própria página).",
+  "- Após cada chute, o display mostrará algumas letras da palavra inserida com uma coloração amarela e outras com coloração verde.",
+  "- A coloração amarela indica que aquela letra ESTÁ PRESENTE na palavra secreta, mas NÃO NAQUELA POSIÇÃO",
+  "- Já a coloração verde indica que você ACERTOU a letra presente naquela posição da palavra secreta.",
+  "- FIQUE ATENTO: Se você acertar, você ainda precisará inserir a palavra descoberta no campo abaixo do jogo para prosseguir.",
+  "PS: Você pode rever as regras a qualquer momento clicando no botão abaixo do teclado do jogo. Boa sorte!",
+];

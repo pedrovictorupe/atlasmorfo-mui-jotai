@@ -15,20 +15,6 @@
         "Joãozinho é um menino travesso que será o cobaia perfeito para a nossa aventura. Ele tem uma certa propensão a não olhar para onde anda, então é bem provável que ele ostente um machucão ou outro que a gente possa acompanhar para o nosso projeto.",
         "Dê uma espiadinha aqui no vídeo que preparamos para você e aproveite para tentar encontrar a resposta para o quiz anterior."
       ]
-    },
-    "abaPosTeste": {
-      "dialogoExplicatorio": {
-        "paragrafos": [
-          "Se você não conhece esse jogo, as regras são simples:",
-          "- Há uma palavra secreta de 7 letras que você deverá acertar em, no máximo, 6 chutes (usando o teclado disponível na própria página).",
-          "- Após cada chute, o display mostrará algumas letras da palavra inserida com uma coloração amarela e outras com coloração verde.",
-          "- A coloração amarela indica que aquela letra ESTÁ PRESENTE na palavra secreta, mas NÃO NAQUELA POSIÇÃO",
-          "- Já a coloração verde indica que você ACERTOU a letra presente naquela posição da palavra secreta.",
-          "- FIQUE ATENTO: Se você acertar, você ainda precisará inserir a palavra descoberta no campo abaixo do jogo para prosseguir.",
-          "Boa sorte! 😊",
-          "PS: Você pode rever as regras a qualquer momento clicando no botão abaixo do teclado do jogo"
-        ]
-      }
     }
   }
 }

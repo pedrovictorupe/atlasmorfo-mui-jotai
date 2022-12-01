@@ -19,7 +19,6 @@ const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
 export default (): JSX.Element => {
   const setLessonState = useSetAtom(lessonStateAtom);
   const [currentTab, setCurrentTab] = useState<DefaultTab>(DEFAULT_TABS[0]);
-  const [isGameRulesDialogOpen, setGameRulesDialogOpen] = useState(true);
 
   let currentTabComponent: JSX.Element | null = null;
 
@@ -46,12 +45,7 @@ export default (): JSX.Element => {
       currentTabComponent = <VideoTab setCurrentTab={setCurrentTab} />;
       break;
     case "POS":
-      currentTabComponent = (
-        <PosTesteTab
-          isGameRulesDialogOpen={isGameRulesDialogOpen}
-          setGameRulesDialogOpen={setGameRulesDialogOpen}
-        />
-      );
+      currentTabComponent = <PosTesteTab />;
       break;
   }
 
