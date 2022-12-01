@@ -1,6 +1,6 @@
 import { yellow } from "@mui/material/colors";
 import React, { useState } from "react";
-import DefaultPage from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultPage";
 import { CorrectAnswerChip } from "./AnswerChips";
 import AnswerFeedback from "./AnswerFeedback";
 
@@ -30,6 +30,6 @@ export default ({ open, setCurrentTab, lessonTitle }: IProps) => {
 
 type IProps = {
   open: undefined | boolean;
-  setCurrentTab: (tab: DefaultPage) => void;
+  setCurrentTab: (tab: DefaultTab) => void;
   lessonTitle: string;
 };

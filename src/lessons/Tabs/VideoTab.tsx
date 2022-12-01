@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useAtom } from "jotai";
 import React, { useState } from "react";
-import DefaultPage from "../../@types/DefaultPage";
+import DefaultTab from "../../@types/DefaultPage";
 import LessonStateEnum from "../../@types/LessonStateEnum";
 import {
   EditAnswersAction,
@@ -100,7 +100,7 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
 };
 
 type IProps = {
-  setCurrentTab: React.Dispatch<React.SetStateAction<DefaultPage>>;
+  setCurrentTab: React.Dispatch<React.SetStateAction<DefaultTab>>;
 };
 
 const LESSON_TITLE = "joao-e-as-etapas-da-hemostasia";

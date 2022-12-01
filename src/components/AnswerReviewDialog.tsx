@@ -15,7 +15,7 @@ import {
   editLessonStateAtom,
 } from "../atoms/lessonStateAtom";
 import AnswerReviewState from "../@types/AnswerReviewState";
-import DefaultPage from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultPage";
 import { useAtom, useSetAtom } from "jotai";
 import LessonStateEnum from "../@types/LessonStateEnum";
 import {
@@ -28,7 +28,7 @@ type IProps = {
   lessonTitle: string;
   selectedAnswer: string;
   setAnswerReviewState: (newState: AnswerReviewState) => void;
-  setCurrentTab: (nextTab: DefaultPage) => void;
+  setCurrentTab: (nextTab: DefaultTab) => void;
 };
 
 export default ({

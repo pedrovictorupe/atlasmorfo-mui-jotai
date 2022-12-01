@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid } from "@mui/material";
-import DefaultPage from "../../@types/DefaultPage";
+import DefaultTab from "../../@types/DefaultPage";
 import Image from "mui-image";
 import Paragraph from "../../components/Paragraph";
 import { EditLessonStateAction } from "../../atoms/lessonStateAtom";
@@ -12,7 +12,7 @@ export default ({
   setPaginaAtual,
 }: {
   changeLessonState: (update: EditLessonStateAction) => void;
-  setPaginaAtual: React.Dispatch<React.SetStateAction<DefaultPage>>;
+  setPaginaAtual: React.Dispatch<React.SetStateAction<DefaultTab>>;
 }): JSX.Element | null => (
   <>
     <Container sx={{ overflowY: "auto", padding: 3 }}>

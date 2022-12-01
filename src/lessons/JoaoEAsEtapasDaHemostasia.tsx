@@ -6,7 +6,7 @@ import preTesteContents from "../contents.json";
 import { Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import { DEFAULT_TABS } from "../constants";
-import DefaultPage from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultPage";
 import LessonStateEnum from "../@types/LessonStateEnum";
 import {
   EditLessonStateAction,
@@ -24,7 +24,7 @@ export default (): JSX.Element => {
     LessonStateEnum,
     (update: EditLessonStateAction) => void
   ] = useAtom(editLessonStateAtom);
-  const [currentTab, setCurrentTab] = useState<DefaultPage>(DEFAULT_TABS[0]);
+  const [currentTab, setCurrentTab] = useState<DefaultTab>(DEFAULT_TABS[0]);
   const [isGameRulesDialogOpen, setGameRulesDialogOpen] = useState(true);
 
   let currentTabComponent: JSX.Element | null = null;

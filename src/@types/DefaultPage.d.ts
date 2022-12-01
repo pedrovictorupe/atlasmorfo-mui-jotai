@@ -1,3 +1,3 @@
-type DefaultPage = "INTRO" | "PRE" | "VIDEO" | "POS";
+type DefaultTab = "INTRO" | "PRE" | "VIDEO" | "POS";
 
-export default DefaultPage;
+export default DefaultTab;
