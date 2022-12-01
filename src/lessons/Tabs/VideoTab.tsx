@@ -31,6 +31,7 @@ import IncorrectAnswerDialog from "../../components/IncorrectAnswerDialog";
 import CorrectAnswerDialog from "../../components/CorrectAnswerDialog";
 import AnswerReviewState from "../../@types/AnswerReviewState";
 import AnswerReviewDialog from "../../components/AnswerReviewDialog";
+import YoutubeVideo from "../../components/YoutubeVideo";
 
 export default ({ setCurrentTab }: IProps): JSX.Element | null => {
   const [answerReviewState, setAnswerReviewState] =
@@ -64,15 +65,7 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
         </Paragraph>
         <Paragraph />
         {/* Proporção: width="560" height="315" (7:9)*/}
-        <div style={{ textAlign: "center", marginBottom: "3vh" }}>
-          <iframe
-            src="https://www.youtube.com/embed/IGmYTjpWSa4"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+        <YoutubeVideo src="https://www.youtube.com/embed/IGmYTjpWSa4" />
         <NextTabButton
           onClick={() => {
             setAnswerReviewState("CHECKING");
