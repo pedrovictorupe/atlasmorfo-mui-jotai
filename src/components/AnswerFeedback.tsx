@@ -5,7 +5,7 @@ import {
   EditLessonStateAction,
   editLessonStateAtom,
 } from "../atoms/lessonStateAtom";
-import DefaultDialog from "./DefaultDialog";
+import DefaultDialog from "./DefaultDarkDialog";
 
 export default (props: {
   open: boolean;

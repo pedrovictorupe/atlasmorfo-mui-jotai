@@ -2,7 +2,7 @@ import { List, ListItem } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import React from "react";
 import DefaultButton from "../../components/DefaultButton";
-import DefaultDialog from "../../components/DefaultDialog";
+import DefaultDialog from "../../components/DefaultDarkDialog";
 import contents from "../../contents.json";
 
 export default (props: {
