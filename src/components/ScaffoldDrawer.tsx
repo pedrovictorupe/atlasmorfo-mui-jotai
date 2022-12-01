@@ -1,4 +1,3 @@
-import { Settings } from "@mui/icons-material";
 import {
   Toolbar,
   List,
@@ -7,7 +6,6 @@ import {
   Typography,
   ListItemButton,
   Divider,
-  IconButton,
   Button,
 } from "@mui/material";
 import React from "react";
