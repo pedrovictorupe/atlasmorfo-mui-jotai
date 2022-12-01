@@ -14,7 +14,7 @@ import {
 } from "../atoms/lessonStateAtom";
 import { useAtom } from "jotai";
 import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
-import Intro from "./Tabs/Intro";
+import Intro from "./Tabs/IntroTab";
 import PosTesteTab from "./Tabs/PosTesteTab";
 
 const LESSON_NAME = "joao-e-as-etapas-da-hemostasia";
