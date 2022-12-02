@@ -25,9 +25,8 @@ export default function BottomNavBar({
     <BottomNavigation
       sx={{
         position: "fixed",
-        width: { xs: "100vw", sm: "auto" },
-        bottom: 0,
-        left: { sm: `50%` },
+        width: { xs: "100vw", sm: "calc(100% - 240px)" },
+        bottom: 8,
       }}
       showLabels
       value={paginaAtual}
