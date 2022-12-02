@@ -6,3 +6,5 @@ export const TYPOGRAPHY_TEXT_CENTRALIZE = {
   display: "flex",
   alignItems: "center",
 };
+
+export const DRAWER_WIDTH = 240;
