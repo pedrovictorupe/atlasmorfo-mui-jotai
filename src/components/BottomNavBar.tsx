@@ -1,6 +1,12 @@
+import {
+  Lightbulb,
+  PsychologyAlt,
+  SmartDisplay,
+  TipsAndUpdates,
+} from "@mui/icons-material";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import React from "react";
-import { DRAWER_WIDTH } from "../constants";
+import { DEFAULT_TABS } from "../constants";
 
 type BottomNavBarProps = {
   currentTab: number;
@@ -19,8 +25,9 @@ export default function BottomNavBar({
     <BottomNavigation
       sx={{
         position: "fixed",
-        width: { xs: `100%`, sm: `calc(100% - ${DRAWER_WIDTH}px)` },
+        width: { xs: "100vw", sm: "auto" },
         bottom: 0,
+        left: { sm: `50%` },
       }}
       showLabels
       value={paginaAtual}
