@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid } from "@mui/material";
-import DefaultTab from "../../@types/DefaultPage";
+import DefaultTab from "../../@types/DefaultTab";
 import Image from "mui-image";
 import Paragraph from "../../components/Paragraph";
 import PageTitle from "../../components/PageTitle";

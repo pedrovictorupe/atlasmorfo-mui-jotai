@@ -1,4 +1,4 @@
-import DefaultTab from "./@types/DefaultPage";
+import DefaultTab from "./@types/DefaultTab";
 
 export const DEFAULT_TABS: DefaultTab[] = ["INTRO", "PRE", "VIDEO", "POS"];
 

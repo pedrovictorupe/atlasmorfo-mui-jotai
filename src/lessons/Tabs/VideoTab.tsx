@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import React, { useState } from "react";
-import DefaultTab from "../../@types/DefaultPage";
+import DefaultTab from "../../@types/DefaultTab";
 import { preTesteAnswerAtom } from "../../atoms/preTesteAnswersAtom";
 import { lessonStateAtom } from "../../atoms/lessonStateAtom";
 import NextTabButton from "../../components/NextTabButton";

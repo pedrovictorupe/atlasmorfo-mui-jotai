@@ -11,7 +11,7 @@ import contents from "../contents.json";
 import slugify from "slugify";
 import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import AnswerReviewState from "../@types/AnswerReviewState";
-import DefaultTab from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultTab";
 import { useAtom, useSetAtom } from "jotai";
 import { preTesteAnswerAtom } from "../atoms/preTesteAnswersAtom";
 import currentLessonAtom from "../atoms/currentLessonAtom";

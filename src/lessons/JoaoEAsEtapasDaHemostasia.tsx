@@ -6,7 +6,7 @@ import preTesteContents from "../contents.json";
 import { Container } from "@mui/material";
 import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
 import { DEFAULT_TABS } from "../constants";
-import DefaultTab from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultTab";
 import LessonStateEnum from "../@types/LessonStateEnum";
 import { lessonStateAtom } from "../atoms/lessonStateAtom";
 import { useAtom, useSetAtom } from "jotai";

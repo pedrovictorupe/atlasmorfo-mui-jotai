@@ -1,6 +1,6 @@
 import { yellow } from "@mui/material/colors";
 import React, { useState } from "react";
-import DefaultTab from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultTab";
 import { CorrectAnswerChip } from "./AnswerChips";
 import AnswerFeedback from "./AnswerFeedback";
 

@@ -1,6 +1,6 @@
 import { green } from "@mui/material/colors";
 import React, { useState } from "react";
-import DefaultTab from "../@types/DefaultPage";
+import DefaultTab from "../@types/DefaultTab";
 import AnswerFeedback from "./AnswerFeedback";
 
 export default ({ open, setCurrentTab }: IProps) => {
