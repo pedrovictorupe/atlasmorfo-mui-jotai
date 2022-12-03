@@ -2,7 +2,6 @@
   "name": "create-react-app-with-typescript",
   "version": "5.0.0",
   "private": true,
-  "homepage": "https://atlasmorfo.pages.dev",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
