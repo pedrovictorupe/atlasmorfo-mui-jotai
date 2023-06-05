@@ -12,6 +12,7 @@ import { blue } from "@mui/material/colors";
 import DefaultDarkDialog from "../../../components/DefaultDarkDialog";
 import informativeBoxAtom from "../../../atoms/informativeBoxAtom";
 import { contents, InformativeBoxWord } from "../../../boxes";
+import Hiperlink from "../../../components/Hiperlink";
 
 export default ({
   setCurrentTab: setPaginaAtual,
@@ -40,22 +41,14 @@ export default ({
 };
 
 const Content = ({}) => {
-  const [informativeBoxWord, setInformativeBoxWord] =
-    useAtom(informativeBoxAtom);
-
   return (
     <>
       <Paragraph>
         O corpo humano apresenta diversos tecidos e camadas que se originam dos
         três tecidos primários do embrião:{" "}
-        <div
-          style={{ display: "inline-block", color: "mediumblue" }}
-          onClick={() => setInformativeBoxWord("Ectoderma")}
-        >
-          ectoderma
-        </div>
-        , mesoderma e endoderma. Cada um desses tecidos desempenha um papel na
-        formação de diferentes tecidos do corpo.
+        <Hiperlink word="Ectoderma">ectoderma</Hiperlink>, mesoderma e
+        endoderma. Cada um desses tecidos desempenha um papel na formação de
+        diferentes tecidos do corpo.
       </Paragraph>
       <Paragraph>
         Por exemplo, o endoderma forma o revestimento interno da maioria dos
@@ -82,18 +75,15 @@ const Content = ({}) => {
         cicatrização completa pode levar cerca de seis meses, mas após um mês a
         ferida geralmente já está fechada com tecido epitelial íntegro.
       </Paragraph>
-      <InformativeBox
-        informativeBoxWord={informativeBoxWord}
-        setInformativeBoxOpen={setInformativeBoxWord}
-      />
+      <InformativeBox />
     </>
   );
 };
 
-const InformativeBox = ({
-  informativeBoxWord: informativeBoxWord,
-  setInformativeBoxOpen: setInformativeBoxWord,
-}: InformativeBoxProps) => {
+const InformativeBox = () => {
+  const [informativeBoxWord, setInformativeBoxWord] =
+    useAtom(informativeBoxAtom);
+
   return (
     <DefaultDarkDialog
       open={informativeBoxWord != "Fechado"}
