@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Grid } from "@mui/material";
-import DefaultTab from "../../@types/DefaultTab";
+import DefaultTab from "../../../@types/DefaultTab";
 import Image from "mui-image";
-import Paragraph from "../../components/Paragraph";
-import PageTitle from "../../components/PageTitle";
-import NextTabButton from "../../components/NextTabButton";
-import { lessonStateAtom } from "../../atoms/lessonStateAtom";
+import Paragraph from "../../../components/Paragraph";
+import PageTitle from "../../../components/PageTitle";
+import NextTabButton from "../../../components/NextTabButton";
+import { lessonStateAtom } from "../../../atoms/lessonStateAtom";
 import { useSetAtom } from "jotai";
 
 export default ({

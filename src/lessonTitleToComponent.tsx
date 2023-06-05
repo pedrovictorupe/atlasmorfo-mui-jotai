@@ -1,9 +1,14 @@
 import React from "react";
-import Introducao from "./lessons/JoaoEAsEtapasDaHemostasia";
+import JoaoEAsEtapasDaHemostasia from "./lessons/JoaoEAsEtapasDaHemostasia/JoaoEAsEtapasDaHemostasia";
+import AtravessandoAsCamadas from "./lessons/AtravessandoAsCamadas/AtravessandoAsCamadas";
 
 export default [
   {
     slugifiedLessonTitle: "joao-e-as-etapas-da-hemostasia",
-    element: <Introducao />,
+    element: <JoaoEAsEtapasDaHemostasia />,
+  },
+  {
+    slugifiedLessonTitle: "atravessando-as-camadas",
+    element: <AtravessandoAsCamadas />,
   },
 ];

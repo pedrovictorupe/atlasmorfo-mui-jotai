@@ -1,16 +1,16 @@
 import VideoTab from "./Tabs/VideoTab";
 import React from "react";
 import { useState } from "react";
-import DefaultPreTeste from "../components/DefaultPreTeste";
-import preTesteContents from "../contents.json";
+import DefaultPreTeste from "../../components/DefaultPreTeste";
+import preTesteContents from "../../contents.json";
 import { Container } from "@mui/material";
-import MultipleChoiceQuiz from "../components/MultipleChoiceQuiz";
-import { DEFAULT_TABS } from "../constants";
-import DefaultTab from "../@types/DefaultTab";
-import LessonStateEnum from "../@types/LessonStateEnum";
-import { lessonStateAtom } from "../atoms/lessonStateAtom";
+import MultipleChoiceQuiz from "../../components/MultipleChoiceQuiz";
+import { DEFAULT_TABS } from "../../constants";
+import DefaultTab from "../../@types/DefaultTab";
+import LessonStateEnum from "../../@types/LessonStateEnum";
+import { lessonStateAtom } from "../../atoms/lessonStateAtom";
 import { useAtom, useSetAtom } from "jotai";
-import DefaultBottomNavBar from "../components/DefaultBottomNavBar";
+import DefaultBottomNavBar from "../../components/DefaultBottomNavBar";
 import Intro from "./Tabs/IntroTab";
 import PosTesteTab from "./Tabs/PosTesteTab";
 

@@ -3,10 +3,10 @@ import { blue, green } from "@mui/material/colors";
 import { useAtom, useSetAtom } from "jotai";
 import React, { useEffect, useState } from "react";
 import slugify from "slugify";
-import gameRulesAtom from "../../atoms/gameRulesAtom";
-import { lessonStateAtom } from "../../atoms/lessonStateAtom";
-import DefaultButton from "../../components/DefaultButton";
-import DefaultDarkDialog from "../../components/DefaultDarkDialog";
+import gameRulesAtom from "../../../atoms/gameRulesAtom";
+import { lessonStateAtom } from "../../../atoms/lessonStateAtom";
+import DefaultButton from "../../../components/DefaultButton";
+import DefaultDarkDialog from "../../../components/DefaultDarkDialog";
 
 export default (): JSX.Element => {
   const [hasAnsweredCorrectly, setHasAnsweredCorrectly] = useState(false);

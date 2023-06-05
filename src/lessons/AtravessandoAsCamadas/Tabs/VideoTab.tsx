@@ -1,18 +1,18 @@
 import { useAtom } from "jotai";
 import React, { useState } from "react";
-import DefaultTab from "../../@types/DefaultTab";
-import { preTesteAnswerAtom } from "../../atoms/preTesteAnswersAtom";
-import { lessonStateAtom } from "../../atoms/lessonStateAtom";
-import NextTabButton from "../../components/NextTabButton";
-import PageTitle from "../../components/PageTitle";
-import Paragraph from "../../components/Paragraph";
-import PreTestePostConfirmDialog from "../../components/PreTestePostConfirmDialog";
-import IncorrectAnswerDialog from "../../components/IncorrectAnswerDialog";
-import CorrectAnswerDialog from "../../components/CorrectAnswerDialog";
-import AnswerReviewState from "../../@types/AnswerReviewState";
-import AnswerReviewDialog from "../../components/AnswerReviewDialog";
-import YoutubeVideo from "../../components/YoutubeVideo";
-import contents from "../../contents.json";
+import DefaultTab from "../../../@types/DefaultTab";
+import { preTesteAnswerAtom } from "../../../atoms/preTesteAnswersAtom";
+import { lessonStateAtom } from "../../../atoms/lessonStateAtom";
+import NextTabButton from "../../../components/NextTabButton";
+import PageTitle from "../../../components/PageTitle";
+import Paragraph from "../../../components/Paragraph";
+import PreTestePostConfirmDialog from "../../../components/PreTestePostConfirmDialog";
+import IncorrectAnswerDialog from "../../../components/IncorrectAnswerDialog";
+import CorrectAnswerDialog from "../../../components/CorrectAnswerDialog";
+import AnswerReviewState from "../../../@types/AnswerReviewState";
+import AnswerReviewDialog from "../../../components/AnswerReviewDialog";
+import YoutubeVideo from "../../../components/YoutubeVideo";
+import contents from "../../../contents.json";
 
 export default ({ setCurrentTab }: IProps): JSX.Element | null => {
   const [answerReviewState, setAnswerReviewState] =
