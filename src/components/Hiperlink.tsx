@@ -1,5 +1,5 @@
 import { SetStateAction, useAtom } from "jotai";
-import { InformativeBoxWord } from "../boxes";
+import { DefinitionModalWord } from "../definitionModals";
 import React, { ReactElement } from "react";
 import informativeBoxAtom from "../atoms/informativeBoxAtom";
 
@@ -7,7 +7,7 @@ export default ({
   word,
   children,
 }: {
-  word: InformativeBoxWord;
+  word: DefinitionModalWord;
   children: string;
 }) => {
   const [informativeBoxWord, setInformativeBoxWord] =
@@ -22,7 +22,7 @@ export default ({
       }}
       onClick={() => setInformativeBoxWord(word)}
     >
-      { children }
+      {children}
     </div>
   );
 };

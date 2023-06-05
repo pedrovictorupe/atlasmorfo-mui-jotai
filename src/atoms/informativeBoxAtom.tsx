@@ -1,4 +1,4 @@
 import { atom } from "jotai";
-import { InformativeBoxWord } from "../boxes";
+import { DefinitionModalWord } from "../definitionModals";
 
-export default atom<InformativeBoxWord>("Fechado");
+export default atom<DefinitionModalWord>("Fechado");

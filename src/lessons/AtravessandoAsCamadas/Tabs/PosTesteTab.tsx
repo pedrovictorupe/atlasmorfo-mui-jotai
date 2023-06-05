@@ -23,29 +23,8 @@ export default (): JSX.Element => {
         top: "-106px",
       }}
     >
-      <DefaultDarkDialog
-        open={isGameRulesOpen}
-        onClose={() => setGameRulesOpen(false)}
-        title={"Agora é hora de TERMO!"}
-        backgroundDarkColor={blue["700"]}
-        content={
-          <List>
-            {paragraphs.map((paragraph) => (
-              <ListItem key={paragraph.slice(0, 5)}>{paragraph}</ListItem>
-            ))}
-          </List>
-        }
-        actions={
-          <Button
-            onClick={() => setGameRulesOpen(false)}
-            sx={{ color: "#fff" }}
-          >
-            Ok
-          </Button>
-        }
-      />
       <iframe
-        src="https://mywordle.strivemath.com/?word=bwsutrw&lang=any"
+        src="https://mywordle.strivemath.com/?word=aqkroinar&lang=any"
         scrolling="no"
         style={{
           height: "610px",
@@ -59,7 +38,7 @@ export default (): JSX.Element => {
         label="Palavra secreta para prosseguir"
         onChange={(e: { target: { value: string } }) => {
           if (
-            slugify(e.target.value, { lower: true, trim: true }) == "fibrina"
+            slugify(e.target.value, { lower: true, trim: true }) == "ectoderma"
           ) {
             setHasAnsweredCorrectly(true);
             setLessonState("POS_TESTE_RESPONDIDO");
@@ -75,19 +54,9 @@ export default (): JSX.Element => {
         open={hasAnsweredCorrectly}
         onClose={() => setHasAnsweredCorrectly(false)}
         title={"Parabéns!"}
-        content="Você concluiu a lição JOÃO E AS ETAPAS DA HEMOSTASIA. Aguarde por novas lições no futuro :)"
+        content="Você concluiu a lição ATRAVESSANDO AS CAMADAS. Aguarde por novas lições no futuro :)"
         backgroundDarkColor={green[700]}
       />
     </div>
   );
 };
-
-const paragraphs = [
-  "Se você não conhece esse jogo, as regras são simples:",
-  "- Há uma palavra secreta de 7 letras que você deverá acertar em, no máximo, 6 chutes (usando o teclado disponível na própria página).",
-  "- Após cada chute, o display mostrará algumas letras da palavra inserida com uma coloração amarela e outras com coloração verde.",
-  "- A coloração amarela indica que aquela letra ESTÁ PRESENTE na palavra secreta, mas NÃO NAQUELA POSIÇÃO",
-  "- Já a coloração verde indica que você ACERTOU a letra presente naquela posição da palavra secreta.",
-  "- FIQUE ATENTO: Se você acertar, você ainda precisará inserir a palavra descoberta no campo abaixo do jogo para prosseguir.",
-  "PS: Você pode rever as regras a qualquer momento clicando no botão abaixo do teclado do jogo. Boa sorte!",
-];

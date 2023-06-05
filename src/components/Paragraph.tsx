@@ -8,6 +8,7 @@ export default (props: any) => {
       variant="body1"
       padding={1}
       paddingLeft={2}
+      textAlign="justify"
       {...props}
     />
   );
