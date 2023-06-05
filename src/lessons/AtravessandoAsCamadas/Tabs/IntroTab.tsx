@@ -26,6 +26,7 @@ import DefinitionModal from "../../../components/DefinitionModal";
 import currentLessonAtom from "../../../atoms/currentLessonAtom";
 
 import GenericBox from "../../../components/GenericBox";
+import BoxAnchor from "../../../components/BoxAnchor";
 
 export default ({
   setCurrentTab: setPaginaAtual,
@@ -78,7 +79,7 @@ const Content = ({}) => {
       </Paragraph>
       <Paragraph>
         A pele, por exemplo, é composta por três principais camadas:{" "}
-        <Hiperlink word="Epiderme">epiderme</Hiperlink>,{" "} 
+        <Hiperlink word="Epiderme">epiderme</Hiperlink>,{" "}
         <Hiperlink word="Derme">derme</Hiperlink> e{" "}
         <Hiperlink word="Hipoderme">hipoderme</Hiperlink>. A epiderme é
         avascular e composta por várias camadas de células, enquanto a derme é
@@ -108,31 +109,6 @@ const Content = ({}) => {
       </Paragraph>
       <DefinitionModal />
     </>
-  );
-};
-
-const BoxAnchor = ({
-  title,
-  box,
-  children,
-}: {
-  title: string;
-  box: JSX.Element;
-  children: string;
-}) => {
-  return (
-    <Box sx={{ minWidth: 275, my: 2 }}>
-      <Card variant="outlined">
-        {" "}
-        <CardContent>
-          <Typography variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography color="text.secondary">{children}</Typography>
-        </CardContent>
-        <CardActions>{box}</CardActions>
-      </Card>
-    </Box>
   );
 };
 
@@ -192,13 +168,15 @@ const BoxColageno = () => (
       cartilagem, corpo vítreo, núcleo pulposo, pele, parede dos vasos, fibras
       reticulares.
     </Paragraph>
-    <BoxAnchor
-      title="Relação entre a vitamina C e o colágeno"
-      box={<BoxVitaminaC />}
-    >
-      A vitamina C, ou ácido ascórbico, é essencial para a biossíntese do
-      colágeno. Para se aprofundar nesse fenômeno, acesse este box
-    </BoxAnchor>
+    <Box sx={{ ml: 2 }}>
+      <BoxAnchor
+        title="Relação entre a vitamina C e o colágeno"
+        box={<BoxVitaminaC />}
+      >
+        A vitamina C, ou ácido ascórbico, é essencial para a biossíntese do
+        colágeno. Para se aprofundar nesse fenômeno, acesse este box
+      </BoxAnchor>
+    </Box>
   </GenericBox>
 );
 

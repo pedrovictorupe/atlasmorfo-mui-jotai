@@ -29,7 +29,7 @@ export default ({
   };
 
   return (
-    <div>
+    <Box>
       <Button size="small" onClick={handleClickOpen}>
         Saber mais
       </Button>
@@ -62,6 +62,6 @@ export default ({
           {children}
         </Box>
       </Dialog>
-    </div>
+    </Box>
   );
 };

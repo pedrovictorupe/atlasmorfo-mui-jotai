@@ -25,12 +25,19 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
     <>
       <PreTestePostConfirmDialog lessonState={lessonState} />
       <div style={{ padding: "5vw" }}>
-        <PageTitle>As crônicas de Joãozinho</PageTitle>
-        {paragraphs.map((paragraph) => (
-          <Paragraph key={paragraph.slice(0, 5)}>{paragraph}</Paragraph>
-        ))}
+        <PageTitle>Joãozinho, ajude-nos novamente!</PageTitle>
+        <Paragraph>
+          Agora, vamos voltar a tirar proveito do infortúnio do nosso amigo João
+          para estudar com profundidade as peculiaridades das camadas teciduais
+          atingidas pela lesão.
+        </Paragraph>
+        <Paragraph>
+          Assista ao vídeo e, em seguida, avalie sua resposta anterior e tente
+          adivinhar a segunda palavra misteriosa desta unidade!
+        </Paragraph>
         <Paragraph />
-        <YoutubeVideo src="https://www.youtube.com/embed/IGmYTjpWSa4" />
+        <YoutubeVideo src="https://www.youtube.com/embed/G2RmUBIBNqs" />
+        <YoutubeVideo src="https://www.youtube.com/embed/oe-7PcECTz4" />
         <NextTabButton
           onClick={() => {
             setAnswerReviewState("CHECKING");
@@ -54,12 +61,6 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
     </>
   );
 };
-
-const paragraphs = [
-  "Chegou a hora de você conhecer nosso protagonista!",
-  "Joãozinho é um menino travesso que será o cobaia perfeito para a nossa aventura. Ele tem uma certa propensão a não olhar para onde anda, então é bem provável que ele ostente um machucão ou outro que a gente possa acompanhar para o nosso projeto.",
-  "Dê uma espiadinha aqui no vídeo que preparamos para você e aproveite para tentar encontrar a resposta para o quiz anterior.",
-];
 
 type IProps = {
   setCurrentTab: (nextTab: DefaultTab) => void;
