@@ -15,6 +15,8 @@ import YoutubeVideo from "../../../components/YoutubeVideo";
 import contents from "../../../contents.json";
 import Hiperlink from "../../../components/Hiperlink";
 import DefinitionModal from "../../../components/DefinitionModal";
+import BoxAnchor from "../../../components/BoxAnchor";
+import GenericBox from "../../../components/GenericBox";
 
 export default ({ setCurrentTab }: IProps): JSX.Element | null => {
   const [answerReviewState, setAnswerReviewState] =
@@ -159,6 +161,11 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
           no corpo. No final, o sangramento é interrompido, e a lesão vascular é
           reparada.
         </Paragraph>
+        <BoxAnchor title="Trombofilias" box={<BoxTrombofilia />}>
+          As trombofilias são um grupo de doenças na qual existe uma maior
+          propensão à formação de coágulos sanguíneos no corpo. Clique aqui para
+          explorar as diferentes causas dessa condição!
+        </BoxAnchor>
         <DefinitionModal />
         <NextTabButton
           onClick={() => {
@@ -187,3 +194,57 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
 type IProps = {
   setCurrentTab: (nextTab: DefaultTab) => void;
 };
+
+const BoxTrombofilia = () => (
+  <GenericBox title="Trombofilias">
+    <Paragraph>
+      A trombofilia se refere a uma condição na qual existe uma maior propensão
+      à formação de coágulos sanguíneos no corpo. Essa inclinação pode ser
+      resultado de modificações genéticas herdadas ou adquiridas ao longo da
+      vida, que afetam o processo de coagulação ou dissolução dos coágulos.
+      Essas alterações proporcionam um ambiente favorável para a formação de
+      coágulos no sangue, o que pode acarretar em complicações sérias, como a
+      trombose. É crucial ter conhecimento dessa condição e buscar um tratamento
+      adequado para diminuir o risco de ocorrência de eventos trombóticos.
+    </Paragraph>
+    <Paragraph>
+      A trombofilia é de origem hereditária quando é notado a presença de uma
+      anormalidade hereditária que predispõe à oclusão vascular, no entanto, é
+      necessário que haja interação com outro componente, seja ele hereditário
+      ou adquirido, para que o evento trombótico ocorra. As trombofilias
+      hereditárias são geralmente causadas por mudanças nos inibidores naturais
+      da coagulação (antitrombina, proteína C, proteína S e resistência à
+      proteína C ativada) ou por mutações em fatores de coagulação específicos
+      (como FV G1691A, conhecido como Fator V Leiden, e mutação G20210A da
+      protrombina). As trombofilias hereditárias costumam se manifestar
+      clinicamente como tromboembolismos venosos e possuem características
+      específicas, incluindo a ocorrência em pessoas jovens, recorrência
+      frequente, histórico familiar de eventos trombóticos, trombose em locais
+      atípicos e a gravidade desproporcional dos episódios trombóticos em
+      relação ao fator desencadeante.
+    </Paragraph>
+    <Paragraph>
+      Em alguns casos, a trombofilia pode ser adquirida, como em neoplasias,
+      síndrome antifosfolípide, imobilização, uso de medicamentos, como terapia
+      de reposição hormonal, anticoncepcionais orais e heparina. A trombofilia
+      adquirida pode se apresentar clinicamente de várias maneiras, como a
+      trombose venosa profunda, embolia pulmonar, tromboflebite superficial e
+      trombose arterial. Além disso, complicações durante a gravidez também
+      podem ocorrer, aumentando o risco de pré-eclâmpsia, restrição de
+      crescimento fetal, aborto espontâneo recorrente e complicações na
+      placenta. Os sintomas e complicações podem variar de acordo com o tipo
+      específico de trombofilia adquirida e é de fundamental importância buscar
+      orientação médica para um diagnóstico preciso e tratamento adequado.
+    </Paragraph>
+    <Paragraph>
+      Pacientes trombofílicos tendem a apresentar uma maior probabilidade a
+      desenvolver episódios de tromboembolismo venoso. O tromboembolismo venoso
+      ocorre quando há a formação de um coágulo sanguíneo dentro de um vaso que
+      transporta sangue venoso. Esse coágulo pode permanecer no local onde se
+      formou ou se deslocar para outras áreas do sistema vascular. Essa condição
+      pode se manifestar como trombose venosa profunda ou tromboembolismo
+      pulmonar, com a presença de coágulos nas veias profundas das extremidades
+      inferiores e na circulação arterial dos pulmões.
+    </Paragraph>
+  </GenericBox>
+);
