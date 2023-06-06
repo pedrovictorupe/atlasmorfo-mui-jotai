@@ -57,13 +57,13 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
         </Paragraph>
         <Paragraph>As etapas do processo de hemostasia incluem:</Paragraph>
         <Paragraph>
-          Vasoconstrição: Quando ocorre uma lesão no vaso sanguíneo, os{" "}
+          • Vasoconstrição: Quando ocorre uma lesão no vaso sanguíneo, os{" "}
           <Hiperlink word="Músculos lisos">músculos lisos</Hiperlink> da parede
           do vaso se contraem, causando a vasoconstrição. Isso reduz o fluxo
           sanguíneo na região afetada e diminui o sangramento.
         </Paragraph>
         <Paragraph>
-          Hemostasia primária: As{" "}
+          • Hemostasia primária: As{" "}
           <Hiperlink word="Plaquetas">plaquetas sanguíneas</Hiperlink> são
           ativadas e aderem ao local da lesão, formando uma espécie de tampão
           temporário. Essa aderência é facilitada pela exposição de componentes
@@ -73,7 +73,7 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
           é essencial para a formação do tampão plaquetário.
         </Paragraph>
         <Paragraph>
-          Hemostasia secundária: Após a aderência das plaquetas, ocorre a
+          • Hemostasia secundária: Após a aderência das plaquetas, ocorre a
           ativação do sistema de coagulação. Uma cascata de reações bioquímicas
           é desencadeada, resultando na formação de fibrina, uma proteína
           insolúvel que se entrelaça com as plaquetas, formando um coágulo

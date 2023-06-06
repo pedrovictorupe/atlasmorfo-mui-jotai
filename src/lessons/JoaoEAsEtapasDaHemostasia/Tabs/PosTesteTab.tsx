@@ -75,7 +75,7 @@ export default (): JSX.Element => {
         open={hasAnsweredCorrectly}
         onClose={() => setHasAnsweredCorrectly(false)}
         title={"Parabéns!"}
-        content="Você concluiu a lição JOÃO E AS ETAPAS DA HEMOSTASIA. Aguarde por novas lições no futuro :)"
+        content="Você concluiu a lição JOÃO E AS ETAPAS DA HEMOSTASIA. Siga para a próxima lição pelo menu no canto superior esquerdo!"
         backgroundDarkColor={green[700]}
       />
     </div>
