@@ -18,7 +18,7 @@ export default ({
 }: {
   title: string;
   anchorText: string;
-  children: JSX.Element[];
+  children: JSX.Element | JSX.Element[];
 }) => {
   const [open, setOpen] = React.useState(false);
 
