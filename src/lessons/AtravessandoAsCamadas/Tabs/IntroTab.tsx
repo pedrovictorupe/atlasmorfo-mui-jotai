@@ -113,7 +113,7 @@ const Content = ({}) => {
 };
 
 const BoxColageno = () => (
-  <GenericBox title="O colágeno">
+  <GenericBox title="O colágeno" anchorText="Saber mais">
     <Paragraph>
       O colágeno é um tipo de proteína estrutural que pode ser encontrado em
       grandes quantidades no tecido conjuntivo, sintetizada pelos fibroblastos,
@@ -181,7 +181,10 @@ const BoxColageno = () => (
 );
 
 const BoxVitaminaC = () => (
-  <GenericBox title="Relação entre a vitamina C e o colágeno">
+  <GenericBox
+    title="Relação entre a vitamina C e o colágeno"
+    anchorText="Saber mais"
+  >
     <Paragraph>
       A vitamina C é um tipo de vitamina hidrossolúvel e termolábil. Com exceção
       dos primatas de ordem superior (incluindo o ser humano),
@@ -270,7 +273,7 @@ const BoxVitaminaC = () => (
 );
 
 const BoxEhlerDanlos = () => (
-  <GenericBox title="Ehlers Danlos">
+  <GenericBox title="Ehlers Danlos" anchorText="Saber mais">
     <Paragraph>
       A síndrome de Ehlers Danlos é uma doença de ordem genética rara que
       acomete o tecido conjuntivo. Os pacientes portadores dessa síndrome

@@ -196,7 +196,7 @@ type IProps = {
 };
 
 const BoxTrombofilia = () => (
-  <GenericBox title="Trombofilias">
+  <GenericBox title="Trombofilias" anchorText="Saber mais">
     <Paragraph>
       A trombofilia se refere a uma condição na qual existe uma maior propensão
       à formação de coágulos sanguíneos no corpo. Essa inclinação pode ser

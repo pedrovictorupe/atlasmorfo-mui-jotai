@@ -13,9 +13,11 @@ import CloseIcon from "@mui/icons-material/Close";
 
 export default ({
   title,
+  anchorText,
   children,
 }: {
   title: string;
+  anchorText: string;
   children: JSX.Element[];
 }) => {
   const [open, setOpen] = React.useState(false);
