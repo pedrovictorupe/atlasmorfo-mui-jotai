@@ -33,7 +33,7 @@ export default ({
   return (
     <Box>
       <Button size="small" onClick={handleClickOpen}>
-        Saber mais
+        {anchorText}
       </Button>
       <Dialog
         fullScreen
