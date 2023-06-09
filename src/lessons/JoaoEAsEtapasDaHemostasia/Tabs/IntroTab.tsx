@@ -19,7 +19,7 @@ export default ({
     <>
       <Container sx={{ overflowY: "auto", padding: 3 }}>
         <PageTitle>
-          Geração <br /> Methiolate
+          Geração <br /> Merthiolate
         </PageTitle>
         <Grid container direction="column" alignItems="center">
           <Image
