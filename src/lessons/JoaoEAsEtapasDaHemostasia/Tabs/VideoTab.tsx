@@ -166,6 +166,11 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
           propensão à formação de coágulos sanguíneos no corpo. Clique aqui para
           explorar as diferentes causas dessa condição!
         </BoxAnchor>
+        <BoxAnchor title="Coagulograma" box={<BoxCoagulograma />}>
+          As trombofilias são um grupo de doenças na qual existe uma maior
+          propensão à formação de coágulos sanguíneos no corpo. Clique aqui para
+          explorar as diferentes causas dessa condição!
+        </BoxAnchor>
         <DefinitionModal />
         <NextTabButton
           onClick={() => {
@@ -194,6 +199,28 @@ export default ({ setCurrentTab }: IProps): JSX.Element | null => {
 type IProps = {
   setCurrentTab: (nextTab: DefaultTab) => void;
 };
+
+const BoxCoagulograma = () => (
+  <GenericBox title="Coagulograma" anchorText="Saber mais">
+    {[
+      "O coagulograma é um exame realizado para analisar as alterações na coagulação do sangue humano, com o objetivo de identificar doenças ou complicações relacionadas a esse processo. Esse exame consiste em uma série de testes de triagem que incluem:",
+      "• Tempo de sangramento: Avalia a capacidade de formação de coágulos em pequenos vasos sanguíneos. Um pequeno corte é feito na pele e o tempo necessário para interromper o sangramento é registrado.",
+      "• Prova do laço: Um teste que também avalia a capacidade de formação de coágulos em pequenos vasos sanguíneos, porém utilizando um método diferente.",
+      "• Tempo de trombina: Avalia a atividade da trombina, uma enzima essencial no processo de coagulação. Mede o tempo necessário para a formação de um coágulo após a adição de trombina ao plasma.",
+      "• Tempo de protrombina (TP) e Índice Internacional Normalizado (INR): Avaliam a via extrínseca e comum da coagulação. O TP mede o tempo necessário para a formação de coágulos após a adição de certas substâncias ao plasma sanguíneo, enquanto o INR é uma forma padronizada de expressar os resultados do TP.",
+      "Tempo de tromboplastina parcial ativada: Avalia a via intrínseca e comum da coagulação. Mede o tempo necessário para a formação de coágulos após a adição de reagentes ao plasma sanguíneo.",
+      "Esse exame pode ser solicitado em vários casos, tais como: ",
+      "• Antes de cirurgias e procedimentos invasivos: Para avaliar se o paciente apresenta algum risco aumentado de sangramento excessivo durante o procedimento.",
+      "• Suspeita de distúrbios de coagulação: Para avaliar a função de coagulação do paciente e identificar a possível causa subjacente, como hemofilia, doença de von Willebrand, deficiência de vitamina K ou distúrbios plaquetários.",
+      "• Monitoramento de terapia anticoagulante: Para verificar a eficácia da terapia anticoagulante em pacientes que estão tomando medicamentos como varfarina e garantir que a coagulação do sangue esteja dentro da faixa terapêutica adequada.",
+      "• Investigação de sangramentos inexplicados: Quando o paciente apresenta sangramentos excessivos sem causa aparente, o coagulograma pode ser solicitado para avaliar a função de coagulação do sangue e identificar possíveis anormalidades.",
+      "• Durante a gravidez: Em casos de histórico de abortos espontâneos recorrentes ou complicações trombóticas anteriores, um coagulograma pode ser solicitado para avaliar a função de coagulação da gestante.",
+      "O coagulograma desempenha um papel importante na avaliação da coagulação sanguínea e no diagnóstico de condições relacionadas. No entanto, a solicitação e interpretação desses exames devem ser realizadas por um profissional de saúde qualificado.",
+    ].map((e) => (
+      <Paragraph>{e}</Paragraph>
+    ))}
+  </GenericBox>
+);
 
 const BoxTrombofilia = () => (
   <GenericBox title="Trombofilias" anchorText="Saber mais">
